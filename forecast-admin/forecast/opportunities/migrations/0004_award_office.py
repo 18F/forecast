@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='award',
             name='office',
-            field=models.ForeignKey(to='opportunities.Office', default=1),
+            field=models.ForeignKey(to='opportunities.Office', blank=True, null=True),
         ),
     ]

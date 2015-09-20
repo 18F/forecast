@@ -34,7 +34,7 @@ class Award(models.Model):
   FUNDING_AGENCY_CHOICES = (
     ("GSA funded","GSA funded"),("GSA funded-PBS","GSA funded-PBS"),("GSA funded-FAS","GSA funded-FAS"),("GSA funded-IAD","GSA funded-IAD"),("GSA funded-Other","GSA funded-Other"),("Non-GSA funded","Non-GSA funded"),("Both","Both"),("To Be Determined","To Be Determined")
   )
-  office = models.ForeignKey(Office, default=1)
+  office = models.ForeignKey(Office, blank=True, null=True)
   award_status = models.CharField(max_length=50, choices=AWARD_STATUS_CHOICES)
   description = models.CharField("Product or Service Description", max_length=200, blank=True, null=True)
   place_of_performance_city = models.CharField(max_length=100, default="Washington")
