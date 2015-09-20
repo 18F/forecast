@@ -6,7 +6,7 @@ applications:
   no-route: true
   path: forecast-admin/forecast
   timeout: 180
-command: waitress-serve --port=$VCAP_APP_PORT forecast.wsgi:application
+command: ./manage.py migrate && waitress-serve --port=$VCAP_APP_PORT forecast.wsgi:application
 domain: 18f.gov
 instances: 1
 memory: 512M
