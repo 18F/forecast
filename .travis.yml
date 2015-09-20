@@ -1,0 +1,10 @@
+deploy:
+  edge: true
+  provider: cloudfoundry
+  username: vladlen.zvenyach@gsa.gov
+  password:
+    secure: QL8vffmeLX/yttS4l7U2fkfW2w/fA7kklbmGe59BfeB00F30B7GSk0bBgWv4Kesa4Lbdf9FHiUSnJptRBLFtylRhjJXHcJBruFeCMzL1UWzdxEBmU8cYIjv+in77bxMefBZW7NunK5vOPSzVKhDRBa7o4gwalC43BldqTm0sevov7+To4TOljfkWBm3ZUFO1R2XXVaKdU0cJCB2AYoxdyh/FmlT3G7qfw2rpffsaKkpP35VqRNec9XxNYgSTGNQbqxSgFJ+tZxU79UdKJRsOTflJT9OS9mTOYLjyMk8OTRKGClll4WjMZmTtf4LgQWVB6Q/LqAvik95nwFVZEWYRREmBV74oNldWp0fTxgdlXzBFBjQ0YLesIK9gdh2Uo34BmnaWGorbPeeVk6mXYKwNzyzMNqBfxkzmXAUNggDiiYx0kbOD+SGV+yHCCUJ7G/qTCdmBi2TlXg2xUfzDvXlv3Pxfn++zrCkqXjP+9neDT/jz3zpV29sYgrLEbOJIrI3xgnotGwkfTBaxkJozXg0ffBwpY30EowRt74+UK3uIGpk1hvbbpt9KncIFSHaEDw4Ev8zAMqE9WywmpF/SYdQ6vEH3/D/OogJvJrTS0V9ffSjekCjYGez9GpQQ2IUewpWcwlvng3+KTjl+WOqQzyFzS/BIbkkl137IMeNgKC8gaiI=
+  api: https://api.18f.gov
+  organization: sandbox
+  space: vladlen.zvenyach  
+script: echo "Deploying Admin Site"

@@ -1,0 +1,16 @@
+[
+  {
+    "model": "auth.user",
+    "fields": {
+      "email": "",
+      "is_active": true,
+      "user_permissions": [],
+      "password": "",
+      "last_name": "",
+      "username": "admin",
+      "is_superuser": true,
+      "is_staff": true
+    },
+    "pk": 1
+  }
+]

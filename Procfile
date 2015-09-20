@@ -1,0 +1,1 @@
+api: cd forecast-admin/forecast && ./manage.py migrate && waitress-serve --port=$VCAP_APP_PORT forecast.wsgi:application
