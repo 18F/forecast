@@ -13,3 +13,5 @@ deploy:
   organization: sandbox
   space: vladlen.zvenyach
 script: ./manage.py test
+after_success:
+  - coveralls
