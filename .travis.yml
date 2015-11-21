@@ -1,3 +1,8 @@
+language: python
+install: cd forecast-admin/forecast && pip install -r requirements.txt
+cache:
+  directories:
+    - $HOME/.cache/pip
 deploy:
   edge: true
   provider: cloudfoundry
@@ -7,4 +12,4 @@ deploy:
   api: https://api.18f.gov
   organization: sandbox
   space: vladlen.zvenyach
-script: echo "Deploying Admin Site"
+script: ./manage.py test

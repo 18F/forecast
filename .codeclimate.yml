@@ -1,0 +1,13 @@
+languages:
+  Python: true
+engines:
+  pep8:
+    enabled: true
+  radon:
+    enabled: true
+ratings:
+   paths:
+   - forecast-admin/forecast/**
+exclude_paths:
+- forecast-admin/forecast/static/**/*
+- forecast-admin/forecast/opportunities/migrations/**/*
