@@ -1,0 +1,16 @@
+languages:
+  Python: true
+engines:
+  pep8:
+    enabled: true
+  radon:
+    enabled: true
+ratings:
+   paths:
+   - app/**
+   - lib/**
+   - "**.rb"
+   - "**.go"
+exclude_paths:
+- forecast-admin/forecast/static/**/*
+- forecast-admin/forecast/opportunities/migrations/**/*
