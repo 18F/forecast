@@ -3,13 +3,15 @@ install: cd forecast-admin/forecast && pip install -r requirements.txt
 cache:
   directories:
     - $HOME/.cache/pip
-deploy:
-  edge: true
-  provider: cloudfoundry
-  username: vladlen.zvenyach@gsa.gov
-  password:
-    secure: TA4nWCJE/92wYnCa4t0Rg7ev31GQ8RUDCrDoZENd9bNGzmztke6w3CICGOwAmwv/lqEw5QHSKDKAFmpSivP80Ojvhu7WerPEFiTIDosySxuMeRQkFBxaXxusT5OuTGC44kTuJSCBTR2fknbe0hl1kBuSrNMZ/wKRjtwv7Jzy5nUvfUTLm/JoJ3y0nMDLcinhFnEQ/8Hx2Up3zc3Q8J5ISePpRgvG4gCnvs1OZ949G7OyzDqKilBh+CPRLzrMEHuvfCSQyvjPdt+OAwPMPctppXs1IBUBd84XwUlTvFItartVWL1iTyChCnlVNX8NfMJAkDHxgyE42Bz9I7CXbkJkCLv2Ct9ArzOaKl4bpTpgc7cjjObgaSwL6U52KDkWddYHcS96+28vJ5bPtKCXDi68kVn+yHw4Z592L4VEv9Qx+PNdabl7dbh4GBhtENR4srryGFkpT49dvmGTwTpJfAwqYXN+RdZy1O8tVexExavFDllo4TCYOsZwFfVwYUu72KeMO4hIZFKK/frpaZ+WD0+yrfbjBcebHfTRY692b9qBQB/pIEOnnBS3PG0R+HnsHuYLWaURTnmWbiOD3er2hjKdhJQZrEpHTQIBJ/BQ8y/uKXPgV50arTaLGGwonZ6xRNoKcghwCu2DODxvSq0ESHaufb806xolCPRo3WjnSnBdhQI=
-  api: https://api.cloud.gov
-  organization: sandbox
-  space: vladlen.zvenyach
+# deploy:
+#   edge: true
+#   provider: cloudfoundry
+#   username: vladlen.zvenyach@gsa.gov
+#   password:
+#     secure: TA4nWCJE/92wYnCa4t0Rg7ev31GQ8RUDCrDoZENd9bNGzmztke6w3CICGOwAmwv/lqEw5QHSKDKAFmpSivP80Ojvhu7WerPEFiTIDosySxuMeRQkFBxaXxusT5OuTGC44kTuJSCBTR2fknbe0hl1kBuSrNMZ/wKRjtwv7Jzy5nUvfUTLm/JoJ3y0nMDLcinhFnEQ/8Hx2Up3zc3Q8J5ISePpRgvG4gCnvs1OZ949G7OyzDqKilBh+CPRLzrMEHuvfCSQyvjPdt+OAwPMPctppXs1IBUBd84XwUlTvFItartVWL1iTyChCnlVNX8NfMJAkDHxgyE42Bz9I7CXbkJkCLv2Ct9ArzOaKl4bpTpgc7cjjObgaSwL6U52KDkWddYHcS96+28vJ5bPtKCXDi68kVn+yHw4Z592L4VEv9Qx+PNdabl7dbh4GBhtENR4srryGFkpT49dvmGTwTpJfAwqYXN+RdZy1O8tVexExavFDllo4TCYOsZwFfVwYUu72KeMO4hIZFKK/frpaZ+WD0+yrfbjBcebHfTRY692b9qBQB/pIEOnnBS3PG0R+HnsHuYLWaURTnmWbiOD3er2hjKdhJQZrEpHTQIBJ/BQ8y/uKXPgV50arTaLGGwonZ6xRNoKcghwCu2DODxvSq0ESHaufb806xolCPRo3WjnSnBdhQI=
+#   api: https://api.cloud.gov
+#   organization: sandbox
+#   space: vladlen.zvenyach
 script: ./manage.py test
+after_success:
+  - coveralls

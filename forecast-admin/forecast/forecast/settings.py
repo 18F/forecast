@@ -43,8 +43,6 @@ INSTALLED_APPS = (
     'localflavor',
     'rest_framework',
 
-    'django_nose',
-
     'opportunities'
 )
 
@@ -116,12 +114,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
-
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
-NOSE_ARGS = [
-    '--with-coverage',
-    '--nologcapture',
-    '--cover-package=opportunities',
-]
