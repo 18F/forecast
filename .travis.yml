@@ -1,7 +1,8 @@
 language: python
 install: cd forecast-admin/forecast && pip install -r requirements.txt
-cache: pip
-
+cache:
+  directories:
+    - $HOME/.cache/pip
 deploy:
   edge: true
   provider: cloudfoundry
