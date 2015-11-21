@@ -6,18 +6,13 @@ class OfficeTestCase(TestCase):
     # Create your tests here.
 
     def setUp(self):
-        Office.objects.create(organization="PBS-Public Buildings Service",
-                              region="R1-New England Region")
-
-    def test_office_created(self):
-        o = Office.objects.get(organization="PBS-Public Buildings Service")
-        self.assertTrue(o)
+        self.o = Office(organization="PBS-Public Buildings Service",
+                        region="R1-New England Region")
 
     def test_office_str(self):
-        o = Office.objects.get(organization="PBS-Public Buildings Service")
-        self.assertEqual(str(o),
-                         'PBS-Public Buildings Service (R1-New England Region)'
-                         )
+        self.assertTrue(isinstance(self.o, Office))
+        self.assertEqual(str(self.o),
+                         "%s (%s)" % (self.o.organization, self.o.region))
 
 
 class AwardTestCase(TestCase):
