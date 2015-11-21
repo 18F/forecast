@@ -10,4 +10,4 @@ deploy:
   api: https://api.18f.gov
   organization: sandbox
   space: vladlen.zvenyach
-script: cd forecast-admin/forecast && ./manage test
+script: ./manage test
