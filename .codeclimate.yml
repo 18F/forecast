@@ -7,10 +7,7 @@ engines:
     enabled: true
 ratings:
    paths:
-   - app/**
-   - lib/**
-   - "**.rb"
-   - "**.go"
+   - forecast-admin/forecast/**
 exclude_paths:
 - forecast-admin/forecast/static/**/*
 - forecast-admin/forecast/opportunities/migrations/**/*
