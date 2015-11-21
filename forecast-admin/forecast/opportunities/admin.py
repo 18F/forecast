@@ -6,10 +6,10 @@ from .models import Award, Office
 @admin.register(Award)
 class AwardAdmin(admin.ModelAdmin):
 
-    def get_form(self, request, obj=None, **kwargs):
-        if not request.user.is_superuser:
-            self.exclude = ('published',)
-        return super(AwardAdmin, self).get_form(request, obj, **kwargs)
+    # def get_form(self, request, obj=None, **kwargs):
+        # if not request.user.is_superuser:
+            # self.exclude = ('published',)
+        # return super(AwardAdmin, self).get_form(request, obj, **kwargs)
 
     def get_queryset(self, request):
         """Limit Pages to those that belong to the request's user."""
