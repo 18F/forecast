@@ -56,8 +56,7 @@ class AdminTestCase(TestCase):
         pass
 
     request = MockRequest()
-    request.user = User.objects.get(pk=1)
-    # request.regular_user = User.objects.create_user(username='regular_user')
+    request.user = User.objects.create_user(username='admin')
 
     def setUp(self):
         self.o = Office(organization="PBS-Public Buildings Service",
