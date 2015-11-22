@@ -1,5 +1,12 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from opportunities.models import Office, Award
+from django.contrib.auth.models import User
+
+from opportunities.serializers import AwardSerializer
+from rest_framework.test import APITestCase
+
+from opportunities.admin import AwardAdmin
+from django.contrib.admin.sites import AdminSite
 
 
 class OfficeTestCase(TestCase):
@@ -27,3 +34,16 @@ class AwardTestCase(TestCase):
     def test_opportunity_str(self):
         award = Award.objects.get(description="Test Opportunity")
         self.assertEqual(str(award), "Test Opportunity (2016)")
+
+
+# Testing the Award API
+class AwardAPITest(APITestCase):
+    def setUp(self):
+        self.o = Office(organization="PBS-Public Buildings Service",
+                        region="R1-New England Region")
+        self.a = Award(office=self.o, description="Test Opportunity",
+                       estimated_fiscal_year="2016")
+
+    def test_API(self):
+        response = self.client.get('/api/awards/')
+        self.assertEqual(200, response.status_code)
