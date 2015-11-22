@@ -47,25 +47,3 @@ class AwardAPITest(APITestCase):
     def test_API(self):
         response = self.client.get('/api/awards/')
         self.assertEqual(200, response.status_code)
-
-
-# Testing the Admin interface
-class AdminTestCase(TestCase):
-
-    class MockRequest(object):
-        pass
-
-    request = MockRequest()
-    request.user = User.objects.create_user(username='admin')
-
-    def setUp(self):
-        self.o = Office(organization="PBS-Public Buildings Service",
-                        region="R1-New England Region")
-        self.a = Award(owner=self.request.user, office=self.o,
-                       description="Test Opportunity",
-                       estimated_fiscal_year="2016")
-        self.site = AdminSite()
-
-    def test_Admin(self):
-        award = AwardAdmin(Award, self.site)
-        self.assertQuerysetEqual([], award.get_queryset(self.request))
