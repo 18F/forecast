@@ -1,9 +1,12 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from opportunities.models import Office, Award
+from django.contrib.auth.models import User
 
-from django.core.urlresolvers import reverse
 from opportunities.serializers import AwardSerializer
 from rest_framework.test import APITestCase
+
+from opportunities.admin import AwardAdmin
+from django.contrib.admin.sites import AdminSite
 
 
 class OfficeTestCase(TestCase):
@@ -44,3 +47,26 @@ class AwardAPITest(APITestCase):
     def test_API(self):
         response = self.client.get('/api/awards/')
         self.assertEqual(200, response.status_code)
+
+
+# Testing the Admin interface
+class AdminTestCase(TestCase):
+
+    class MockRequest(object):
+        pass
+
+    request = MockRequest()
+    request.user = User.objects.get(pk=1)
+    # request.regular_user = User.objects.create_user(username='regular_user')
+
+    def setUp(self):
+        self.o = Office(organization="PBS-Public Buildings Service",
+                        region="R1-New England Region")
+        self.a = Award(owner=self.request.user, office=self.o,
+                       description="Test Opportunity",
+                       estimated_fiscal_year="2016")
+        self.site = AdminSite()
+
+    def test_Admin(self):
+        award = AwardAdmin(Award, self.site)
+        self.assertQuerysetEqual([], award.get_queryset(self.request))
