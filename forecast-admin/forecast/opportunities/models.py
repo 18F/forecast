@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from localflavor.us.models import USStateField, PhoneNumberField
+from opportunities.validators import validate_NAICS
 
 
 # Create your models here.
@@ -199,7 +200,8 @@ class Opportunity(models.Model):
                                                  default="Washington")
     place_of_performance_state = USStateField(default="DC")
     naics = models.CharField("Primary NAICS Code",
-                             max_length=20, blank=True, null=True)
+                             max_length=5, blank=True, null=True,
+                             validators=[validate_NAICS])
     socioeconomic = models.CharField("Socioeconomic Category", max_length=50,
                                      choices=SOCIOECONOMIC_CHOICES,
                                      blank=True, null=True)
