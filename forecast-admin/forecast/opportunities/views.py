@@ -4,6 +4,10 @@ from rest_framework import viewsets
 from .serializers import OpportunitySerializer, OfficeSerializer
 
 
+def home(request):
+    return render(request, 'main.html')
+
+
 class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
