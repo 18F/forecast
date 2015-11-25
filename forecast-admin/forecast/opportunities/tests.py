@@ -57,9 +57,18 @@ class OpportunityAPITest(APITestCase):
 
 
 class ValidatorsTestCase(TestCase):
+    # This tests whether a 4-digit NAICS code raises a Validation Error
+    # Passing the test means that the 4-digit data results in error.
     def test_NAICS_validation(self):
         with self.assertRaises(ValidationError):
             validate_NAICS("5010")
 
+    # This tests ensures that only digits can be used, else Validation Error
+    # Passing the test means that the a non-digit results in error.
+    def test_NAICS_validation(self):
+        with self.assertRaises(ValidationError):
+            validate_NAICS("1010a")
+
+    # This tests whether a 5-digit NAICS code can be saved
     def test_NAICS_validation_no_error(self):
         self.assertTrue(validate_NAICS("50105"))
