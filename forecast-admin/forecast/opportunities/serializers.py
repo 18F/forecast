@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Award, Office
+from .models import Opportunity, Office
 
 
-class AwardSerializer(serializers.HyperlinkedModelSerializer):
+class OpportunitySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Award
+        model = Opportunity
         exclude = ('owner',)
 
 

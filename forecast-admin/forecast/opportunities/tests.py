@@ -1,11 +1,11 @@
 from django.test import TestCase, RequestFactory
-from opportunities.models import Office, Award
+from opportunities.models import Office, Opportunity
 from django.contrib.auth.models import User
 
-from opportunities.serializers import AwardSerializer
+from opportunities.serializers import OpportunitySerializer
 from rest_framework.test import APITestCase
 
-from opportunities.admin import AwardAdmin
+from opportunities.admin import OpportunityAdmin
 from django.contrib.admin.sites import AdminSite
 
 
@@ -22,28 +22,28 @@ class OfficeTestCase(TestCase):
                          "%s (%s)" % (self.o.organization, self.o.region))
 
 
-class AwardTestCase(TestCase):
+class OpportunityTestCase(TestCase):
     def setUp(self):
-        Award.objects.create(description="Test Opportunity",
+        Opportunity.objects.create(description="Test Opportunity",
                              estimated_fiscal_year="2016")
 
     def test_opportunity_created(self):
-        award = Award.objects.get(description="Test Opportunity")
+        award = Opportunity.objects.get(description="Test Opportunity")
         self.assertTrue(award)
 
     def test_opportunity_str(self):
-        award = Award.objects.get(description="Test Opportunity")
+        award = Opportunity.objects.get(description="Test Opportunity")
         self.assertEqual(str(award), "Test Opportunity (2016)")
 
 
 # Testing the Award API
-class AwardAPITest(APITestCase):
+class OpportunityAPITest(APITestCase):
     def setUp(self):
         self.o = Office(organization="PBS-Public Buildings Service",
                         region="R1-New England Region")
-        self.a = Award(office=self.o, description="Test Opportunity",
+        self.a = Opportunity(office=self.o, description="Test Opportunity",
                        estimated_fiscal_year="2016")
 
     def test_API(self):
-        response = self.client.get('/api/awards/')
+        response = self.client.get('/api/opportunities/')
         self.assertEqual(200, response.status_code)

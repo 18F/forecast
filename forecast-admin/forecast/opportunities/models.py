@@ -12,7 +12,7 @@ class Office(models.Model):
         return "%s (%s)" % (self.organization, self.region)
 
 
-class Award(models.Model):
+class Opportunity(models.Model):
     AWARD_STATUS_CHOICES = (
         ("Awarded", "Awarded"), ("Award Pending", "Award Pending"),
         ("Solicitation Issued", "Solicitation Issued"),

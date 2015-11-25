@@ -21,7 +21,7 @@ from opportunities import views
 from django.views.generic.base import RedirectView
 
 router = routers.DefaultRouter()
-router.register(r'awards', views.AwardViewSet)
+router.register(r'opportunities', views.OpportunityViewSet)
 router.register(r'offices', views.OfficeViewSet)
 
 urlpatterns = [
