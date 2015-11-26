@@ -1,0 +1,1262 @@
+[
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R1 - New England Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R2 - Northeast and Caribbean Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R3 - Mid-Atlantic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R4 - Southeast Sunbelt Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R5 - Great Lakes Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R6 - The Heartland Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R7 - Greater Southwest Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R8 - Rocky Mountain Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R9 - Pacific Rim Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "R10 - Northwest Arctic Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "NCR - National Capital Region"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "PBS-Public Buildings Service",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Federal Acquisition Service",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of General Supplies and Services",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Assisted Acquisition Services",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CPO-Office of the Chief People Officer",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CFO-Chief Financial Officer",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OCSIT-Office of Citizen Services and Innovative Technologies",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OGP-Office of Government-wide Policy",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "OAS-Office of Administrative Services",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "CIO-Office of the Chief Information Officer",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of the Chief Information Officer",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Integrated Technology Services",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Strategy Management",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Travel, Motor Vehicle and Card Services",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  },
+  {
+    "fields": {
+      "organization": "FAS-Office of Customer Accounts and Research",
+      "region": "Central Officer"
+    },
+    "model": "opportunities.office"
+  }
+]
