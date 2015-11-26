@@ -29,3 +29,5 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
 ]
+
+admin.site.site_header = 'GSA Forecast Administration Page'

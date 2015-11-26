@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Opportunity, Office
+from .models import Opportunity, Office, OSBU_Advisor
 
 
 @admin.register(Opportunity)
@@ -25,3 +25,8 @@ class OfficeAdmin(admin.ModelAdmin):
         """Limit Pages to those that belong to the request's user."""
         qs = super(OfficeAdmin, self).get_queryset(request)
         return qs
+
+
+@admin.register(OSBU_Advisor)
+class OSBU_AdvisorAdmin(admin.ModelAdmin):
+    pass

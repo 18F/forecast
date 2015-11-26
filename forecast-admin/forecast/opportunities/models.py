@@ -13,6 +13,18 @@ class Office(models.Model):
         return "%s (%s)" % (self.organization, self.region)
 
 
+class OSBU_Advisor(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=200, blank=True, null=True)
+    phone = PhoneNumberField(blank=True, null=True)
+
+    def __str__(self):
+        return "%s (%s)" % (self.name, self.email)
+
+    class Meta:
+        verbose_name = "OSBU Advisor"
+
+
 class Opportunity(models.Model):
     AWARD_STATUS_CHOICES = (
         (0, "Awarded"),
@@ -193,12 +205,12 @@ class Opportunity(models.Model):
     point_of_contact_email = models.EmailField(max_length=200,
                                                blank=True, null=True)
     point_of_contact_phone = PhoneNumberField(blank=True, null=True)
-    osbu_advisor_name = models.CharField(max_length=200, blank=True, null=True)
-    osbu_advisor_email = models.EmailField(max_length=200,
-                                           blank=True, null=True)
-    osbu_advisor_phone = PhoneNumberField(blank=True, null=True)
+    osbu_advisor = models.ForeignKey(OSBU_Advisor, blank=True, null=True)
     additional_information = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
 
     def __str__(self):
         return "%s (%s)" % (self.description, self.estimated_fiscal_year)
+
+    class Meta:
+        verbose_name_plural = "Opportunities"
