@@ -151,7 +151,7 @@ class Opportunity(models.Model):
     award_status = models.CharField(max_length=50, default=0,
                                     choices=AWARD_STATUS_CHOICES)
     description = models.CharField("Product or Service Description",
-                                   max_length=200, blank=True, null=True)
+                                   max_length=200)
     place_of_performance_city = models.CharField(max_length=100,
                                                  default="Washington")
     place_of_performance_state = USStateField(default="DC")
@@ -160,16 +160,16 @@ class Opportunity(models.Model):
                              validators=[validate_NAICS])
     socioeconomic = models.CharField("Socioeconomic Category", max_length=50,
                                      choices=SOCIOECONOMIC_CHOICES,
-                                     blank=True, null=True)
+                                     default=8)
     procurement_method = models.CharField("Procurement Method", max_length=200,
                                           choices=PROCUREMENT_METHOD_CHOICES,
-                                          blank=True, null=True)
+                                          default=20)
     contract_type = models.CharField("Contract Type", max_length=200,
                                      choices=CONTRACT_TYPE_CHOICES,
-                                     blank=True, null=True)
+                                     default=11)
     competition_strategy = models.CharField(max_length=200,
                                             choices=COMPETITION_CHOICES,
-                                            blank=True, null=True)
+                                            default=17)
     price_min = models.CharField(max_length=200, blank=True, null=True)
     price_max = models.CharField(max_length=200, blank=True, null=True)
     delivery_order_value = models.CharField(max_length=200,
@@ -178,10 +178,10 @@ class Opportunity(models.Model):
                                       max_length=200, blank=True, null=True)
     new_requirement = models.CharField(max_length=200,
                                        choices=NEW_REQUIREMENT_CHOICES,
-                                       blank=True, null=True)
+                                       default=2)
     funding_agency = models.CharField(max_length=200,
                                       choices=FUNDING_AGENCY_CHOICES,
-                                      blank=True, null=True)
+                                      default=7)
     estimated_solicitation_date = models.DateField(blank=True, null=True)
     fedbizopps_link = models.CharField(max_length=200, blank=True, null=True)
     estimated_fiscal_year = models.CharField(max_length=200,
@@ -198,7 +198,6 @@ class Opportunity(models.Model):
                                            blank=True, null=True)
     osbu_advisor_phone = PhoneNumberField(blank=True, null=True)
     additional_information = models.TextField(blank=True, null=True)
-    owner = models.ForeignKey(User, default=1)
     published = models.BooleanField(default=False)
 
     def __str__(self):
