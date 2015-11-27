@@ -1,6 +1,5 @@
 import os
 import csv
-import logging
 
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ValidationError

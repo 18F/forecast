@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator
+
 from localflavor.us.models import USStateField, PhoneNumberField
 from opportunities.validators import validate_NAICS
-
 
 # Create your models here.
 class Office(models.Model):
@@ -205,7 +206,7 @@ class Opportunity(models.Model):
     )
 
     office = models.ForeignKey(Office, blank=True, null=True)
-    award_status = models.CharField(max_length=50, default=0,
+    award_status = models.CharField(max_length=50, default="Planning",
                                     choices=AWARD_STATUS_CHOICES)
     description = models.CharField("Product or Service Description",
                                    max_length=200)
@@ -217,39 +218,37 @@ class Opportunity(models.Model):
                              validators=[validate_NAICS])
     socioeconomic = models.CharField("Socioeconomic Category", max_length=50,
                                      choices=SOCIOECONOMIC_CHOICES,
-                                     default=8)
+                                     default="To Be Determined")
     procurement_method = models.CharField("Procurement Method", max_length=200,
                                           choices=PROCUREMENT_METHOD_CHOICES,
-                                          default=20)
+                                          default="To Be Determined")
     contract_type = models.CharField("Contract Type", max_length=200,
                                      choices=CONTRACT_TYPE_CHOICES,
-                                     default=11)
+                                     default="To Be Determined")
     competition_strategy = models.CharField(max_length=200,
                                             choices=COMPETITION_CHOICES,
-                                            default=17)
+                                            default="To Be Determined")
     price_min = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=12, blank=True, null=True,
-                                    validators=[validate_dollars])
+                                    max_digits=12, blank=True, null=True)
     price_max = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=12, blank=True, null=True,
-                                    validators=[validate_dollars])
+                                    max_digits=12, blank=True, null=True)
     delivery_order_value = models.CharField(max_length=200,
                                             blank=True, null=True)
     incumbent_name = models.CharField("Incumbent Contractor Name",
                                       max_length=200, blank=True, null=True)
     new_requirement = models.CharField(max_length=200,
                                        choices=NEW_REQUIREMENT_CHOICES,
-                                       default=2)
+                                       default="To Be Determined")
     funding_agency = models.CharField(max_length=200,
                                       choices=FUNDING_AGENCY_CHOICES,
-                                      default=7)
+                                      default="To Be Determined")
     estimated_solicitation_date = models.DateField(blank=True, null=True)
     fedbizopps_link = models.CharField(max_length=200, blank=True, null=True)
     # TODO: going to make these choices...
-    estimated_fiscal_year = models.CharField(max_length=200,
-                                             blank=True, null=True)
-    estimated_fiscal_year_quarter = models.CharField(max_length=200,
-                                                     blank=True, null=True)
+    estimated_fiscal_year = models.IntegerField(default=2016)
+    estimated_fiscal_year_quarter = models.IntegerField(
+        default=1, validators=[MaxValueValidator(4)]
+    )
     # Note: This can probably get split out into another model
     point_of_contact_name = models.CharField(max_length=200,
                                              blank=True, null=True)
