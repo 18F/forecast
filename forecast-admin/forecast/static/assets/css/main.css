@@ -2202,6 +2202,19 @@ fieldset {
     margin-bottom: 0; }
 
 .opportunity-row {
+  padding-left: 20px;
+  padding-right: 20px;
   border-bottom: 2px solid; }
+
+.opportunity-row-alternate {
+  background-color: #f1f1f1; }
+
+.detail-label {
+  font-weight: bold; }
+
+.description {
+  font-size: 3rem;
+  font-weight: bold;
+  border-bottom: 1px solid; }
 
 /*# sourceMappingURL=main.css.map */
