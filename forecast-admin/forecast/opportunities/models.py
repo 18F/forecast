@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator
 from localflavor.us.models import USStateField, PhoneNumberField
 from opportunities.validators import validate_NAICS
 
+
 # Create your models here.
 class Office(models.Model):
     organization = models.CharField(max_length=30)

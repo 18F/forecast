@@ -3,7 +3,8 @@ import csv
 
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ValidationError
-from opportunities.models import Office, Opportunity
+from django.db import transaction
+from opportunities.models import Office, Opportunity, OSBU_Advisor
 from optparse import make_option
 
 
@@ -39,7 +40,6 @@ class Command(BaseCommand):
     )
 
     def handle(self, *args, **options):
-        self.stdout.write("Hello world!")
         filename = options['filename']
         if not filename or not os.path.exists(filename):
             raise ValueError('invalid filename')
@@ -56,11 +56,9 @@ class OpportunitiesLoader(object):
     header_rows = 1
 
     def load(self, filename, replace=True, strict=False):
-        print('begin loading task')
-
         opportunities = list(self.parse_file(filename, strict=strict))
 
-        # self.insert(contracts, replace=replace)
+        self.insert(opportunities, replace=replace)
 
     def parse_file(self, filename, strict=False):
         with open(filename, 'rU') as f:
@@ -72,18 +70,24 @@ class OpportunitiesLoader(object):
             count = skipped = 0
             for row in reader:
                 try:
-                    yield print(row)
-                    # yield self.make_contract(row)
+                    yield self.make_opportunity(row)
                     count += 1
                 except (ValueError, ValidationError) as e:
                     if strict:
-                        logger.error('error parsing {}'.format(row))
+                        print('error parsing {}'.format(row))
                         raise
                     else:
                         skipped += 1
 
-    # @classmethod
-    # def make_contract(cls, row):
+    @classmethod
+    def make_opportunity(cls, row):
+        office = cls.insert_office(row[0], row[1])
+
+        opportunity = cls.model(
+            office=office,
+            description=row[3]
+        )
+        return opportunity
     #     schedule = row[9]
     #     if schedule != cls.schedule_name:
     #         raise ValueError('skipping schedule: {}'.format(schedule))
@@ -139,20 +143,21 @@ class OpportunitiesLoader(object):
     #     month, day, year = list(map(int, s.split('/')))
     #     return date(year, month, day)
     #
-    # @classmethod
-    # def insert(cls, contracts, replace=True, update_search_field=True):
-    #     with transaction.atomic():
-    #         if replace:
-    #             logger.info('erasing existing contracts')
-    #             cls.model.objects.filter(schedule=cls.schedule_name).delete()
-    #
-    #         logger.info('inserting new contracts')
-    #         cls.model.objects.bulk_create(contracts)
-    #
-    #     if update_search_field:
-    #         logger.info('updating search field')
-    #         call_command(
-    #             'update_search_field',
-    #             cls.model._meta.app_label,
-    #             cls.model._meta.model_name
-    #         )
+
+    @classmethod
+    def insert_office(cls, organization, region, replace=True):
+        try:
+            obj, created = Office.objects.update_or_create(
+                organization=organization,
+                region=region
+            )
+            return obj
+        except ValueError:
+            return False
+
+    @classmethod
+    def insert(cls, opportunities, replace=True):
+        with transaction.atomic():
+            if replace:
+                cls.model.objects.all().delete()
+            cls.model.objects.bulk_create(opportunities)

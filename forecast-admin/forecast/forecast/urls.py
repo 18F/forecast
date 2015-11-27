@@ -22,7 +22,7 @@ from django.views.generic.base import RedirectView
 
 router = routers.DefaultRouter()
 router.register(r'opportunities', views.OpportunityViewSet)
-router.register(r'opportunities', views.OSBU_AdvisorViewSet)
+router.register(r'osbu', views.OSBU_AdvisorViewSet)
 router.register(r'offices', views.OfficeViewSet)
 
 urlpatterns = [
