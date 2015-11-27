@@ -21,12 +21,11 @@ from opportunities import views
 from django.views.generic.base import RedirectView
 
 router = routers.DefaultRouter()
-router.register(r'awards', views.AwardViewSet)
+router.register(r'opportunities', views.OpportunityViewSet)
 router.register(r'offices', views.OfficeViewSet)
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url='https://forecast.18f.gov',
-                                    permanent=True)),
+    url(r'^$', views.home, name='home'),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
 ]
