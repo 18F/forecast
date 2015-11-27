@@ -1,5 +1,8 @@
 import os
 import csv
+from datetime import date
+from decimal import Decimal, InvalidOperation
+import re
 
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ValidationError
@@ -85,7 +88,27 @@ class OpportunitiesLoader(object):
 
         opportunity = cls.model(
             office=office,
-            description=row[3]
+            description=row[3],
+            place_of_performance_city=row[4],
+            place_of_performance_state=row[5],
+            naics=row[6],
+            socioeconomic=row[7],
+            contract_type=row[8],
+            procurement_method=row[9],
+            competition_strategy=row[10],
+            price_min=cls.parse_dollars(row[11]),
+            price_max=cls.parse_dollars(row[12]),
+            delivery_order_value=row[13],
+            incumbent_name=row[14],
+            new_requirement=row[16],
+            funding_agency=row[17],
+            estimated_solicitation_date=cls.parse_date(row[18]),
+            fedbizopps_link=row[19],
+            estimated_fiscal_year=row[20].split("-")[0][3:],
+            estimated_fiscal_year_quarter=int(row[20].split("-")[1][0]
+                                                     .replace(r"Q", "0")),
+            additional_information=row[24],
+            published=True
         )
         return opportunity
     #     schedule = row[9]
@@ -135,14 +158,21 @@ class OpportunitiesLoader(object):
     #     except ValueError:
     #         return fallback
     #
-    # @staticmethod
-    # def parse_date(s):
-    #     if not s:
-    #         return None
-    #
-    #     month, day, year = list(map(int, s.split('/')))
-    #     return date(year, month, day)
-    #
+
+    @staticmethod
+    def parse_date(s):
+        if not s or not re.match(r"\d{2}\/\d{2}\/\d{2,4}", s):
+            return None
+        month, day, year = list(map(int, s.split('/')))
+        return date(year, month, day)
+
+    @staticmethod
+    def parse_dollars(s):
+        try:
+            amt = s.strip().replace("$", "").replace(",", "")
+            return Decimal(amt)
+        except:
+            return None
 
     @classmethod
     def insert_office(cls, organization, region, replace=True):
