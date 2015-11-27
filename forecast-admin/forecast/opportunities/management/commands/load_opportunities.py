@@ -17,7 +17,7 @@ from optparse import make_option
 class Command(BaseCommand):
     help = 'Load data from CSV'
 
-    default_filename = 'forecast/fixtures/fy16q1.csv'
+    default_filename = 'forecast/data/fy16q1.csv'
 
     option_list = BaseCommand.option_list + (
         make_option(
