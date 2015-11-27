@@ -1,4 +1,5 @@
 coverage==4.0.3
+coveralls
 dj-database-url==0.3.0
 Django==1.8.4
 django-localflavor==1.1

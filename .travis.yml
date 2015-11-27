@@ -1,5 +1,5 @@
 language: python
-install: cd forecast-admin/forecast && pip install coveralls && pip install -r requirements.txt
+install: cd forecast-admin/forecast && pip install -r requirements.txt
 cache:
   directories:
     - $HOME/.cache/pip
@@ -14,4 +14,4 @@ cache:
 #   space: vladlen.zvenyach
 script: coverage run ./manage.py test
 after_success:
-  - cd forecast-admin/forecast && coveralls
+  - coveralls
