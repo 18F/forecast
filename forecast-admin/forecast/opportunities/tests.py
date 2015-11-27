@@ -1,5 +1,5 @@
 from django.test import TestCase, RequestFactory
-from opportunities.models import Office, Opportunity, OSBU_Advisor
+from opportunities.models import Office, Opportunity, OSBUAdvisor
 from django.contrib.auth.models import User
 
 from opportunities.serializers import OpportunitySerializer
@@ -25,15 +25,15 @@ class OfficeTestCase(TestCase):
                          "%s (%s)" % (self.o.organization, self.o.region))
 
 
-class OSBU_AdvisorTestCase(TestCase):
+class OSBUAdvisorTestCase(TestCase):
     # Create your tests here.
 
     def setUp(self):
-        self.o = OSBU_Advisor(name="John Doe", phone="202-555-5555",
-                              email="john.doe@gsa.gov")
+        self.o = OSBUAdvisor(name="John Doe", phone="202-555-5555",
+                             email="john.doe@gsa.gov")
 
     def test_osbu_str(self):
-        self.assertTrue(isinstance(self.o, OSBU_Advisor))
+        self.assertTrue(isinstance(self.o, OSBUAdvisor))
         self.assertEqual(str(self.o),
                          "%s (%s)" % (self.o.name, self.o.email))
 

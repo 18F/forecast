@@ -4,7 +4,7 @@ import csv
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from opportunities.models import Office, Opportunity, OSBU_Advisor
+from opportunities.models import Office, Opportunity, OSBUAdvisor
 from optparse import make_option
 
 
