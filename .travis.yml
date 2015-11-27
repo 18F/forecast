@@ -14,4 +14,4 @@ cache:
 #   space: vladlen.zvenyach
 script: coverage run ./manage.py test
 after_success:
-  - coveralls
+  - cd forecast-admin/forecast && coveralls
