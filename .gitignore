@@ -2,3 +2,5 @@ forecast-admin/forecast/db.sqlite3
 __pycache__
 *.pyc
 .coverage
+**/.cache/
+**/.sass-cache/

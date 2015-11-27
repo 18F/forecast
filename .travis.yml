@@ -12,6 +12,6 @@ cache:
 #   api: https://api.cloud.gov
 #   organization: sandbox
 #   space: vladlen.zvenyach
-script: ./manage.py test
+script: coverage run ./manage.py test
 after_success:
   - coveralls
