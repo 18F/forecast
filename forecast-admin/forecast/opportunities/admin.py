@@ -4,18 +4,18 @@ from django.contrib import admin
 from .models import Opportunity, Office, OSBUAdvisor
 
 
-def make_published(modeladmin, request, queryset):
-    queryset.update(published=True)
-make_published.short_description = "Publish selected oppotunities"
-
-
-def make_unpublished(modeladmin, request, queryset):
-    queryset.update(published=False)
-make_unpublished.short_description = "Unpublish selected oppotunities"
-
-
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
+
+    def make_published(self, request, queryset):
+        for obj in queryset:
+            obj.published = True
+            obj.save()
+    make_published.short_description = "Publish selected oppotunities"
+
+    def make_unpublished(self, request, queryset):
+        queryset.update(published=False)
+    make_unpublished.short_description = "Unpublish selected oppotunities"
 
     list_display = ['__str__', 'office', 'published']
     ordering = ['office']
@@ -40,7 +40,4 @@ class OfficeAdmin(admin.ModelAdmin):
         qs = super(OfficeAdmin, self).get_queryset(request)
         return qs
 
-
-@admin.register(OSBUAdvisor)
-class OSBUAdvisor(admin.ModelAdmin):
-    pass
+admin.site.register(OSBUAdvisor)
