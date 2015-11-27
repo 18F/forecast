@@ -8,7 +8,7 @@ from rest_framework.test import APITestCase
 from opportunities.admin import OpportunityAdmin
 from django.contrib.admin.sites import AdminSite
 
-from opportunities.validators import validate_NAICS
+from opportunities.validators import validate_NAICS, validate_dollars
 from django.core.exceptions import ValidationError
 
 

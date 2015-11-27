@@ -227,8 +227,12 @@ class Opportunity(models.Model):
     competition_strategy = models.CharField(max_length=200,
                                             choices=COMPETITION_CHOICES,
                                             default=17)
-    price_min = models.CharField(max_length=200, blank=True, null=True)
-    price_max = models.CharField(max_length=200, blank=True, null=True)
+    price_min = models.DecimalField(max_length=200, decimal_places=2,
+                                    max_digits=12, blank=True, null=True,
+                                    validators=[validate_dollars])
+    price_max = models.DecimalField(max_length=200, decimal_places=2,
+                                    max_digits=12, blank=True, null=True,
+                                    validators=[validate_dollars])
     delivery_order_value = models.CharField(max_length=200,
                                             blank=True, null=True)
     incumbent_name = models.CharField("Incumbent Contractor Name",

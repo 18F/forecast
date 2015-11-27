@@ -102,6 +102,8 @@ class OpportunitiesLoader(object):
     #         contract_end=cls.parse_date(row[13]),
     #         contract_year=cls.int_or_fallback(row[11], 1),
     #         vendor_name=row[7],
+    #         price_min=row[X].replace("\$","").replace(",","")
+    #         price_max=row[X].replace("\$","").replace(",","")
     #         labor_category=row[1].strip().replace('\n', ' '),
     #         education_level=cls.model.get_education_code(row[2]),
     #         min_years_experience=cls.int_or_fallback(row[3]),
