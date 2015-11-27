@@ -15,7 +15,7 @@ class Office(models.Model):
         return "%s (%s)" % (self.organization, self.region)
 
 
-class OSBU_Advisor(models.Model):
+class OSBUAdvisor(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
     phone = PhoneNumberField(blank=True, null=True)
@@ -256,7 +256,7 @@ class Opportunity(models.Model):
     point_of_contact_email = models.EmailField(max_length=200,
                                                blank=True, null=True)
     point_of_contact_phone = PhoneNumberField(blank=True, null=True)
-    osbu_advisor = models.ForeignKey(OSBU_Advisor, blank=True, null=True)
+    osbu_advisor = models.ForeignKey(OSBUAdvisor, blank=True, null=True)
     additional_information = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
 

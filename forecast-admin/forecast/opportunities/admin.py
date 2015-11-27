@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Opportunity, Office, OSBU_Advisor
+from .models import Opportunity, Office, OSBUAdvisor
 
 
 def make_published(modeladmin, request, queryset):
@@ -41,6 +41,6 @@ class OfficeAdmin(admin.ModelAdmin):
         return qs
 
 
-@admin.register(OSBU_Advisor)
-class OSBU_AdvisorAdmin(admin.ModelAdmin):
+@admin.register(OSBUAdvisor)
+class OSBUAdvisor(admin.ModelAdmin):
     pass

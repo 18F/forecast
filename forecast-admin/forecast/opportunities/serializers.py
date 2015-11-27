@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Opportunity, Office, OSBU_Advisor
+from .models import Opportunity, Office, OSBUAdvisor
 
 
 class OpportunitySerializer(serializers.HyperlinkedModelSerializer):
@@ -13,6 +13,6 @@ class OfficeSerializer(serializers.HyperlinkedModelSerializer):
         model = Office
 
 
-class OSBU_AdvisorSerializer(serializers.HyperlinkedModelSerializer):
+class OSBUAdvisorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = OSBU_Advisor
+        model = OSBUAdvisor
