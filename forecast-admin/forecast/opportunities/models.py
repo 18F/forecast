@@ -16,7 +16,7 @@ class Office(models.Model):
 
 
 # The OSBU Advisor is the Office of Small Business Utilization specialist
-# who is responsible for the forecast data... 
+# who is responsible for the forecast data...
 class OSBUAdvisor(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
