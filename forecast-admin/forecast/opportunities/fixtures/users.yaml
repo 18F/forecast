@@ -1,0 +1,13 @@
+- fields:
+    is_active: true
+    last_name: ''
+    user_permissions: []
+    first_name: ''
+    is_superuser: true
+    email: ''
+    username: admin
+    password: pbkdf2_sha256$20000$SeBQtWDFH2HW$FPmflJ4hN0yk4uPS47gqMyqEt2WhSWFVxOqUFLRxuLE=
+    is_staff: true
+    groups: []
+  pk: 1
+  model: auth.user

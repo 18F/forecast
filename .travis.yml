@@ -1,4 +1,7 @@
 language: python
+python:
+  - "3.4"
+  - "3.5"
 install: cd forecast-admin/forecast && pip install -r requirements.txt
 cache:
   directories:

@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Opportunity, Office
+from .models import Opportunity, Office, OSBUAdvisor
 from rest_framework import viewsets
-from .serializers import OpportunitySerializer, OfficeSerializer
+from .serializers import (
+    OpportunitySerializer, OfficeSerializer, OSBUAdvisorSerializer
+)
 
 
 def home(request):
@@ -22,3 +24,11 @@ class OfficeViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Office.objects.all()
     serializer_class = OfficeSerializer
+
+
+class OSBUAdvisorViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = OSBUAdvisor.objects.all()
+    serializer_class = OSBUAdvisorSerializer

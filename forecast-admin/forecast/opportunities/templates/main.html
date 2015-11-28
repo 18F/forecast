@@ -1,8 +1,34 @@
+{% load static from staticfiles %}
+
 <html>
 <head>
-<title>TEST</title>
+<title>OSBU Forecast</title>
+
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+
 </head>
 <body>
-<h1>OSBU FORECAST</h1>
+
+<div class="usa-grid">
+  <div class="usa-width-one-whole">
+    <h1 class="usa-heading">Forecast of Contracting Opportunities</h1>
+    <form class="usa-search usa-search-big">
+      <div role="search">
+        <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
+        <input id="search-field-big" type="search" name="search" placeholder="Enter keyword">
+        <button type="submit">
+          <span class="usa-search-submit-text">Search</span>
+        </button>
+      </div>
+    </form>
+    <div id="results">
+      Loading...
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'assets/js/vendor/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
 </body>
 </html>

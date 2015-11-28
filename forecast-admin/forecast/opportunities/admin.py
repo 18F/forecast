@@ -1,11 +1,25 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Opportunity, Office
+from .models import Opportunity, Office, OSBUAdvisor
 
 
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
+
+    def make_published(self, request, queryset):
+        for obj in queryset:
+            obj.published = True
+            obj.save()
+    make_published.short_description = "Publish selected oppotunities"
+
+    def make_unpublished(self, request, queryset):
+        queryset.update(published=False)
+    make_unpublished.short_description = "Unpublish selected oppotunities"
+
+    list_display = ['__str__', 'office', 'published']
+    ordering = ['office']
+    actions = [make_published, make_unpublished]
 
     def get_queryset(self, request):
         """Limit Pages to those that belong to the request's user."""
@@ -25,3 +39,5 @@ class OfficeAdmin(admin.ModelAdmin):
         """Limit Pages to those that belong to the request's user."""
         qs = super(OfficeAdmin, self).get_queryset(request)
         return qs
+
+admin.site.register(OSBUAdvisor)

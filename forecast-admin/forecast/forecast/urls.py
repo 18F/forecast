@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from rest_framework import routers
 
@@ -23,6 +24,7 @@ from django.contrib.auth import views as auth_views
 
 router = routers.DefaultRouter()
 router.register(r'opportunities', views.OpportunityViewSet)
+router.register(r'osbu', views.OSBUAdvisorViewSet)
 router.register(r'offices', views.OfficeViewSet)
 
 urlpatterns = [
@@ -41,3 +43,5 @@ urlpatterns = [
     url(r'^reset/done/$', auth_views.password_reset_complete,
         name='password_reset_complete'),
 ]
+
+admin.site.site_header = 'GSA Forecast Administration Page'
