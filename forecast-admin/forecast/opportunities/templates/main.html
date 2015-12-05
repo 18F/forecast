@@ -9,25 +9,44 @@
 </head>
 <body>
 
+<div id="results">
 <div class="usa-grid">
   <div class="usa-width-one-whole">
     <h1 class="usa-heading">Forecast of Contracting Opportunities</h1>
     <form class="usa-search usa-search-big">
       <div role="search">
         <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
-        <input id="search-field-big" type="search" name="search" placeholder="Enter keyword">
-        <button type="submit">
+        <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
+        <button type="button" id="filter-button" class="usa-search usa-search-submit" data-sort="description naics">
           <span class="usa-search-submit-text">Search</span>
         </button>
       </div>
     </form>
-    <div id="results">
-      Loading...
+    <div class="usa-grid">
+      <div class="usa-width-one-fourth">
+        <div class="usa-heading">Filter by:</div>
+
+        {% include 'includes/filters.html' %}
+
+      </div>
+      <div class="usa-width-three-fourths">
+
+          <ul class="list">
+            <div style="display:none;">
+            {% include 'includes/opportunity.html' %}
+            </div>
+          </ul>
+
+      </div>
     </div>
   </div>
 </div>
 
+</div>
 <script src="{% static 'assets/js/vendor/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
+
 <script src="{% static 'assets/js/main.js' %}"></script>
 
 </body>

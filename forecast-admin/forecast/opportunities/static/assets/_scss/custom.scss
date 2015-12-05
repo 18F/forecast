@@ -14,3 +14,11 @@
   font-weight: bold;
   border-bottom: 1px solid;
 }
+
+#results li:before {
+  content: "";
+}
+
+.usa-search-submit-text {
+  font-size: $h3-font-size;
+}
