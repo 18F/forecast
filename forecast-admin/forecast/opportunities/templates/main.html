@@ -12,7 +12,7 @@
 <div id="results">
 <div class="usa-grid">
   <div class="usa-width-one-whole">
-    <h1 class="usa-heading">Forecast of Contracting Opportunities</h1>
+    <h1 class="usa-heading"><img src="{% static 'assets/img/nav-logo.jpg' %}" alt="GSA Logo" width=100 height=100 /> Forecast of Contracting Opportunities</h1>
     <form class="usa-search usa-search-big">
       <div role="search">
         <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
@@ -20,11 +20,31 @@
         <button type="button" id="filter-button" class="usa-search usa-search-submit" data-sort="description naics">
           <span class="usa-search-submit-text">Search</span>
         </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Download Spreadsheet</a>
       </div>
     </form>
-    <div class="usa-grid">
+
+
+      <div class="usa-grid">
       <div class="usa-width-one-fourth">
-        <div class="usa-heading">Filter by:</div>
+
+        <form id="agency">
+          <div class="form-group-dropdown">
+          <label for="agency-dropdown">Filter by Agency</label>
+          <select name="agency-dropdown" id="agency-dropdown" >
+            <option default value="gsa">GSA</option>
+            <option value="state">Department of State</option>
+            <option value="ed">Department of Education</option>
+          </select>
+
+          </div>
+        </form>
+
+        <p>
+        <br>
+        </p>
+
+        <div class="usa-heading-small">(Only for GSA) Filter by:</div>
 
         {% include 'includes/filters.html' %}
 
