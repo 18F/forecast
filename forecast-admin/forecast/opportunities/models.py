@@ -16,7 +16,7 @@ class Office(models.Model):
 
 
 # The OSBU Advisor is the Office of Small Business Utilization specialist
-# who is responsible for the forecast data... 
+# who is responsible for the forecast data...
 class OSBUAdvisor(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
@@ -217,7 +217,7 @@ class Opportunity(models.Model):
                                                  default="Washington")
     place_of_performance_state = USStateField(default="DC")
     naics = models.CharField("Primary NAICS Code",
-                             max_length=5, blank=True, null=True,
+                             max_length=6, blank=True, null=True,
                              validators=[validate_NAICS])
     socioeconomic = models.CharField("Socioeconomic Category", max_length=50,
                                      choices=SOCIOECONOMIC_CHOICES,

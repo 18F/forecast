@@ -17,6 +17,7 @@ function _loadGSAdata() {
 
       $("#loading").remove();
       var options = {
+          page: 100,
           item: 'opportunity-row',
           valueNames: ['description','office','naics']
       };
@@ -25,6 +26,8 @@ function _loadGSAdata() {
       // Create Filter events
       _createFilterEvents(['award_status','naics','place_of_performance_state'],
         listObj);
+
+      // _initDetails(listObj);
 
       _loadOtherAgencies(['state','ed'], listObj);
 
@@ -109,9 +112,14 @@ function _loadOtherAgencies (agencies, listObj) {
     listObj.filter(function (item) {
       var val = $(dropdown).val();
       if (val === "gsa") {
-        return (item.values()["agency"] ? false : true);  
+        return (item.values()["agency"] ? false : true);
       }
       return (item.values()["agency"] === val ? true : false);
     })
   })
 }
+
+
+// function _initDetails(listObj) {
+//   _.each(listObj.items,
+// }

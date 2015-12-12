@@ -27,7 +27,7 @@ function _loadGSAdata() {
       _createFilterEvents(['award_status','naics','place_of_performance_state'],
         listObj);
 
-      _initDetails(listObj);
+      // _initDetails(listObj);
 
       _loadOtherAgencies(['state','ed'], listObj);
 
