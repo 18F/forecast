@@ -2,6 +2,7 @@ language: python
 python:
   - "3.4"
   - "3.5"
+before_install: pip install codecov
 install: cd forecast-admin/forecast && pip install -r requirements.txt
 cache:
   directories:
@@ -15,6 +16,7 @@ cache:
 #   api: https://api.cloud.gov
 #   organization: sandbox
 #   space: vladlen.zvenyach
-script: coverage run ./manage.py test
+script: py.test --cov opportunities --cov-report term-missing
 after_success:
+  - codecov
   - coveralls
