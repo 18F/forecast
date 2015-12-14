@@ -18,5 +18,5 @@ cache:
 #   space: vladlen.zvenyach
 script: py.test --cov opportunities --cov-report term-missing
 after_success:
-  - cd forecast-admin/forecast && codecov
-  - cd forecast-admin/forecast && coveralls
+  - codecov
+  - coveralls
