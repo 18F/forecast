@@ -1,6 +1,6 @@
 # OSBU Forecast
 
-[![Build Status](https://travis-ci.org/18F/forecast.svg?branch=master)](https://travis-ci.org/18F/forecast)[![Code Climate](https://codeclimate.com/github/18F/osbu-forecast-api/badges/gpa.svg)](https://codeclimate.com/github/18F/osbu-forecast-api)[![codecov.io](https://codecov.io/github/codecov/codecov-ruby/coverage.svg?branch=master)](https://codecov.io/github/codecov/codecov-ruby?branch=master)
+[![Build Status](https://travis-ci.org/18F/forecast.svg?branch=master)](https://travis-ci.org/18F/forecast)[![Code Climate](https://codeclimate.com/github/18F/forecast/badges/gpa.svg)](https://codeclimate.com/github/18F/forecast)[![codecov.io](https://codecov.io/github/18F/forecast/coverage.svg?branch=master)](https://codecov.io/github/18F/forecast?branch=master)
 
 An API that provides an interface for the OSBU Forecast Tool, which is an MVP of a better version of http://www.gsa.gov/portal/content/101163. To learn more about the Office of Small Business Utilization at GSA, visit http://www.gsa.gov/portal/category/21015.
 
