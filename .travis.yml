@@ -16,7 +16,7 @@ cache:
 #   api: https://api.cloud.gov
 #   organization: sandbox
 #   space: vladlen.zvenyach
-script: coverage run ./manage.py test
+script: py.test --cov opportunities --cov-report term-missing
 after_success:
   - cd forecast-admin/forecast && codecov
   - cd forecast-admin/forecast && coveralls
