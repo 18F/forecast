@@ -3,7 +3,7 @@
 memory: 512M
 instances: 1
 applications:
-- name: osbu-forecast
+- name: forecast-alpha
   path: forecast-admin/forecast
   timeout: 180
 command: ./manage.py migrate && waitress-serve --port=$VCAP_APP_PORT forecast.wsgi:application
