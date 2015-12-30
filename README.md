@@ -10,12 +10,22 @@ Separation of API into a read and a write portion.
 
 # Installation
 
-The OSBU Forecast tool is a simple django application. To install, make sure python3 and [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/index.html) (or other preferred virtualenv framework). Then, installation is as easy as:
+The OSBU Forecast tool is a simple Django application. First, make sure that Python 3 is installed and that you have a version of `virtualenv`:
 
 ```
-git clone https://github.com/18F/osbu-forecast-api.git && osbu-forecast-api   # Clone the repository
-workon && mkvirtualenv forecast
-cd forecast-admin/forecast && pip install -r requirements
+python3 --version
+virtualenv --version
+```
+
+If you receive errors, install [Python 3](https://docs.python.org/3.5/using/index.html) and/or [virtualenv](https://virtualenv.readthedocs.org/en/latest/installation.html).
+
+Then, installation is as easy as:
+
+```
+git clone https://github.com/18F/forecast.git && cd forecast   # Clone the repository
+virtualenv .env   # Create a virtualenv
+source .env/bin/activate   # Activate virtualenv
+cd forecast-admin/forecast && pip install -r requirements.txt   # Install dependencies
 ./manage migrate
 ./manage runserver
 ```
