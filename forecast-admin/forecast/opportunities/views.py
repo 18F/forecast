@@ -10,6 +10,10 @@ def home(request):
     return render(request, 'main.html')
 
 
+def details(request):
+    return render(request, 'detail.html')
+
+
 class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.

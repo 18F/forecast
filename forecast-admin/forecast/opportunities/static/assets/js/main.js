@@ -1,20 +1,125 @@
+var fullResults;
+var data;
 
-// Get the opportunities from the API
-$.getJSON('/api/opportunities/?format=json', function (d){
-  $("#results").html('');
-  d.map(function (o){
-
-
+_initializeFilters();
+_loadGSAdata()
 
 
-    return $("#results").append(createRow(o))
+/**
+ * Load the GSA data
+ **/
+function _loadGSAdata() {
+  // This is going to load the GSA data
+  $.getJSON('/api/opportunities/?format=json')
+    .done(function (d) {
+      d["agency"] = "gsa";
+      _loadFilterOptions(d);
+
+      $("#loading").remove();
+      var options = {
+          page: 100,
+          item: 'opportunity-row',
+          valueNames: ['description','office','naics']
+      };
+      var listObj = new List('results', options, d);
+      data = d;
+      // Create Filter events
+      _createFilterEvents(['award_status','naics','place_of_performance_state'],
+        listObj);
+
+      // _initDetails(listObj);
+
+      _loadOtherAgencies(['state','ed'], listObj);
+
+  }).then(function () {
+    fullResults = $("#opportunities").clone()
   })
-  console.log(d);
-})
-
-
-function createRow(o) {
-
-  var res = '<div class="opportunity-row"><div class="office">' + o.office + '</div><div class="description">' + o.description + '</div><div class="usa-grid"> <div class="usa-width-one-half"><p><span class="detail-label">Award Status: </span>' + o.award_status + '</p><p><span class="detail-label">Place of Performance: </span>' + o.place_of_performance_city + ", " + o.place_of_performance_state + '</p><p><span class="detail-label">NAICS Code: </span>' + o.naics + '</p></div><div class="usa-width-one-half"><p><span class="detail-label">Estimated Award Date: </span>FY ' + o.estimated_fiscal_year + '- Quarter' +  o.estimated_fiscal_year_quarter + '</p><p><span class="detail-label">Category: </span>' + o.socioeconomic + '</p> <p><a href="">View Details </a></p></div></div></div>'
-  return res;
 }
+
+/**
+ *Initializes the More/Fewer Filters
+ **/
+function _initializeFilters() {
+  // init
+  $("#award-amount-dropdown").parent().toggle();
+  $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
+  $("#more-filters").on('click', function(e){
+    $("#more-filters").text("Fewer Filters");
+    $("#award-amount-dropdown").parent().toggle();
+    $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
+  })
+}
+
+/**
+ *Initializes the More/Fewer Filters
+ **/
+
+function _loadFilterOptions(d) {
+  data = d;
+  _getOptions(d, 'award_status');
+  _getOptions(d, 'naics');
+  _getOptions(d, 'place_of_performance_state');
+}
+
+/**
+ * Load the Data into the Filters
+ **/
+function _getOptions(d, field) {
+  var opt = _.uniq(_.pluck(_.sortBy(d, field), field));
+  $.each(opt, function(key, value) {
+     $('#' + field + '-dropdown')
+         .append($("<option></option>")
+         .attr("value",value)
+         .text(value));
+  });
+}
+
+/**
+ * Initializes event for Filters
+ **/
+function _createFilterEvents(filters, listObj) {
+
+  _.each(filters, function(d) {
+
+    var dropdown = "#" + d + "-dropdown";
+    $(dropdown).change(function (){
+      listObj.filter(function(item) {
+        var val = $(dropdown).val();
+        if (val === "all") {
+          return true;
+        }
+        else {
+          return (item.values()[d] === val ? true : false);
+        }
+      })
+    })
+  })
+}
+
+
+/**
+ * Initializes event for Filters
+ **/
+function _loadOtherAgencies (agencies, listObj) {
+  _.each(agencies, function (agency){
+    $.getJSON('/static/data/fy16' + agency + '.json').done(function (d){
+      d['agency'] = agency;
+      listObj.add(d);
+    })
+  })
+  var dropdown = "#agency-dropdown";
+  $(dropdown).change(function (){
+    listObj.filter(function (item) {
+      var val = $(dropdown).val();
+      if (val === "gsa") {
+        return (item.values()["agency"] ? false : true);
+      }
+      return (item.values()["agency"] === val ? true : false);
+    })
+  })
+}
+
+
+// function _initDetails(listObj) {
+//   _.each(listObj.items,
+// }

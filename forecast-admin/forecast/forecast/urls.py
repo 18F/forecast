@@ -29,6 +29,7 @@ router.register(r'offices', views.OfficeViewSet)
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^details/1$', views.details, name='details'),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
 

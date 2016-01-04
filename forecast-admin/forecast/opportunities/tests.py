@@ -82,6 +82,6 @@ class ValidatorsTestCase(TestCase):
         with self.assertRaises(ValidationError):
             validate_NAICS("1010a")
 
-    # This tests whether a 5-digit NAICS code can be saved
+    # This tests whether a 6-digit NAICS code can be saved
     def test_NAICS_validation_no_error(self):
-        self.assertTrue(validate_NAICS("50105"))
+        self.assertTrue(validate_NAICS("501056"))
