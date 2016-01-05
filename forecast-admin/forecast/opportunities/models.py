@@ -5,6 +5,8 @@ from django.core.validators import MaxValueValidator, RegexValidator
 from localflavor.us.models import USStateField, PhoneNumberField
 from opportunities.validators import validate_NAICS
 
+from datetime import date
+
 
 # Create your models here.
 class Office(models.Model):
@@ -208,6 +210,23 @@ class Opportunity(models.Model):
         ("To Be Determined", "To Be Determined")
     )
 
+    CURRENT_YEAR = date.today().year
+    FISCAL_YEARS = (
+        (CURRENT_YEAR, CURRENT_YEAR),
+        (CURRENT_YEAR+1, CURRENT_YEAR+1),
+        (CURRENT_YEAR+2, CURRENT_YEAR+2),
+        (CURRENT_YEAR+3, CURRENT_YEAR+3),
+        (CURRENT_YEAR+4, CURRENT_YEAR+4)
+    )
+
+    FISCAL_QUARTERS = (
+        ("1st", "1st"),
+        ("2nd", "2nd"),
+        ("3rd", "3rd"),
+        ("4th", "4th"),
+        ("TBD", "TBD")
+    )
+
     office = models.ForeignKey(Office, blank=True, null=True)
     award_status = models.CharField(max_length=50, default="Planning",
                                     choices=AWARD_STATUS_CHOICES)
@@ -251,9 +270,10 @@ class Opportunity(models.Model):
     estimated_solicitation_date = models.DateField(blank=True, null=True)
     fedbizopps_link = models.CharField(max_length=200, blank=True, null=True)
     # TODO: going to make these choices...
-    estimated_fiscal_year = models.IntegerField(default=2016)
+    estimated_fiscal_year = models.IntegerField(default=2016,
+                                                choices=FISCAL_YEARS)
     estimated_fiscal_year_quarter = models.IntegerField(
-        default=1, validators=[MaxValueValidator(4)]
+        default=1, validators=[MaxValueValidator(4)], choices=FISCAL_QUARTERS
     )
     # Note: This can probably get split out into another model
     point_of_contact_name = models.CharField(max_length=200,
