@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, RegexValidator
 
 from localflavor.us.models import USStateField, PhoneNumberField
 from opportunities.validators import validate_NAICS
@@ -231,10 +231,13 @@ class Opportunity(models.Model):
     competition_strategy = models.CharField(max_length=200,
                                             choices=COMPETITION_CHOICES,
                                             default="To Be Determined")
-    price_min = models.DecimalField(max_length=200, decimal_places=2,
+    dollar_value_min = models.DecimalField(max_length=200, decimal_places=2,
+                                    max_digits=16, blank=True, null=True, 
+                                    validators=[RegexValidator(regex="\d*(\.\d\d)?",
+                                        message="Please enter a dollar value.")])
+    dollar_value_max = models.DecimalField(max_length=200, decimal_places=2,
                                     max_digits=16, blank=True, null=True)
-    price_max = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=16, blank=True, null=True)
+    including_options = models.BooleanField(default=False)
     delivery_order_value = models.CharField(max_length=200,
                                             blank=True, null=True)
     incumbent_name = models.CharField("Incumbent Contractor Name",
