@@ -19,13 +19,15 @@ virtualenv --version
 
 If you receive errors, install [Python 3](https://docs.python.org/3.5/using/index.html) and/or [virtualenv](https://virtualenv.readthedocs.org/en/latest/installation.html).
 
-Then, installation is as easy as:
+Then, install and run the project with:
 
 ```
 git clone https://github.com/18F/forecast.git && cd forecast   # Clone the repository
 virtualenv .env   # Create a virtualenv
 source .env/bin/activate   # Activate virtualenv
 cd forecast-admin/forecast && pip install -r requirements.txt   # Install dependencies
-./manage migrate
-./manage runserver
+./manage.py collectstatic --noinput  
+sass static/assets/_scss/all.scss static/assets/css/main.css
+./manage.py migrate
+waitress-serve --port=8000 forecast.wsgi:application
 ```
