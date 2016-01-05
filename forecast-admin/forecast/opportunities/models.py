@@ -266,4 +266,5 @@ class Opportunity(models.Model):
         return "%s (%s)" % (self.description, self.estimated_fiscal_year)
 
     class Meta:
-        verbose_name_plural = "Opportunities"
+        verbose_name = "Procurement"
+        verbose_name_plural = "Procurements"
