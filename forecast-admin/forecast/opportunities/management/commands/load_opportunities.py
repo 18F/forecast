@@ -87,6 +87,9 @@ class OpportunitiesLoader(object):
     def make_opportunity(cls, row):
         office = cls.insert_office(row[0], row[1])
 
+        adv = cls.parse_advisor(row[23])
+        advisor = cls.insert_advisor(adv[0], adv[1], adv[2])
+
         opportunity = cls.model(
             office=office,
             description=row[3],
@@ -175,12 +178,35 @@ class OpportunitiesLoader(object):
         except:
             return None
 
+    @staticmethod
+    def parse_advisor(s):
+        try:
+            # Some entries have commas and some don't, so work around that
+            # TODO: account for improper name formatting without miscapitalizing names
+            split = s.replace(","," ").replace("  "," ").split(' ')
+            adv = [' '.join(split[0:-2]), split[-2], split[-1]]
+            return adv
+        except:
+            return None
+
     @classmethod
     def insert_office(cls, organization, region, replace=True):
         try:
             obj, created = Office.objects.update_or_create(
                 organization=organization,
                 region=region
+            )
+            return obj
+        except ValueError:
+            return False
+
+    @classmethod
+    def insert_advisor(cls, name, email, phone, replace=True):
+        try:
+            obj, created = OSBUAdvisor.objects.update_or_create(
+                name=name,
+                email=email,
+                phone=phone
             )
             return obj
         except ValueError:
