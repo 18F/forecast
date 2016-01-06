@@ -4,11 +4,11 @@
 
 An API that provides an interface for the OSBU Forecast Tool, which is an MVP of a better version of http://www.gsa.gov/portal/content/101163. To learn more about the Office of Small Business Utilization at GSA, visit http://www.gsa.gov/portal/category/21015.
 
-# Features
+### Features
 Support for storage via Elastic Search or Django Models.
 Separation of API into a read and a write portion.
 
-# Installation
+### Installation
 
 The OSBU Forecast tool is a simple Django application. First, make sure that Python 3 is installed and that you have a version of `virtualenv`:
 
@@ -31,3 +31,11 @@ sass static/assets/_scss/all.scss static/assets/css/main.css
 ./manage.py migrate
 waitress-serve --port=8000 forecast.wsgi:application
 ```
+
+### Public domain
+
+This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):
+
+> This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+>
+> All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
