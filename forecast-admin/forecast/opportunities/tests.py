@@ -93,7 +93,7 @@ class ValidatorsTestCase(TestCase):
         self.assertTrue(validate_NAICS("501056"))
 
 class ImporterTestCase(TestCase):
-    sample_filename = '../forecast/data/fy16q1.csv'
+    sample_filename = 'test/data/sample.csv'
 
     def load(self, filename, **kwargs):
         call_command(
@@ -110,8 +110,19 @@ class ImporterTestCase(TestCase):
         self.assertEquals(parse_date('12/8/2015'), date(2015, 12, 8))
         self.assertEquals(parse_date('06/03/2014'), date(2014, 6, 3))
         self.assertEquals(parse_date('5/1/2016'), date(2016, 5, 1))
+        self.assertIsNone(parse_date(''))
+
 
     def test_parse_dollars(self):
         parse_dollars = OpportunitiesLoader.parse_dollars
         self.assertEquals(parse_dollars('$1000'), 1000)
         self.assertEquals(parse_dollars('$5,000'), 5000)
+        self.assertIsNone(parse_dollars(1000))
+
+    def test_parse_advisor(self):
+        parse_advisor = OpportunitiesLoader.parse_advisor
+        self.assertEquals(parse_advisor('Really Fakeperson, 555-555-5555, really.fakeperson@gsa.gov'), 
+            ['Really Fakeperson', '555-555-5555', 'really.fakeperson@gsa.gov'])
+        self.assertEquals(parse_advisor('Different Fakeperson, 555-555-5555 different.fakeperson@gsa.gov'), 
+            ['Different Fakeperson', '555-555-5555', 'different.fakeperson@gsa.gov'])
+        self.assertIsNone(parse_advisor('TBD'))
