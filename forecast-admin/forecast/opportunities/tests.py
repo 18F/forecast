@@ -1,3 +1,6 @@
+import os
+from datetime import date
+
 from django.test import TestCase, RequestFactory
 from opportunities.models import Office, Opportunity, OSBUAdvisor
 from django.contrib.auth.models import User
@@ -10,6 +13,9 @@ from django.contrib.admin.sites import AdminSite
 
 from opportunities.validators import validate_NAICS
 from django.core.exceptions import ValidationError
+
+from django.core.management import call_command
+from opportunities.management.commands.load_opportunities import OpportunitiesLoader
 
 
 class OfficeTestCase(TestCase):
@@ -85,3 +91,27 @@ class ValidatorsTestCase(TestCase):
     # This tests whether a 6-digit NAICS code can be saved
     def test_NAICS_validation_no_error(self):
         self.assertTrue(validate_NAICS("501056"))
+
+class ImporterTestCase(TestCase):
+    sample_filename = '../forecast/data/fy16q1.csv'
+
+    def load(self, filename, **kwargs):
+        call_command(
+            'load_opportunities',
+            filename=os.path.join(os.path.dirname(__file__), filename)
+        )
+
+    def test_loads_sample(self):
+        self.load(self.sample_filename)
+        # self.assertEquals(Opportunity.objects.count(), 2174)
+
+    def test_parse_date(self):
+        parse_date = OpportunitiesLoader.parse_date
+        self.assertEquals(parse_date('12/8/2015'), date(2015, 12, 8))
+        self.assertEquals(parse_date('06/03/2014'), date(2014, 6, 3))
+        self.assertEquals(parse_date('5/1/2016'), date(2016, 5, 1))
+
+    def test_parse_dollars(self):
+        parse_dollars = OpportunitiesLoader.parse_dollars
+        self.assertEquals(parse_dollars('$1000'), 1000)
+        self.assertEquals(parse_dollars('$5,000'), 5000)

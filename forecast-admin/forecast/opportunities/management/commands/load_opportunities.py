@@ -165,7 +165,7 @@ class OpportunitiesLoader(object):
 
     @staticmethod
     def parse_date(s):
-        if not s or not re.match(r"\d{2}\/\d{2}\/\d{2,4}", s):
+        if not s or not re.match(r"\d{1,2}\/\d{1,2}\/\d{2,4}", s):
             return None
         month, day, year = list(map(int, s.split('/')))
         return date(year, month, day)
