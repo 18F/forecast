@@ -1,4 +1,4 @@
-import os
+import os, csv
 from datetime import date
 
 from django.test import TestCase, RequestFactory
@@ -98,12 +98,18 @@ class ImporterTestCase(TestCase):
     def load(self, filename, **kwargs):
         call_command(
             'load_opportunities',
-            filename=os.path.join(os.path.dirname(__file__), filename)
+            filename=filename
         )
 
     def test_loads_sample(self):
-        self.load(self.sample_filename)
-        # self.assertEquals(Opportunity.objects.count(), 2174)
+        filename = os.path.join(os.path.dirname(__file__), self.sample_filename)
+        self.load(filename)
+        with open(filename) as f:
+            has_header = csv.Sniffer().has_header(f.read(1024))
+            file_read = csv.reader(f)
+            rows = sum(1 for row in file_read)
+        print(rows)
+        self.assertEquals(Opportunity.objects.count(), rows)
 
     def test_parse_date(self):
         parse_date = OpportunitiesLoader.parse_date
@@ -121,8 +127,8 @@ class ImporterTestCase(TestCase):
 
     def test_parse_advisor(self):
         parse_advisor = OpportunitiesLoader.parse_advisor
-        self.assertEquals(parse_advisor('Really Fakeperson, 555-555-5555, really.fakeperson@gsa.gov'), 
+        self.assertEquals(parse_advisor('Really Fakeperson, 555-555-5555, really.fakeperson@gsa.gov'),
             ['Really Fakeperson', '555-555-5555', 'really.fakeperson@gsa.gov'])
-        self.assertEquals(parse_advisor('Different Fakeperson, 555-555-5555 different.fakeperson@gsa.gov'), 
+        self.assertEquals(parse_advisor('Different Fakeperson, 555-555-5555 different.fakeperson@gsa.gov'),
             ['Different Fakeperson', '555-555-5555', 'different.fakeperson@gsa.gov'])
         self.assertIsNone(parse_advisor('TBD'))
