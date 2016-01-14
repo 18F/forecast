@@ -29,3 +29,9 @@ cd forecast-admin/forecast && pip install -r requirements.txt   # Install depend
 ./manage migrate
 ./manage runserver
 ```
+
+To load existing offices and opportunities from a CSV, run:
+
+```
+./manage.py load_opportunities -f [path/to/csv]
+```

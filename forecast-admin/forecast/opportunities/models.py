@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, RegexValidator
 
 from localflavor.us.models import USStateField, PhoneNumberField
 from opportunities.validators import validate_NAICS
+
+from datetime import date
 
 
 # Create your models here.
@@ -208,6 +210,23 @@ class Opportunity(models.Model):
         ("To Be Determined", "To Be Determined")
     )
 
+    CURRENT_YEAR = date.today().year
+    FISCAL_YEARS = (
+        (CURRENT_YEAR, CURRENT_YEAR),
+        (CURRENT_YEAR+1, CURRENT_YEAR+1),
+        (CURRENT_YEAR+2, CURRENT_YEAR+2),
+        (CURRENT_YEAR+3, CURRENT_YEAR+3),
+        (CURRENT_YEAR+4, CURRENT_YEAR+4)
+    )
+
+    FISCAL_QUARTERS = (
+        ("1st", "1st"),
+        ("2nd", "2nd"),
+        ("3rd", "3rd"),
+        ("4th", "4th"),
+        ("To Be Determined", "To Be Determined")
+    )
+
     office = models.ForeignKey(Office, blank=True, null=True)
     award_status = models.CharField(max_length=50, default="Planning",
                                     choices=AWARD_STATUS_CHOICES)
@@ -231,10 +250,13 @@ class Opportunity(models.Model):
     competition_strategy = models.CharField(max_length=200,
                                             choices=COMPETITION_CHOICES,
                                             default="To Be Determined")
-    price_min = models.DecimalField(max_length=200, decimal_places=2,
+    dollar_value_min = models.DecimalField(max_length=200, decimal_places=2,
+                                    max_digits=16, blank=True, null=True,
+                                    validators=[RegexValidator(regex="\d*(\.\d\d)?",
+                                        message="Please enter a dollar value.")])
+    dollar_value_max = models.DecimalField(max_length=200, decimal_places=2,
                                     max_digits=16, blank=True, null=True)
-    price_max = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=16, blank=True, null=True)
+    including_options = models.BooleanField(default=False)
     delivery_order_value = models.CharField(max_length=200,
                                             blank=True, null=True)
     incumbent_name = models.CharField("Incumbent Contractor Name",
@@ -247,10 +269,10 @@ class Opportunity(models.Model):
                                       default="To Be Determined")
     estimated_solicitation_date = models.DateField(blank=True, null=True)
     fedbizopps_link = models.CharField(max_length=200, blank=True, null=True)
-    # TODO: going to make these choices...
-    estimated_fiscal_year = models.IntegerField(default=2016)
-    estimated_fiscal_year_quarter = models.IntegerField(
-        default=1, validators=[MaxValueValidator(4)]
+    estimated_fiscal_year = models.IntegerField(default=2016,
+                                                choices=FISCAL_YEARS)
+    estimated_fiscal_year_quarter = models.CharField(max_length=50,
+        default="To Be Determined", choices=FISCAL_QUARTERS
     )
     # Note: This can probably get split out into another model
     point_of_contact_name = models.CharField(max_length=200,
@@ -258,7 +280,8 @@ class Opportunity(models.Model):
     point_of_contact_email = models.EmailField(max_length=200,
                                                blank=True, null=True)
     point_of_contact_phone = PhoneNumberField(blank=True, null=True)
-    osbu_advisor = models.ForeignKey(OSBUAdvisor, blank=True, null=True)
+    osbu_advisor = models.ForeignKey(OSBUAdvisor, blank=True, null=True,
+                                    verbose_name="OSBU Advisor")
     additional_information = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
 
@@ -266,4 +289,5 @@ class Opportunity(models.Model):
         return "%s (%s)" % (self.description, self.estimated_fiscal_year)
 
     class Meta:
-        verbose_name_plural = "Opportunities"
+        verbose_name = "Procurement"
+        verbose_name_plural = "Procurements"
