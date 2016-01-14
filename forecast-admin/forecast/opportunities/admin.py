@@ -7,6 +7,9 @@ from .models import Opportunity, Office, OSBUAdvisor
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
 
+    # TODO: when customizing admin page, add help text to search box
+    search_fields = ['id']
+
     def make_published(self, request, queryset):
         for obj in queryset:
             obj.published = True
@@ -17,7 +20,7 @@ class OpportunityAdmin(admin.ModelAdmin):
         queryset.update(published=False)
     make_unpublished.short_description = "Unpublish selected oppotunities"
 
-    list_display = ['__str__', 'office', 'published']
+    list_display = ['__str__', 'id', 'office', 'published']
     ordering = ['office']
     actions = [make_published, make_unpublished]
 

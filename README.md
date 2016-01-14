@@ -12,7 +12,7 @@ Separation of API into a read and a write portion.
 
 The OSBU Forecast tool is a simple Django application. First, make sure that Python 3 is installed and that you have a version of `virtualenv`:
 
-```
+```bash
 python3 --version
 virtualenv --version
 ```
@@ -21,7 +21,7 @@ If you receive errors, install [Python 3](https://docs.python.org/3.5/using/inde
 
 Then, install and run the project with:
 
-```
+```bash
 git clone https://github.com/18F/forecast.git && cd forecast   # Clone the repository
 virtualenv .env   # Create a virtualenv
 source .env/bin/activate   # Activate virtualenv
@@ -30,6 +30,12 @@ cd forecast-admin/forecast && pip install -r requirements.txt   # Install depend
 sass static/assets/_scss/all.scss static/assets/css/main.css
 ./manage.py migrate
 waitress-serve --port=8000 forecast.wsgi:application
+```
+
+To load existing offices and opportunities from a CSV, run:
+
+```bash
+./manage.py load_opportunities -f [path/to/csv]
 ```
 
 ### Public domain
