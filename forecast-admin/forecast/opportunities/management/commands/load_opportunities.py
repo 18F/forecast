@@ -90,6 +90,8 @@ class OpportunitiesLoader(object):
         adv = cls.parse_advisor(row[23])
         advisor = cls.insert_advisor(adv[0], adv[1], adv[2])
 
+        fiscals = cls.parse_fiscal_dates(row[20])
+
         opportunity = cls.model(
             office=office,
             description=row[3],
@@ -108,9 +110,8 @@ class OpportunitiesLoader(object):
             funding_agency=row[17],
             estimated_solicitation_date=cls.parse_date(row[18]),
             fedbizopps_link=row[19],
-            estimated_fiscal_year=row[20].split("-")[0][3:],
-            estimated_fiscal_year_quarter=int(row[20].split("-")[1][0]
-                                                     .replace(r"Q", "0")),
+            estimated_fiscal_year=fiscals[0],
+            estimated_fiscal_year_quarter=fiscals[1],
             additional_information=row[24],
             published=True
         )
@@ -169,6 +170,29 @@ class OpportunitiesLoader(object):
             return None
         month, day, year = list(map(int, s.split('/')))
         return date(year, month, day)
+
+    @staticmethod
+    def parse_fiscal_dates(s):
+        try:
+            split = s.split("-")
+            year = split[0][3:]
+            original_quarter = split[1]
+            q = re.search(r"(\d)", original_quarter)
+            if q:
+                n = q.group(1)
+                if n == "1":
+                    quarter = "1st"
+                elif n == "2":
+                    quarter = "2nd"
+                elif n == "3":
+                    quarter = "3rd"
+                elif n == "4":
+                    quarter = "4th"
+            else:
+                quarter = "To Be Determined"
+            return year, quarter
+        except:
+            return None
 
     @staticmethod
     def parse_dollars(s):

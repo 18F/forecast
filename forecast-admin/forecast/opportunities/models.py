@@ -224,7 +224,7 @@ class Opportunity(models.Model):
         ("2nd", "2nd"),
         ("3rd", "3rd"),
         ("4th", "4th"),
-        ("TBD", "TBD")
+        ("To Be Determined", "To Be Determined")
     )
 
     office = models.ForeignKey(Office, blank=True, null=True)
@@ -251,7 +251,7 @@ class Opportunity(models.Model):
                                             choices=COMPETITION_CHOICES,
                                             default="To Be Determined")
     dollar_value_min = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=16, blank=True, null=True, 
+                                    max_digits=16, blank=True, null=True,
                                     validators=[RegexValidator(regex="\d*(\.\d\d)?",
                                         message="Please enter a dollar value.")])
     dollar_value_max = models.DecimalField(max_length=200, decimal_places=2,
@@ -271,8 +271,8 @@ class Opportunity(models.Model):
     fedbizopps_link = models.CharField(max_length=200, blank=True, null=True)
     estimated_fiscal_year = models.IntegerField(default=2016,
                                                 choices=FISCAL_YEARS)
-    estimated_fiscal_year_quarter = models.IntegerField(
-        default=1, validators=[MaxValueValidator(4)], choices=FISCAL_QUARTERS
+    estimated_fiscal_year_quarter = models.CharField(max_length=50,
+        default="To Be Determined", choices=FISCAL_QUARTERS
     )
     # Note: This can probably get split out into another model
     point_of_contact_name = models.CharField(max_length=200,

@@ -94,21 +94,21 @@ class ValidatorsTestCase(TestCase):
 
 class ImporterTestCase(TestCase):
     sample_filename = 'test/data/sample.csv'
+    bad_filename = 'test/data/bad_sample.csv'
 
     def load(self, filename, **kwargs):
         call_command(
             'load_opportunities',
-            filename=filename
+            filename=os.path.join(os.path.dirname(__file__), filename)
         )
 
     def test_loads_sample(self):
         filename = os.path.join(os.path.dirname(__file__), self.sample_filename)
-        self.load(filename)
+        self.load(self.sample_filename)
         with open(filename) as f:
             has_header = csv.Sniffer().has_header(f.read(1024))
             file_read = csv.reader(f)
             rows = sum(1 for row in file_read)
-        print(rows)
         self.assertEquals(Opportunity.objects.count(), rows)
 
     def test_parse_date(self):
@@ -118,6 +118,12 @@ class ImporterTestCase(TestCase):
         self.assertEquals(parse_date('5/1/2016'), date(2016, 5, 1))
         self.assertIsNone(parse_date(''))
 
+    def test_parse_fiscal_dates(self):
+        parse_fiscal_dates = OpportunitiesLoader.parse_fiscal_dates
+        self.assertEquals(parse_fiscal_dates("FY 2016-2nd Quarter"),("2016","2nd"))
+        self.assertEquals(parse_fiscal_dates("FY 2016-Quarter To Be Determined"),
+                                                ("2016","To Be Determined"))
+        self.assertEquals(parse_fiscal_dates("FY 2016-Quarter 4"), ("2016","4th"))
 
     def test_parse_dollars(self):
         parse_dollars = OpportunitiesLoader.parse_dollars
