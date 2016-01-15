@@ -1,7 +1,24 @@
-<html>
-<head>
-</head>
-<body>
-<img src="/static/assets/img/detail-page.png" width=100%>
-</body>
-</head>
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block page_title %}{{ o.description }}{% endblock %}
+
+{% block content %}
+  <table class="usa-table-borderless">
+    <!-- <thead>
+      <tr>
+        <th scope="col">Document Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Year</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      {% for key, value in o.items %}
+      <tr>
+        <td scope="row">{{ key }}</td>
+        <td>{{ value }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
