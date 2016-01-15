@@ -9,14 +9,20 @@ from .serializers import (
 
 
 def home(request):
-    return render(request, 'main.html')
+    opportunities = serializers.serialize("json", Opportunity.objects.all(),
+                                            use_natural_foreign_keys=True,
+                                            use_natural_primary_keys=True)
+    opportunities = json.loads(opportunities)
+    return render(request, 'main.html', {'o': opportunities})
 
 
 def details(request, id):
     """
     A page displaying details about a particular contracting opportunity
     """
-    opportunity = serializers.serialize("json", Opportunity.objects.all().filter(id=id))
+    opportunity = serializers.serialize("json", Opportunity.objects.all().filter(id=id),
+                                            use_natural_foreign_keys=True,
+                                            use_natural_primary_keys=True)
     opportunity = json.loads(opportunity)
     return render(request, 'detail.html', {'o': opportunity[0]["fields"]})
 

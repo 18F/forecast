@@ -88,7 +88,7 @@ class OpportunitiesLoader(object):
         office = cls.insert_office(row[0], row[1])
 
         adv = cls.parse_advisor(row[23])
-        advisor = cls.insert_advisor(adv[0], adv[1], adv[2])
+        advisor = cls.insert_advisor(adv[0], adv[2], adv[1])
 
         fiscals = cls.parse_fiscal_dates(row[20])
 
