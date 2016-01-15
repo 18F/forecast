@@ -112,6 +112,7 @@ class OpportunitiesLoader(object):
             fedbizopps_link=row[19],
             estimated_fiscal_year=fiscals[0],
             estimated_fiscal_year_quarter=fiscals[1],
+            osbu_advisor=advisor,
             additional_information=row[24],
             published=True
         )
