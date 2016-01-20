@@ -1,18 +1,20 @@
+{% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
-  <div class="office"></div>
-  <div class="description"></div>
+  <div>{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
+  <div>{{ o.fields.description }}</div>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Award Status: </span><span class="award_status"></span></p>
-        <p><span class="detail-label">Place of Performance: </span><span class="place_of_performance_city"></span>,  <span class="place_of_performance_state"></span></p>
-        <p><span class="detail-label">NAICS Code: </span><span class="naics"></span></p>
+        <p><span class="detail-label">Award Status: </span>{{ o.fields.award_status }}</p>
+        <p><span class="detail-label">Place of Performance: </span>{{ o.fields.place_of_performance_city }},  {{ o.fields.place_of_performance_state }}</p>
+        <p><span class="detail-label">NAICS Code: </span>{{ o.fields.naics }}</p>
       </div>
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Estimated Award Date: </span>FY <span class="estimated_fiscal_year"></span> - Quarter  <span class="estimated_fiscal_year_quarter"></span> </p>
-        <p><span class="detail-label">Category: </span> <span class="socioeconomic"></span> </p>
-        <p><a href="/details/1" target="_blank">View Details </a></p>
+        <p><span class="detail-label">Estimated Award Date: </span>FY {{ o.fields.estimated_fiscal_year }} - Quarter  {{ o.fields.estimated_fiscal_year_quarter }} </p>
+        <p><span class="detail-label">Category: </span> {{ o.fields.socioeconomic }} </p>
+        <p><a href="/details/{{ o.pk }}" target="_blank">View Details </a></p>
       </div>
     </div>
   </div>
 </li>
+{% endfor %}

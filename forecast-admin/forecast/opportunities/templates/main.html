@@ -43,21 +43,24 @@
     <div class="usa-width-three-fourths">
       <div id="opportunities">
         <ul class="list">
-          <div id="loading"><h3>Loading opportunities... </h3><p>Please be patient while they load</p></div>
-          <div style="display:none;">
             {% include 'includes/opportunity.html' %}
-          </div>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+
 <script src="{% static 'assets/js/vendor/jquery-1.11.3.min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
-<script src="{% static 'assets/js/vendor/list.awesomething.js' %}"></script>
+<script type="text/javascript">
 
-<script src="{% static 'assets/js/main.js' %}"></script>
+
+</script>
+<!-- <script src="{% static 'assets/js/main.js' %}"></script> -->
 
 {% endblock %}
