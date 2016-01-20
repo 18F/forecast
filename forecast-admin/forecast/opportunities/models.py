@@ -16,6 +16,9 @@ class Office(models.Model):
     def __str__(self):
         return "%s (%s)" % (self.organization, self.region)
 
+    class Meta:
+        ordering = ["organization"]
+
 
 # The OSBU Advisor is the Office of Small Business Utilization specialist
 # who is responsible for the forecast data...
@@ -291,3 +294,4 @@ class Opportunity(models.Model):
     class Meta:
         verbose_name = "Procurement"
         verbose_name_plural = "Procurements"
+        ordering = ["office"]
