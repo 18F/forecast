@@ -28,7 +28,7 @@ class OSBUAdvisor(models.Model):
     phone = PhoneNumberField(blank=True, null=True)
 
     def __str__(self):
-        return "%s (%s)" % (self.name, self.email)
+        return "%s (%s, %s)" % (self.name, self.email, self.phone)
 
     class Meta:
         verbose_name = "OSBU Advisor"
