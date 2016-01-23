@@ -1,17 +1,17 @@
 {% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
-  <div>{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
-  <div>{{ o.fields.description }}</div>
+  <div class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
+  <div class="description">{{ o.fields.description }}</div>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Award Status: </span>{{ o.fields.award_status }}</p>
-        <p><span class="detail-label">Place of Performance: </span>{{ o.fields.place_of_performance_city }},  {{ o.fields.place_of_performance_state }}</p>
-        <p><span class="detail-label">NAICS Code: </span>{{ o.fields.naics }}</p>
+        <p><span class="detail-label">Award Status: </span><span class="award_status">{{ o.fields.award_status }}</span></p>
+        <p><span class="detail-label">Place of Performance: </span>{{ o.fields.place_of_performance_city }}, <span class="place_of_performance_state">{{ o.fields.place_of_performance_state }}</span></p>
+        <p><span class="detail-label">NAICS Code: </span><span class="naics">{{ o.fields.naics }}</span></p>
       </div>
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Estimated Award Date: </span>FY {{ o.fields.estimated_fiscal_year }} - Quarter  {{ o.fields.estimated_fiscal_year_quarter }} </p>
-        <p><span class="detail-label">Category: </span> {{ o.fields.socioeconomic }} </p>
+        <p><span class="detail-label">Estimated Award Date: </span>FY {{ o.fields.estimated_fiscal_year }} - Quarter  <span class="estimated_fiscal_year_quarter">{{ o.fields.estimated_fiscal_year_quarter }}</span></p>
+        <p><span class="detail-label">Category: </span> <span class="award_amount">{{ o.fields.socioeconomic }}</span></p>
         <p><a href="/details/{{ o.pk }}" target="_blank">View Details </a></p>
       </div>
     </div>
