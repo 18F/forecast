@@ -1,17 +1,10 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
 
-{% block page_title %}{{ o.description }}{% endblock %}
+{% block page_title %}{{ o.description }}<small> (#{{ id }})</small>{% endblock %}
 
 {% block content %}
   <table class="usa-table-borderless">
-    <!-- <thead>
-      <tr>
-        <th scope="col">Document Title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Year</th>
-      </tr>
-    </thead> -->
     <tbody>
       {% for key, value in o.items %}
       <tr>

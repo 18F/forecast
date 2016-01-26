@@ -24,7 +24,7 @@ def details(request, id):
                                             use_natural_foreign_keys=True,
                                             use_natural_primary_keys=True)
     opportunity = json.loads(opportunity)
-    return render(request, 'detail.html', {'o': opportunity[0]["fields"]})
+    return render(request, 'detail.html', {'o': opportunity[0]["fields"],'id': opportunity[0]["pk"]})
 
 
 class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):

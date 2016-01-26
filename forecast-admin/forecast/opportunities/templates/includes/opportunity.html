@@ -1,7 +1,7 @@
 {% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
   <div class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
-  <div class="description">{{ o.fields.description }}</div>
+  <div class="description">{{ o.fields.description }} (#{{ o.pk }})</div>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
