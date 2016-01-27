@@ -1,7 +1,17 @@
-<html>
-<head>
-</head>
-<body>
-<img src="/static/assets/img/detail-page.png" width=100%>
-</body>
-</head>
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block page_title %}{{ o.description }}<small> (#{{ id }})</small>{% endblock %}
+
+{% block content %}
+  <table class="usa-table-borderless">
+    <tbody>
+      {% for key, value in o.items %}
+      <tr>
+        <td scope="row">{{ key }}</td>
+        <td>{{ value }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -88,7 +88,7 @@ class OpportunitiesLoader(object):
         office = cls.insert_office(row[0], row[1])
 
         adv = cls.parse_advisor(row[23])
-        advisor = cls.insert_advisor(adv[0], adv[1], adv[2])
+        advisor = cls.insert_advisor(adv[0], adv[2], adv[1])
 
         fiscals = cls.parse_fiscal_dates(row[20])
 
@@ -112,6 +112,7 @@ class OpportunitiesLoader(object):
             fedbizopps_link=row[19],
             estimated_fiscal_year=fiscals[0],
             estimated_fiscal_year_quarter=fiscals[1],
+            osbu_advisor=advisor,
             additional_information=row[24],
             published=True
         )

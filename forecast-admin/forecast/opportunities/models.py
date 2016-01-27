@@ -9,9 +9,18 @@ from datetime import date
 
 
 # Create your models here.
+class OfficeManager(models.Manager):
+    def get_by_natural_key(self, office_id):
+        return self.get(id=office_id)
+
 class Office(models.Model):
+    objects = OfficeManager()
+
     organization = models.CharField(max_length=30)
     region = models.CharField(max_length=30)
+
+    def natural_key(self):
+        return (self.organization, self.region)
 
     def __str__(self):
         return "%s (%s)" % (self.organization, self.region)
@@ -19,10 +28,19 @@ class Office(models.Model):
 
 # The OSBU Advisor is the Office of Small Business Utilization specialist
 # who is responsible for the forecast data...
+class OSBUAdvisorManager(models.Manager):
+    def get_by_natural_key(self, advisor_id):
+        return self.get(id=advisor_id)
+
 class OSBUAdvisor(models.Model):
+    objects = OSBUAdvisorManager()
+
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
     phone = PhoneNumberField(blank=True, null=True)
+
+    def natural_key(self):
+        return (self.name, self.email, self.phone)
 
     def __str__(self):
         return "%s (%s)" % (self.name, self.email)
