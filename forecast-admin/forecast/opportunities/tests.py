@@ -41,7 +41,7 @@ class OSBUAdvisorTestCase(TestCase):
     def test_osbu_str(self):
         self.assertTrue(isinstance(self.o, OSBUAdvisor))
         self.assertEqual(str(self.o),
-                         "%s (%s)" % (self.o.name, self.o.email))
+                         "%s (%s, %s)" % (self.o.name, self.o.email, self.o.phone))
 
 
 class OpportunityTestCase(TestCase):
