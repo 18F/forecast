@@ -1,18 +1,21 @@
+{% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
-  <div class="office"></div>
-  <div class="description"></div>
+  <div class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
+  <div class="description">{{ o.fields.description }} (#{{ o.pk }})</div>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Award Status: </span><span class="award_status"></span></p>
-        <p><span class="detail-label">Place of Performance: </span><span class="place_of_performance_city"></span>,  <span class="place_of_performance_state"></span></p>
-        <p><span class="detail-label">NAICS Code: </span><span class="naics"></span></p>
+        <p><span class="detail-label">Award Status: </span><span class="award_status">{{ o.fields.award_status }}</span></p>
+        <p><span class="detail-label">Place of Performance: </span>{{ o.fields.place_of_performance_city }}, <span class="place_of_performance_state">{{ o.fields.place_of_performance_state }}</span></p>
+        <p><span class="detail-label">NAICS Code: </span><span class="naics">{{ o.fields.naics }}</span></p>
       </div>
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Estimated Award Date: </span>FY <span class="estimated_fiscal_year"></span> - Quarter  <span class="estimated_fiscal_year_quarter"></span> </p>
-        <p><span class="detail-label">Category: </span> <span class="socioeconomic"></span> </p>
-        <p><a href="/details/1" target="_blank">View Details </a></p>
+        <p><span class="detail-label">Estimated Award Date: </span>FY {{ o.fields.estimated_fiscal_year }} - Quarter  <span class="estimated_fiscal_year_quarter">{{ o.fields.estimated_fiscal_year_quarter }}</span></p>
+        <p><span class="detail-label">Category: </span> <span class="award_amount">{{ o.fields.socioeconomic }}</span></p>
+        <p><span class="detail-label">Contract Type: </span> <span class="award_amount">{{ o.fields.contract_type }}</span></p>
+        <p><a href="/details/{{ o.pk }}" target="_blank">View Details </a></p>
       </div>
     </div>
   </div>
 </li>
+{% endfor %}
