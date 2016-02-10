@@ -49,3 +49,6 @@ class OSBUAdvisorViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = OSBUAdvisor.objects.all()
     serializer_class = OSBUAdvisorSerializer
+
+def api_docs(request):
+    return render(request, './docs/index.html')

@@ -32,6 +32,8 @@ urlpatterns = [
     url(r'^details/(?P<id>\d*)$', views.details, name='details'),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^docs', views.api_docs, name='api_docs'),
+
 
     # The following four URLs are from
     # https://docs.djangoproject.com/en/1.8/ref/contrib/admin/#adding-a-password-reset-feature
