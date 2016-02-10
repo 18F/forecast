@@ -42,6 +42,7 @@ INSTALLED_APPS = (
 
     'localflavor',
     'rest_framework',
+    'corsheaders',
 
     'opportunities'
 )
@@ -114,3 +115,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ('localhost:8000')

@@ -1,0 +1,268 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Office of Small Business Utilization Forecast API",
+        "description": "An API that provides an interface for the OSBU Forecast Tool",
+        "version": "1.0.0"
+    },
+    "host": "forecast-alpha.18f.gov",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/api",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/opportunities": {
+            "get": {
+                "summary": "Opportunities",
+                "description": "The Opportunities endpoint returns all the forecast opportunities available. \n",
+                "tags": [
+                    "Opportunities"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of opportunities",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Opportunity"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/osbu": {
+            "get": {
+                "summary": "Osbu Advisor List",
+                "description": "API endpoint that allows users to be viewed or edited.\n",
+                "tags": [
+                    "Advisors"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array advisors",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/OSBU"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/offices": {
+            "get": {
+                "summary": "Office List",
+                "description": "Returns a list of the offices and their corresponding region.",
+                "tags": [
+                    "Offices"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of products",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Office"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Opportunity": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "Integer",
+                    "description": "Unique identifier representing a specific opportunity"
+                },
+                "office": {
+                    "type": "String",
+                    "description": "Office of where the opportunity is located"
+                },
+                "award_status": {
+                    "type": "String",
+                    "description": "Where in the award process the opportunity is"
+                },
+                "description": {
+                    "type": "String",
+                    "description": "A description of the opportunity"
+                },
+                "place_of_performance_city": {
+                    "type": "String",
+                    "description": "The city of the location of the opportunity."
+                },
+                "place_of_performance_state": {
+                    "type": "String",
+                    "description": "The state of the location of the of the opportunity."
+                },
+                "naics": {
+                    "type": "Integer",
+                    "description": "Identifier of type procurement"
+                },
+                "socioeconomic": {
+                    "type": "String",
+                    "description": "Category of eligible business"
+                },
+                "procurement_method": {
+                    "type": "String",
+                    "description": "Method of procurement used in the opportunity."
+                },
+                "contract_type": {
+                    "type": "String",
+                    "description": "Type of contract."
+                },
+                "competition_strategy": {
+                    "type": "String",
+                    "description": "Strategy for how the bid will be competed."
+                },
+                "dollar_value_min": {
+                    "type": "Float",
+                    "description": "The minimum value of the solicitation."
+                },
+                "dollar_value_max": {
+                    "type": "Float",
+                    "description": "The maximum value of the solicitation."
+                },
+                "including_options": {
+                    "type": "Boolean",
+                    "description": "Whether the opportunity will include contracting options."
+                },
+                "delivery_order_value": {
+                    "type": "String",
+                    "description": "What the value of the delivery order is."
+                },
+                "incumbent_name": {
+                    "type": "String",
+                    "description": "The name of the incumbent in the opportunity."
+                },
+                "new_requirement": {
+                    "type": "String",
+                    "description": "Whether the opportunity is a new requirement."
+                },
+                "funding_agency": {
+                    "type": "String",
+                    "description": "The agency funding the opportunity"
+                },
+                "estimated_solicitation_date": {
+                    "type": "Date",
+                    "description": "The date of when the solicitation will be made available."
+                },
+                "fedbizopps_link": {
+                    "type": "String",
+                    "description": "Link to the solicitation on FedBizOpps"
+                },
+                "estimated_fiscal_year": {
+                    "type": "Integer",
+                    "description": "The estimated fiscal year the opportunity will be available."
+                },
+                "estimated_fiscal_year_quarter": {
+                    "type": "String",
+                    "description": "The estimated quarter the opportunity will be available."
+                },
+                "point_of_contact_name": {
+                    "type": "String",
+                    "description": "The point of contact for the opportunity name."
+                },
+                "point_of_contact_email": {
+                    "type": "String",
+                    "description": "The point of contact for the opportunity."
+                },
+                "point_of_contact_phone": {
+                    "type": "String",
+                    "description": "The phone number for a point of contact."
+                },
+                "additional_information": {
+                    "type": "String",
+                    "description": "Any additional information available on the opportunity."
+                },
+                "published": {
+                    "type": "Boolean",
+                    "description": "If the opportunity is currently published."
+                },
+                "osbu_advisor": {
+                    "type": "Integer",
+                    "description": "The Identifier for the OSBU advisor."
+                }
+            }
+        },
+        "OSBU": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "Integer",
+                    "description": "A unique identifier representing an OSBU Advisor"
+                },
+                "name": {
+                    "type": "String",
+                    "description": "The name of the advisor."
+                },
+                "email": {
+                    "type": "String",
+                    "description": "The email of the advisor."
+                },
+                "phone": {
+                    "type": "String",
+                    "description": "The phon of the advisor."
+                }
+            }
+        },
+        "Office": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "Integer",
+                    "description": "A unique identifier representing an office"
+                },
+                "organization": {
+                    "type": "String",
+                    "description": "The organization name."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region that the office is located in"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
