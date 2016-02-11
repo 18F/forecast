@@ -62,7 +62,13 @@
    *Initializes list.js
    **/
   var listOptions = {
-    valueNames: ['award_status', 'place_of_performance_state', 'naics', 'award_amount', 'estimated_fiscal_year_quarter']
+    valueNames: [
+      'award_status',
+      'place_of_performance_state',
+      'naics',
+      'award_amount',
+      'estimated_fiscal_year_quarter'
+    ]
   };
   var opportunitiesList = new List('opportunities', listOptions)
   var data = {}
@@ -112,6 +118,10 @@
       })
     })
   })
+
+  $(".search").keyup(function () {
+    opportunitiesList.search($(this).val());
+  });
 </script>
 
 {% endblock %}
