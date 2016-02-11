@@ -125,9 +125,20 @@
     })
   })
 
-  $(".search").keyup(function () {
-    opportunitiesList.search($(this).val());
-  });
+  $(document).ready(function () {
+    // Search within list of opportunities
+    $(".search").keyup(function () {
+      opportunitiesList.search($(this).val());
+    });
+
+    // Disable search while it doesn't actually query the DB
+    $(".search").keypress(function (event) {
+      if (event.which == '13') {
+        event.preventDefault();
+      }
+    })
+  })
+
 </script>
 
 {% endblock %}
