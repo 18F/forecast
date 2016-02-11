@@ -16,8 +16,8 @@ class OfficeManager(models.Manager):
 class Office(models.Model):
     objects = OfficeManager()
 
-    organization = models.CharField(max_length=30)
-    region = models.CharField(max_length=30)
+    organization = models.CharField(max_length=100)
+    region = models.CharField(max_length=100)
 
     def natural_key(self):
         return (self.organization, self.region)
