@@ -62,7 +62,19 @@
    *Initializes list.js
    **/
   var listOptions = {
-    valueNames: ['award_status', 'place_of_performance_state', 'naics', 'award_amount', 'estimated_fiscal_year_quarter']
+    valueNames: [
+      'award_status',
+      'place_of_performance_state',
+      'naics',
+      'award_amount',
+      'estimated_fiscal_year_quarter',
+      'description',
+      'funding_agency',
+      'estimated_fiscal_year',
+      'place_of_performance_city',
+      'contract_type',
+      'office'
+    ]
   };
   var opportunitiesList = new List('opportunities', listOptions)
   var data = {}
@@ -112,6 +124,21 @@
       })
     })
   })
+
+  $(document).ready(function () {
+    // Search within list of opportunities
+    $(".search").keyup(function () {
+      opportunitiesList.search($(this).val());
+    });
+
+    // Disable search while it doesn't actually query the DB
+    $(".search").keypress(function (event) {
+      if (event.which == '13') {
+        event.preventDefault();
+      }
+    })
+  })
+
 </script>
 
 {% endblock %}
