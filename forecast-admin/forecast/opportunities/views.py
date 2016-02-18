@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Opportunity, Office, OSBUAdvisor
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from django.core import serializers
 import json
+import django_filters
 from .serializers import (
     OpportunitySerializer, OfficeSerializer, OSBUAdvisorSerializer
 )
@@ -33,6 +34,8 @@ class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Opportunity.objects.all().filter(published=True)
     serializer_class = OpportunitySerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('socioeconomic','place_of_performance_state','naics')
 
 
 class OfficeViewSet(viewsets.ReadOnlyModelViewSet):
