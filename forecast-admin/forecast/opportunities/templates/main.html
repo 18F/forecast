@@ -42,9 +42,12 @@
     </div>
     <div class="usa-width-three-fourths">
       <div id="opportunities">
+        <div class="pagination-menu">Browse opportunities</div>
+        <ul class="paginationTop"></ul>
         <ul class="list">
             {% include 'includes/opportunity.html' %}
         </ul>
+        <ul class="paginationBottom"></ul>
       </div>
     </div>
   </div>
@@ -57,10 +60,23 @@
 <script src="{% static 'assets/js/vendor/jquery-1.11.3.min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/list.pagination.min.js' %}"></script>
 <script type="text/javascript">
   /**
    *Initializes list.js
    **/
+  var paginationTopOptions = {
+    name: 'paginationTop',
+    paginationClass: 'paginationTop',
+    innerWindow: 5,
+    outerWinder: 1
+  }
+  var paginationBottomOptions = {
+    name: 'paginationBottom',
+    paginationClass: 'paginationBottom',
+    innerWindow: 5,
+    outerWinder: 1
+  }
   var listOptions = {
     valueNames: [
       'award_status',
@@ -75,8 +91,13 @@
       'contract_type',
       'office'
     ]
+    , page: 25
+    , plugins: [
+      ListPagination(paginationTopOptions),
+      ListPagination(paginationBottomOptions)]
+
   };
-  var opportunitiesList = new List('opportunities', listOptions)
+  var listObj = new List('opportunities', listOptions)
   var data = {}
 
   /**
@@ -113,7 +134,7 @@
     // Add the filtering action to each dropdown
     var dropdown = "#" + name + "-dropdown";
     $(dropdown).change(function (){
-      opportunitiesList.filter(function(item) {
+      listObj.filter(function(item) {
         var value = $(dropdown).val();
         if (value === "all") {
           return true;
