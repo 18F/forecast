@@ -42,6 +42,7 @@ INSTALLED_APPS = (
 
     'localflavor',
     'rest_framework',
+    'rest_framework_swagger',
 
     'opportunities'
 )
