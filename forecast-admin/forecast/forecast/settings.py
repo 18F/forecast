@@ -56,6 +56,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'forecast.urls'
@@ -94,6 +97,19 @@ else:
     DATABASE_URL = os.environ.get("DATABASE_URL")
     DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
+# Caching
+# https://docs.djangoproject.com/en/1.8/topics/cache/
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'forecast_cache',
+    }
+}
+
+CACHE_MIDDLEWARE_ALIAS = "default"
+CACHE_MIDDLEWARE_SECONDS = 60
+CACHE_MIDDLEWARE_KEY_PREFIX = "forecast"
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

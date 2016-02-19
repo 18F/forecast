@@ -29,6 +29,7 @@ cd forecast-admin/forecast && pip install -r requirements.txt   # Install depend
 ./manage.py collectstatic --noinput  
 sass static/assets/_scss/all.scss static/assets/css/main.css
 ./manage.py migrate
+./manage.py createcachetable
 ./manage.py load_opportunities
 waitress-serve --port=8000 forecast.wsgi:application
 ```
