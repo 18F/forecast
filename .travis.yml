@@ -3,34 +3,25 @@ language: python
 python:
   - "3.4"
   - "3.5"
+env:
+  global:
+  - CF_APP=forecast-staging
+  - CF_API=https://api.cloud.gov
+  - CF_USERNAME=18f-acq_deployer
+  - CF_ORGANIZATION=18f-ACQ
+  - CF_SPACE=staging
+  - secure: DzPPzHOaFRupCn2M91YXAbF3KUhjTNQsaZTL6wTz5C6505yPPWXLeobsjOnfBNqTSAZqAEhX3cfnt78QibNbmF7KkznpK1g0xoRxTvatiBrfq1sM/dEaz+vSJfV27fX+77P9W2vyJldEPgKPhlRIorGuePnBLPjc65P29UB4JvUyQ/eLuJFn6y6GnZaf1kJSc68FuB436Edp+8JqTuSysMO0bRZ9xC0aWPOTU9EZnQIcVNK+hkuxnMi2avaFcFH91PGH+qAgU2Jz+2WG8tnx4ybf8+YoMH44z4oJJSHqaiTKCONiG6+Uat7xkYsWeSGQh5ekNskelvjuB88g2SujjRJYZHZ/QqOzYOtbAOt51dpGeLbwzkja0cbmvUBwVSQnx0JIe42VBFujBFqtdRuNwWU+hqpkjxGOPSqFDnArcTwQfwbEigf6rGibWybPOhhD7fyni2w3sE/reV4TLHC1EvyWx2p1BwASxTejv89fqD8H0ZDxx8J5ZvR5FccAVeBCpQCWkBdpxlBhzCB4pZwIY+lSzO5LpNf29LQSdQyLSIVqDeSIVeM0/8RG3izfRaR/97yfngoK7cBSjMwe4g/QDl7GzUyjvCQJqoiySJYdtXZB0VafJganyZ8cFVkRzydd/BUODdWx6nOjNSlJwx1mzONm7suyoJ6vVZtUug6sDu4=
 before_install: pip install codecov
 install: pip install -r requirements.txt
 cache:
   directories:
     - $HOME/.cache/pip
+before_deploy: npm install -g cf-blue-green
 deploy:
-  - edge: true
-    provider: cloudfoundry
-    username: 18f-acq_deployer
-    password:
-      secure: DzPPzHOaFRupCn2M91YXAbF3KUhjTNQsaZTL6wTz5C6505yPPWXLeobsjOnfBNqTSAZqAEhX3cfnt78QibNbmF7KkznpK1g0xoRxTvatiBrfq1sM/dEaz+vSJfV27fX+77P9W2vyJldEPgKPhlRIorGuePnBLPjc65P29UB4JvUyQ/eLuJFn6y6GnZaf1kJSc68FuB436Edp+8JqTuSysMO0bRZ9xC0aWPOTU9EZnQIcVNK+hkuxnMi2avaFcFH91PGH+qAgU2Jz+2WG8tnx4ybf8+YoMH44z4oJJSHqaiTKCONiG6+Uat7xkYsWeSGQh5ekNskelvjuB88g2SujjRJYZHZ/QqOzYOtbAOt51dpGeLbwzkja0cbmvUBwVSQnx0JIe42VBFujBFqtdRuNwWU+hqpkjxGOPSqFDnArcTwQfwbEigf6rGibWybPOhhD7fyni2w3sE/reV4TLHC1EvyWx2p1BwASxTejv89fqD8H0ZDxx8J5ZvR5FccAVeBCpQCWkBdpxlBhzCB4pZwIY+lSzO5LpNf29LQSdQyLSIVqDeSIVeM0/8RG3izfRaR/97yfngoK7cBSjMwe4g/QDl7GzUyjvCQJqoiySJYdtXZB0VafJganyZ8cFVkRzydd/BUODdWx6nOjNSlJwx1mzONm7suyoJ6vVZtUug6sDu4=
-    api: https://api.cloud.gov
-    organization: 18f-ACQ
-    space: staging
-    manifest: manifest-staging.yml
+  - provider: script
+    script: cf-blue-green-travis
     on:
       branch: feature/cf-deploys
-  # - edge: true
-  #   provider: cloudfoundry
-  #   username: 18f-acq_deployer
-  #   password:
-  #     secure: DzPPzHOaFRupCn2M91YXAbF3KUhjTNQsaZTL6wTz5C6505yPPWXLeobsjOnfBNqTSAZqAEhX3cfnt78QibNbmF7KkznpK1g0xoRxTvatiBrfq1sM/dEaz+vSJfV27fX+77P9W2vyJldEPgKPhlRIorGuePnBLPjc65P29UB4JvUyQ/eLuJFn6y6GnZaf1kJSc68FuB436Edp+8JqTuSysMO0bRZ9xC0aWPOTU9EZnQIcVNK+hkuxnMi2avaFcFH91PGH+qAgU2Jz+2WG8tnx4ybf8+YoMH44z4oJJSHqaiTKCONiG6+Uat7xkYsWeSGQh5ekNskelvjuB88g2SujjRJYZHZ/QqOzYOtbAOt51dpGeLbwzkja0cbmvUBwVSQnx0JIe42VBFujBFqtdRuNwWU+hqpkjxGOPSqFDnArcTwQfwbEigf6rGibWybPOhhD7fyni2w3sE/reV4TLHC1EvyWx2p1BwASxTejv89fqD8H0ZDxx8J5ZvR5FccAVeBCpQCWkBdpxlBhzCB4pZwIY+lSzO5LpNf29LQSdQyLSIVqDeSIVeM0/8RG3izfRaR/97yfngoK7cBSjMwe4g/QDl7GzUyjvCQJqoiySJYdtXZB0VafJganyZ8cFVkRzydd/BUODdWx6nOjNSlJwx1mzONm7suyoJ6vVZtUug6sDu4=
-  #   api: https://api.cloud.gov
-  #   organization: 18f-ACQ
-  #   space: production
-  #   manifest: manifest.yml
-  #   on:
-  #     branch: master
 script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
 after_success:
   - codecov
