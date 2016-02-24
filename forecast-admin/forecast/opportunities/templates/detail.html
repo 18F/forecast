@@ -7,14 +7,22 @@
 
 {% block content %}
 
-<div class="usa-width-two-thirds usa-offset-one-sixth"
+<div class="usa-width-two-thirds usa-offset-one-sixth">
 
-  <a href="/">< Back to all opportunities</a>
+  <a href="/" class="no_underline details-back">< Back to all opportunities</a>
 
-  <h5>{{ o.funding_agency}} | {{o.office|first}}</h5>
-  <h2 class="details-header">Details</h2>
+  <div class="details-description">
+    <p class="usa-text-small details-breadcrumb">
+      <span>{{ o.funding_agency}} </span>
+      <span class="h3">|</span>
+      <span> {{o.office|first}}</span>
+    </p>
+    <h2 class="details-header">{{ o.description }} <small> (#{{ id }})</small></h2>
+
+  </div>
+
+  <h3 class="details-table_header">Details</h3>
   <hr />
-  <p></p>
   <table class="usa-table-borderless details-table">
     <tbody>
       <tr>
@@ -93,7 +101,8 @@
 
     </tbody>
   </table>
-  <h2>Contact Information</h2>
+  <h3 class="details-table_header">Contact Information</h3>
+  <hr />
   <table class="usa-table-borderless details-table">
     <tr>
       <td scope="row">Point of Contact<br />(Name)</td>
@@ -111,7 +120,7 @@
     </tr>
     <tr>
       <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
-      <td><address>{{ o.osbu_advisor.0 }}, <a href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
+      <td><address>{{ o.osbu_advisor.0 }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
     </tr>
       <tr>
         <td scope="row">Additional Information</td>

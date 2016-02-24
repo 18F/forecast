@@ -1,6 +1,6 @@
 .usa-grid {
 	padding: $base-padding;
-	padding-top: $grid-margins;
-	padding-bottom: $grid-margins;
+	padding-top: ($base-padding * 2);
+	padding-bottom: ($base-padding * 2);
 }
 

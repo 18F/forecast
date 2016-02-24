@@ -1,6 +1,6 @@
 table {
   border-spacing: 0;
-  margin: 2em 0;
+  margin: $base-padding 0;
   min-width: 100%;
 
   thead {
@@ -15,7 +15,7 @@ table {
 
   th, td {
     border: 1px solid $color-gray;
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 }
 
@@ -38,25 +38,4 @@ table {
   }
 }
 
-.table-detail {
-  font-family: $font-sans;
 
-  tr {
-
-  }
-
-  td {
-    border: none;
-    vertical-align: top;
-  }
-
-  td:first-of-type {
-    font-weight: 600;
-    min-width: 200px;
-    padding-left: 0;
-  }
-
-  td:last-of-type {
-    padding-right: 0;
-  }
-}

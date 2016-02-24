@@ -17,7 +17,11 @@ p {
 
 a {
   color: $color-primary;
-  text-decoration: none;
+  text-decoration: underline;
+
+  &.no_underline {
+    text-decoration: none;
+  }
 
   &:hover,
   &:active {
@@ -33,6 +37,7 @@ a {
     box-shadow: $focus-shadow;
     outline: 0;
   }
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -84,27 +89,33 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-h1 {
+h1,
+.h1 {
   @include h1();
 }
 
-h2 {
+h2,
+.h2 {
   @include h2();
 }
 
-h3 {
+h3,
+.h3 {
   @include h3();
 }
 
-h4 {
+h4,
+.h4 {
   @include h4();
 }
 
-h5 {
+h5,
+.h5 {
   @include h5();
 }
 
-h6 {
+h6,
+.h6 {
   @include h6();
 }
 
