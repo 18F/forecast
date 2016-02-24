@@ -34,3 +34,20 @@
 .form-group-dropdown {
   margin-left: -30px !important;
 }
+
+.pagination-menu {
+  border-top: 2px solid;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.paginationTop, .paginationBottom {
+  margin: auto;
+}
+
+.paginationTop > li,
+.paginationBottom > li {
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  margin: 0px;
+}
