@@ -28,7 +28,7 @@
 @import 'elements/labels';
 
 
-// Layout
+// Layout -------------- //
 @import 'layout/grid-overrides';
 
 
@@ -43,6 +43,11 @@
 @import 'components/search';
 @import 'components/alerts';
 @import 'components/accordions';
+
+
+// Blocks -------------- //
+
+@import 'blocks/details';
 
 // Custom -------------- //
 

@@ -1,20 +1,31 @@
 {% extends "layout.html" %}
 {% load humanize %}
+{% load filters %}
 {% load static from staticfiles %}
 
 {% block page_title %}{{ o.description }}<small> (#{{ id }})</small>{% endblock %}
 
 {% block content %}
+
+<div class="usa-width-two-thirds usa-offset-one-sixth"
+
   <a href="/">< Back to all opportunities</a>
 
   <h5>{{ o.funding_agency}} | {{o.office|first}}</h5>
-  <h2>Details</h2>
+  <h2 class="details-header">Details</h2>
+  <hr />
   <p></p>
-  <table class="usa-table-borderless table-detail">
+  <table class="usa-table-borderless details-table">
     <tbody>
       <tr>
         <td scope="row">Place of Performance</td>
-        <td>{{ o.place_of_performance_city }}, {{ o.place_of_performance_state }}</td>
+        <td>{% if o.place_of_performance_city %}
+          {{ o.place_of_performance_city }}, {% if o.place_of_performance_state %}
+            {{ o.place_of_performance_state }}
+          {% endif %}{% else %}
+            {{ o.place_of_performance_state|default:"–"}}
+          {% endif %}
+          </td>
       </tr>
       <tr>
         <td scope="row">Region</td>
@@ -83,22 +94,30 @@
     </tbody>
   </table>
   <h2>Contact Information</h2>
-  <table class="usa-table-borderless table-detail">
+  <table class="usa-table-borderless details-table">
     <tr>
       <td scope="row">Point of Contact<br />(Name)</td>
       <td>{{ o.point_of_contact_name }}</td>
     </tr>
     <tr>
       <td scope="row">Point of Contact<br />(Email Address)</td>
-      <td>{{ o.point_of_contact_email }}</td>
+      <td>
+        {% if o.fedbizopps_link %}
+          <a href="mailto:{{ o.point_of_contact_email }}">{{ o.point_of_contact_email }}</a>
+        {% else %}
+          –
+        {% endif %}
+      </td>
     </tr>
     <tr>
       <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
-      <td>{{ o.osbu_advisor.0 }}, {{ o.osbu_advisor.1 }}, {{ o.osbu_advisor.2 }}</td>
+      <td><address>{{ o.osbu_advisor.0 }}, <a href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
     </tr>
       <tr>
         <td scope="row">Additional Information</td>
         <td>{{ o.additional_information|default:"–" }}</td>
       </tr>
   </table>
+</div>
+
 {% endblock %}
