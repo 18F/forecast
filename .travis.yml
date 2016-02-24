@@ -1,8 +1,8 @@
 sudo: required
 language: python
 python:
-  - "3.4"
-  - "3.5"
+- '3.4'
+- '3.5'
 env:
   global:
   - CF_APP=forecast-staging
@@ -10,19 +10,20 @@ env:
   - CF_USERNAME=18f-acq_deployer
   - CF_ORGANIZATION=18f-ACQ
   - CF_SPACE=staging
-  - secure: DzPPzHOaFRupCn2M91YXAbF3KUhjTNQsaZTL6wTz5C6505yPPWXLeobsjOnfBNqTSAZqAEhX3cfnt78QibNbmF7KkznpK1g0xoRxTvatiBrfq1sM/dEaz+vSJfV27fX+77P9W2vyJldEPgKPhlRIorGuePnBLPjc65P29UB4JvUyQ/eLuJFn6y6GnZaf1kJSc68FuB436Edp+8JqTuSysMO0bRZ9xC0aWPOTU9EZnQIcVNK+hkuxnMi2avaFcFH91PGH+qAgU2Jz+2WG8tnx4ybf8+YoMH44z4oJJSHqaiTKCONiG6+Uat7xkYsWeSGQh5ekNskelvjuB88g2SujjRJYZHZ/QqOzYOtbAOt51dpGeLbwzkja0cbmvUBwVSQnx0JIe42VBFujBFqtdRuNwWU+hqpkjxGOPSqFDnArcTwQfwbEigf6rGibWybPOhhD7fyni2w3sE/reV4TLHC1EvyWx2p1BwASxTejv89fqD8H0ZDxx8J5ZvR5FccAVeBCpQCWkBdpxlBhzCB4pZwIY+lSzO5LpNf29LQSdQyLSIVqDeSIVeM0/8RG3izfRaR/97yfngoK7cBSjMwe4g/QDl7GzUyjvCQJqoiySJYdtXZB0VafJganyZ8cFVkRzydd/BUODdWx6nOjNSlJwx1mzONm7suyoJ6vVZtUug6sDu4=
+  - secure: gqy+HoQJzArQf1YZ2EJsPAC4Is3gZlZXCHsoLYNb0H+APFiqjVqo5RvB7s8NJcwDY8uwZkL2VycGAE9vreqj2Uo1h3BXKpCuIXfNgGOAuREhV+8jlDnY8MH11CRb5pO8UY2sc7PZTasvXaYB5ESXb7bNBbrCZdG1HQ+F1kZnKKRBgsXlYrNqlA5UaQQ/gE+fXHbWUvVSM4TV7Y9tPCkUYI9wcUX/66DTfYalKfZe8u0Pg7CkSvb947dBE9NNymS2PV3gf0/xu3maHu+DU4MkinWAJvVvA1rQesoLHybUgNQkezRZP9wtmB9gpnUp1VZls4BwYVkeqTdRohSdUJKFqeRR6N7djZTkYXcdFrVGF+jRwMhQnQrlDs94D46CtgE29RYqMKAAbFNICWKtkc6PxiNdoNfZ+9wUKTyFhjW4Q+YSBbFdsbuS5XuhzP6xzhJ5ixcgXxOdAzEithHUzdOKP07fh1DTHeeUHmqU9icEj51/tPnvV2e7IMe3+nGcBeJjccRiSB2wf3/iublDSPsSb2SV7SCnZG+3AVMXdDrQ9bYd/ZPVb/PWi169HnJ4GmgQUBoOXU3hB1l1vXnzhZbZbCoHPz+TgVr34eiN1q5UXybhLu3yucxZcpVDsoB85bqFd1a6FElnn5cTA1qiXuXzdaZeAiZQFcOxOvOHKnk6R9Q=
 before_install: pip install codecov
 install: pip install -r requirements.txt
 cache:
   directories:
-    - $HOME/.cache/pip
+  - "$HOME/.cache/pip"
 before_deploy: npm install -g cf-blue-green
 deploy:
-  - provider: script
-    script: cf-blue-green-travis
-    on:
-      branch: feature/cf-deploys
-script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
+- provider: script
+  script: cf-blue-green-travis
+  on:
+    branch: feature/cf-deploys
+script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing
+  && cd ../..
 after_success:
-  - codecov
-  - coveralls
+- codecov
+- coveralls
