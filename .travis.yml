@@ -31,7 +31,7 @@ deploy:
   #   manifest: manifest.yml
   #   on:
   #     branch: master
-script: py.test --cov opportunities --cov-report term-missing
+script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing
 after_success:
   - codecov
   - coveralls
