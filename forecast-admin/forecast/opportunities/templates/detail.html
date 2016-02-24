@@ -1,17 +1,104 @@
 {% extends "layout.html" %}
+{% load humanize %}
 {% load static from staticfiles %}
 
 {% block page_title %}{{ o.description }}<small> (#{{ id }})</small>{% endblock %}
 
 {% block content %}
-  <table class="usa-table-borderless">
+  <a href="/">< Back to all opportunities</a>
+
+  <h6>{{ o.funding_agency}} | {{o.office|last}}</h6>
+  <h2>Details</h2>
+  <table class="usa-table-borderless table-detail">
     <tbody>
+      <tr>
+        <td scope="row">Place of Performance</td>
+        <td>{{ o.place_of_performance_city }}, {{ o.place_of_performance_state }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Region</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td scope="row">Award Status</td>
+        <td>{{ o.award_status }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Primary NIACS Code</td>
+        <td>{{ o.niacs }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Socioeconomic Category</td>
+        <td>{{ o.socioeconomic }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Contract Type</td>
+        <td>{{ o.contract_type }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Procurement Method</td>
+        <td>{{ o.procurement_method }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Competition Strategy</td>
+        <td>{{ o.competition_strategy }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Estimated Value</td>
+        <td>${{ o.dollar_value_min|floatformat:0|intcomma }} – {{ o.dollar_value_min|floatformat:0|intcomma }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Delivery Order Value</td>
+        <td>{{ o.delivery_order_value }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Incumbent Contractor Name<br />(if applicable)</td>
+        <td>{{ o.incumbent_name }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Contract Order Number</td>
+        <td>{{ o.delivery_order_value }}</td>
+      </tr>
+      <tr>
+        <td scope="row">New Requirement or Exercise of Option or Recompete</td>
+        <td>{{ o.new_requirement }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Estimated Award Fiscal Year and Quarter</td>
+        <td>{{ o.estimated_fiscal_year }}–{{ o.estimated_fiscal_year_quarter }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Link to Solicitation in FedBizOpps</td>
+        <td><a href="fedbizopps_link">{{ o.fedbizopps_link }}</a></td>
+      </tr>
+
       {% for key, value in o.items %}
       <tr>
         <td scope="row">{{ key }}</td>
         <td>{{ value }}</td>
       </tr>
       {% endfor %}
+
+
     </tbody>
+  </table>
+  <h2>Contact Information</h2>
+  <table class="usa-table-borderless">
+    <tr>
+      <td scope="row">Point of Contact<br />(Name)</td>
+      <td>{{ o.point_of_contact_name }}</td>
+    </tr>
+    <tr>
+      <td scope="row">Point of Contact<br />(Email Address)</td>
+      <td>{{ o.point_of_contact_email }}</td>
+    </tr>
+    <tr>
+      <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
+      <td>{{ o.osbu_advisor|first }}</td>
+    </tr>
+    <tr>
+      <td scope="row">Additional Information</td>
+      <td>{{ o.additional_information }}</td>
+    </tr>
   </table>
 {% endblock %}
