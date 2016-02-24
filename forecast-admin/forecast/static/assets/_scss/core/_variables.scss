@@ -71,8 +71,8 @@ $color-focus:                #3e94cf;
 $color-visited:              #4c2c92;
 
 
-$gray-slate: #505050;
-$white: #fff;
+$color-gray-slate: #505050;
+$color-bisque: #e9e0c7;
 
 
 // Mobile First Breakpoints
@@ -95,3 +95,7 @@ $border-radius:     rem(3px);
 $box-shadow:        0 0 2px rgba(#000, .3);
 $focus-shadow:      0 0 3px $color-focus, 0 0 7px $color-focus;
 $grid-margins:      3rem;
+
+// Assets
+
+$gsa-logo-width: 60px;

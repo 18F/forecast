@@ -1,13 +1,10 @@
-$logo-width: 60px;
-
-
 .header {
   padding-bottom: $base-padding-lite;
   padding-left: $grid-margins;
   padding-right: $grid-margins;
   padding-top: $base-padding-lite;
-  background-color: $gray-slate;
-  color: $white;
+  background-color: $color-gray-slate;
+  color: $color-white;
   font-family: $font-sans;
   display: table;
   width: 100%;
@@ -15,8 +12,8 @@ $logo-width: 60px;
 
 .header-logo,
 .header-logo_link {
-  width: $logo-width;
-  height: $logo-width;
+  width: $gsa-logo-width;
+  height: $gsa-logo-width;
   display: inline-block;
 }
 

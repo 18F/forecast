@@ -3674,7 +3674,7 @@ a.usa-label, a.usa-label-big {
   padding-right: 3rem;
   padding-top: 0.42em;
   background-color: #505050;
-  color: #fff;
+  color: #ffffff;
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   display: table;
   width: 100%; }
@@ -4001,6 +4001,18 @@ li.usa-footer-primary-content {
     .usa-footer-slim-logo-heading {
       display: inline-block;
       padding-left: 1em; } }
+
+.usa-footer-secondary_section {
+  background-color: #e9e0c7; }
+
+.usa-footer-logo-img {
+  width: 60px;
+  height: 60px; }
+
+.usa-footer-logo-heading {
+  display: inline-block;
+  padding-left: 1.25em;
+  padding-right: 1.25em; }
 
 @media screen and (min-width: 600px) {
   form {
