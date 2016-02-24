@@ -639,7 +639,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
   line-height: 1.3;
   margin-top: 1.5em;
   margin-bottom: .5em; }
@@ -662,7 +662,7 @@ h4 {
 
 h5 {
   font-size: 1.5rem;
-  font-weight: 700; }
+  font-weight: 400; }
 
 h6 {
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
@@ -1543,8 +1543,13 @@ table {
   border-left: 0;
   border-right: 0; }
 
-.table-detail td:first-of-type {
-  font-weight: 600; }
+.table-detail {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif; }
+  .table-detail td {
+    border: none;
+    vertical-align: top; }
+  .table-detail td:first-of-type {
+    font-weight: 600; }
 
 img {
   max-width: 100%; }
@@ -1602,8 +1607,8 @@ a.usa-label, a.usa-label-big {
 
 .header-logo,
 .header-logo_link {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: inline-block; }
 
 .header-logo_link {
@@ -1624,9 +1629,6 @@ a.usa-label, a.usa-label-big {
 
 .header-logo {
   vertical-align: text-bottom; }
-
-.usa-grid {
-  padding-top: 3rem; }
 
 .skipnav {
   -webkit-transition: all 0.2s ease-in-out;

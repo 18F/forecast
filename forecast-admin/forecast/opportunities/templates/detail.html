@@ -7,8 +7,9 @@
 {% block content %}
   <a href="/">< Back to all opportunities</a>
 
-  <h6>{{ o.funding_agency}} | {{o.office|last}}</h6>
+  <h5>{{ o.funding_agency}} | {{o.office|first}}</h5>
   <h2>Details</h2>
+  <p></p>
   <table class="usa-table-borderless table-detail">
     <tbody>
       <tr>
@@ -17,73 +18,72 @@
       </tr>
       <tr>
         <td scope="row">Region</td>
-        <td></td>
+        <td>{{o.office.1|default:"–"}}</td>
       </tr>
       <tr>
         <td scope="row">Award Status</td>
-        <td>{{ o.award_status }}</td>
+        <td>{{ o.award_status|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Primary NIACS Code</td>
-        <td>{{ o.niacs }}</td>
+        <td>{{ o.niacs|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Socioeconomic Category</td>
-        <td>{{ o.socioeconomic }}</td>
+        <td>{{ o.socioeconomic|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Contract Type</td>
-        <td>{{ o.contract_type }}</td>
+        <td>{{ o.contract_type|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Procurement Method</td>
-        <td>{{ o.procurement_method }}</td>
+        <td>{{ o.procurement_method|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Competition Strategy</td>
-        <td>{{ o.competition_strategy }}</td>
+        <td>{{ o.competition_strategy|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Estimated Value</td>
-        <td>${{ o.dollar_value_min|floatformat:0|intcomma }} – {{ o.dollar_value_min|floatformat:0|intcomma }}</td>
+        <td>>= ${{ o.dollar_value_min|floatformat:0|intcomma }} and < ${{ o.dollar_value_min|floatformat:0|intcomma }}</td>
       </tr>
       <tr>
         <td scope="row">Delivery Order Value</td>
-        <td>{{ o.delivery_order_value }}</td>
+        <td>{{ o.delivery_order_value|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Incumbent Contractor Name<br />(if applicable)</td>
-        <td>{{ o.incumbent_name }}</td>
+        <td>{{ o.incumbent_name|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Contract Order Number</td>
-        <td>{{ o.delivery_order_value }}</td>
+        <td>{{ o.delivery_order_value|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">New Requirement or Exercise of Option or Recompete</td>
-        <td>{{ o.new_requirement }}</td>
+        <td>{{ o.new_requirement|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Estimated Award Fiscal Year and Quarter</td>
-        <td>{{ o.estimated_fiscal_year }}–{{ o.estimated_fiscal_year_quarter }}</td>
+        <td>{{ o.estimated_fiscal_year }}–{{ o.estimated_fiscal_year_quarter }} Quarter</td>
       </tr>
       <tr>
         <td scope="row">Link to Solicitation in FedBizOpps</td>
-        <td><a href="fedbizopps_link">{{ o.fedbizopps_link }}</a></td>
+        <td>
+          {% if o.fedbizopps_link %}
+            <a href="{{ o.fedbizopps_link }}">{{ o.fedbizopps_link }}</a>
+          {% else %}
+            –
+          {% endif %}
+        </td>
       </tr>
-
-      {% for key, value in o.items %}
-      <tr>
-        <td scope="row">{{ key }}</td>
-        <td>{{ value }}</td>
-      </tr>
-      {% endfor %}
 
 
     </tbody>
   </table>
   <h2>Contact Information</h2>
-  <table class="usa-table-borderless">
+  <table class="usa-table-borderless table-detail">
     <tr>
       <td scope="row">Point of Contact<br />(Name)</td>
       <td>{{ o.point_of_contact_name }}</td>
@@ -94,11 +94,11 @@
     </tr>
     <tr>
       <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
-      <td>{{ o.osbu_advisor|first }}</td>
+      <td>{{ o.osbu_advisor.0 }}, {{ o.osbu_advisor.1 }}, {{ o.osbu_advisor.2 }}</td>
     </tr>
-    <tr>
-      <td scope="row">Additional Information</td>
-      <td>{{ o.additional_information }}</td>
-    </tr>
+      <tr>
+        <td scope="row">Additional Information</td>
+        <td>{{ o.additional_information|default:"–" }}</td>
+      </tr>
   </table>
 {% endblock %}

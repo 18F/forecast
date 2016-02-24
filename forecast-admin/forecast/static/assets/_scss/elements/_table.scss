@@ -39,8 +39,15 @@ table {
 }
 
 .table-detail {
+  font-family: $font-sans;
+
   tr {
 
+  }
+
+  td {
+    border: none;
+    vertical-align: top;
   }
 
   td:first-of-type {
