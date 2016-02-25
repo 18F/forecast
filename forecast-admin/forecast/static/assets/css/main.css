@@ -4031,6 +4031,9 @@ li.usa-footer-primary-content {
   font-weight: 400;
   padding-left: 1.25em;
   width: 75%; }
+  @media screen and (min-width: 600px) {
+    .usa-footer-logo-heading {
+      margin-bottom: 0; } }
 
 @media screen and (min-width: 600px) {
   form {
