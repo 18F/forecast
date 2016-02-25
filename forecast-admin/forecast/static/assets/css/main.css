@@ -2837,6 +2837,9 @@ p a,
   font-size: 1.3rem;
   margin-top: 0; }
 
+.fa-lg {
+  vertical-align: -5%; }
+
 ul, ol {
   margin-top: 2em;
   margin-bottom: 2em; }
@@ -3920,8 +3923,7 @@ li.usa-footer-primary-content {
 
 .usa-footer-secondary_section {
   background-color: #d6d7d9;
-  padding-top: 3rem;
-  padding-bottom: 3rem; }
+  padding: 0; }
   .usa-footer-secondary_section a {
     color: #212121; }
 
@@ -3995,7 +3997,10 @@ li.usa-footer-primary-content {
   margin-top: 2rem; }
 
 .usa-footer-contact-heading {
-  margin-top: 0; }
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-transform: uppercase; }
   @media screen and (min-width: 600px) {
     .usa-footer-contact-heading {
       margin-top: 1rem; } }
@@ -4017,6 +4022,7 @@ li.usa-footer-primary-content {
 
 .usa-footer-logo-heading {
   display: inline-block;
+  font-weight: 400;
   padding-left: 1.25em;
   padding-right: 1.25em; }
 
@@ -4341,6 +4347,9 @@ fieldset {
     margin-top: 0; }
   .usa-accordion-content > *:last-child {
     margin-bottom: 0; }
+
+.usa-social-links a {
+  display: inline-block; }
 
 .detail-label {
   font-weight: bold; }

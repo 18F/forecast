@@ -160,10 +160,7 @@ li.usa-footer-primary-content {
 
 .usa-footer-secondary_section {
   background-color: $color-gray-lighter;
-  padding: {
-    top: 3rem;
-    bottom: 3rem;
-  }
+  padding: 0;
 
   a {
     color: $color-base;
@@ -272,7 +269,10 @@ li.usa-footer-primary-content {
 }
 
 .usa-footer-contact-heading {
+  font-weight: $font-normal;
+  margin-bottom: 0;
   margin-top: 0;
+  text-transform: uppercase;
 
   @include media($medium-screen) {
     margin-top: 1rem;
@@ -302,6 +302,7 @@ li.usa-footer-primary-content {
 
 .usa-footer-logo-heading {
   display: inline-block;
+  font-weight: $font-normal;
   padding-left: $base-padding;
   padding-right: $base-padding;
 }
