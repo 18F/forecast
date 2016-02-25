@@ -17,6 +17,7 @@ from django.core.exceptions import ValidationError
 from django.core.management import call_command
 from opportunities.management.commands.load_opportunities import OpportunitiesLoader
 
+from django.template import Context, Template
 
 class OfficeTestCase(TestCase):
     # Create your tests here.
@@ -138,3 +139,15 @@ class ImporterTestCase(TestCase):
         self.assertEquals(parse_advisor('Different Fakeperson, 555-555-5555 different.fakeperson@gsa.gov'),
             ['Different Fakeperson', '555-555-5555', 'different.fakeperson@gsa.gov'])
         self.assertIsNone(parse_advisor('TBD'))
+
+class CutTests(TestCase):
+
+    TEMPLATE = Template("{% load filters %} {{ '123-456-7890'|cut:'-' }}")
+
+    def setUp(self):
+        self.entry = '1234567890'
+
+    def test_cut(self):
+        rendered = self.TEMPLATE.render(Context({}))
+        self.assertIn(self.entry, rendered)
+

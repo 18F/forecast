@@ -17,6 +17,7 @@ $lead-line-height:    1.7;
 $font-sans:           'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
 $font-serif:          'Merriweather', 'Georgia', 'Times New Roman', serif;
 
+$font-light:          200;
 $font-normal:         400;
 $font-bold:           700;
 
@@ -56,7 +57,7 @@ $color-gold-light:           #f9c642; //  lighten($color-gold, 20%)
 $color-gold-lighter:         #fad980; //  lighten($color-gold, 60%)
 $color-gold-lightest:        #fff1d2; //  lighten($color-gold, 83%)
 
-$color-green:                #2e8540;  
+$color-green:                #2e8540;
 $color-green-light:          #4aa564; // lighten($color-green, 20%)
 $color-green-lighter:        #94bfa2; // lighten($color-green, 60%)
 $color-green-lightest:       #e7f4e4; // lighten($color-green, 60%)
@@ -70,11 +71,20 @@ $color-focus:                #3e94cf;
 $color-visited:              #4c2c92;
 
 
+$color-gray-slate: #505050;
+$color-bisque: #e9e0c7;
+
+
 // Mobile First Breakpoints
 $small-screen:      481px;
 $medium-screen:     600px;
 $large-screen:      1201px;
 
+// Padding
+$base-padding: 1.25em;
+$base-padding-lite: 0.42em;
+$base-padding-sliver: ($base-padding-lite / 2);
+$base-padding-large: 2.85em;
 
 // Magic Numbers
 $text-max-width:    53rem;
@@ -86,3 +96,7 @@ $border-radius:     rem(3px);
 $box-shadow:        0 0 2px rgba(#000, .3);
 $focus-shadow:      0 0 3px $color-focus, 0 0 7px $color-focus;
 $grid-margins:      3rem;
+
+// Assets
+
+$gsa-logo-width: 60px;

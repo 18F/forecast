@@ -17,9 +17,13 @@ p {
 
 a {
   color: $color-primary;
-  text-decoration: none;
+  text-decoration: underline;
 
-  &:hover, 
+  &.no_underline {
+    text-decoration: none;
+  }
+
+  &:hover,
   &:active {
     color: $color-primary-darker;
     text-decoration: underline;
@@ -33,11 +37,12 @@ a {
     box-shadow: $focus-shadow;
     outline: 0;
   }
+
 }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  font-family: $font-serif;
+  font-family: $font-sans;
   line-height: $heading-line-height;
   margin: {
     top: 1.5em;
@@ -45,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-// Create heading mixins 
+// Create heading mixins
 
 @mixin title {
   font-size: $title-font-size;
@@ -74,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @mixin h5 {
   font-size: $h5-font-size;
-  font-weight: $font-bold;
+  font-weight: $font-normal;
 }
 
 @mixin h6 {
@@ -84,35 +89,41 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-h1 {
+h1,
+.h1 {
   @include h1();
 }
 
-h2 {
+h2,
+.h2 {
   @include h2();
 }
 
-h3 {
+h3,
+.h3 {
   @include h3();
 }
 
-h4 {
+h4,
+.h4 {
   @include h4();
 }
 
-h5 {
+h5,
+.h5 {
   @include h5();
 }
 
-h6 {
-  @include h6(); 
+h6,
+.h6 {
+  @include h6();
 }
 
 // Remove user agent styles
 
-cite, 
-var, 
-address, 
+cite,
+var,
+address,
 dfn {
  font-style: normal;
 }
@@ -122,14 +133,14 @@ dfn {
 .usa-content {
   p {
     max-width: $text-max-width;
-  }  
+  }
 }
 
 .usa-content-list {
   max-width: $text-max-width;
 }
 
-p, 
+p,
 .usa-content-list {
   a {
     text-decoration: underline;
@@ -137,18 +148,18 @@ p,
 }
 
 .usa-sans {
-  p, 
-  a, 
-  li, 
+  p,
+  a,
+  li,
   span {
     font-family: $font-sans;
   }
 }
 
 .usa-serif {
-  p, 
-  a, 
-  li, 
+  p,
+  a,
+  li,
   span {
     font-family: $font-serif;
   }
@@ -207,7 +218,7 @@ p,
 
   a {
     color: $color-gray-lighter;
-    
+
     &:hover {
       color: $color-white;
     }
@@ -217,4 +228,8 @@ p,
 .usa-text-small {
   font-size: $h6-font-size;
   margin-top: 0;
+}
+
+.fa-lg {
+  vertical-align: -5%;
 }
