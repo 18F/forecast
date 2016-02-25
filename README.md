@@ -25,7 +25,8 @@ Then, install and run the project with:
 git clone https://github.com/18F/forecast.git && cd forecast   # Clone the repository
 virtualenv .env   # Create a virtualenv
 source .env/bin/activate   # Activate virtualenv
-cd forecast-admin/forecast && pip install -r requirements.txt   # Install dependencies
+pip install -r requirements.txt   # Install dependencies
+cd forecast-admin/forecast
 ./manage.py collectstatic --noinput  
 sass static/assets/_scss/all.scss static/assets/css/main.css
 ./manage.py migrate

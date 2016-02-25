@@ -1,0 +1,9 @@
+---
+# all applications use these settings and services
+memory: 512M
+instances: 1
+applications:
+- name: forecast-staging
+  path: .
+  timeout: 180
+domain: 18f.gov

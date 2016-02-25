@@ -1,1 +1,1 @@
-api: cd forecast-admin/forecast && ./manage.py collectstatic --noinput && sass static/assets/_scss/all.scss static/assets/css/main.css && ./manage.py migrate && waitress-serve --port=$VCAP_APP_PORT forecast.wsgi:application
+web: cd forecast-admin/forecast && ./manage.py migrate && ./manage.py collectstatic --noinput && ./manage.py createcachetable && ./manage.py load_opportunities && waitress-serve --port=$PORT forecast.wsgi:application
