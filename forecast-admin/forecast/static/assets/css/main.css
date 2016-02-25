@@ -3986,6 +3986,12 @@ li.usa-footer-primary-content {
     margin: 0;
     padding: 2rem 0; } }
 
+.usa-footer-logo {
+  margin-bottom: 1.25em; }
+  @media screen and (min-width: 600px) {
+    .usa-footer-logo {
+      margin-bottom: 0; } }
+
 .usa-footer-logo-img {
   max-width: 14rem; }
 
@@ -4024,7 +4030,7 @@ li.usa-footer-primary-content {
   display: inline-block;
   font-weight: 400;
   padding-left: 1.25em;
-  padding-right: 1.25em; }
+  width: 75%; }
 
 @media screen and (min-width: 600px) {
   form {
@@ -4347,6 +4353,9 @@ fieldset {
     margin-top: 0; }
   .usa-accordion-content > *:last-child {
     margin-bottom: 0; }
+
+.usa-social-links {
+  margin-bottom: 0.42em; }
 
 .usa-social-links a {
   display: inline-block; }
