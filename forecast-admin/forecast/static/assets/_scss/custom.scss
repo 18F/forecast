@@ -25,6 +25,34 @@
 .usa-search-submit-text {
   font-size: $h3-font-size;
 }
+
+.opportunity-row {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 1.5em;
+}
+
+.office {
+  border-top: 2px solid !important;
+  padding-top: 1em;
+}
+
+.opportunity-row-alternate {
+  background-color: $color-gray-lightest;
+}
+
+.description{
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#results li:before {
+  content: "";
+}
+
+.usa-search-submit-text {
+  font-size: $h3-font-size;
+}
 .usa-heading-small {
   font-weight: 600;
   margin-bottom: -20px;
