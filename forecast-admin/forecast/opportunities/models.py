@@ -17,8 +17,8 @@ class OfficeManager(models.Manager):
 class Office(models.Model):
     objects = OfficeManager()
 
-    organization = models.CharField(max_length=100)
-    region = models.CharField(max_length=100)
+    organization = models.CharField(max_length=100, blank=False)
+    region = models.CharField(max_length=100, blank=False)
 
     def natural_key(self):
         return (self.organization, self.region)
@@ -260,25 +260,29 @@ class Opportunity(models.Model):
         ("Region 6", "Region 6"),
         ("Region 7", "Region 7"),
         ("Region 8", "Region 8"),
-        ("Region 9", "Region 9")
+        ("Region 9", "Region 9"),
+        ("Region 10", "Region 10"),
+        ("National Capital Region", "National Capital Region"),
+        ("Central Office", "Central Office")
     )
     STATES = US_STATES+NON_STATE_OPTIONS
 
     office = models.ForeignKey(Office, blank=True, null=True)
     award_status = models.CharField(max_length=50, default="Planning",
-                                    choices=AWARD_STATUS_CHOICES)
+                                    choices=AWARD_STATUS_CHOICES, blank=False)
     description = models.CharField("Product or Service Description",
-                                   max_length=400)
+                                   max_length=400, blank=False)
     place_of_performance_city = models.CharField(max_length=100,
-                                                 default="Washington")
+                                                 default="Washington", blank=False)
     place_of_performance_state = models.CharField(max_length=100,
-                                                  choices=STATES, default="DC")
+                                                  choices=STATES, default="DC",
+                                                  blank=False)
     naics = models.CharField("Primary NAICS Code",
-                             max_length=6, blank=True, null=True,
+                             max_length=6, blank=False, null=True,
                              validators=[validate_NAICS])
     socioeconomic = models.CharField("Socioeconomic Category", max_length=100,
                                      choices=SOCIOECONOMIC_CHOICES,
-                                     default="To Be Determined")
+                                     default="To Be Determined", blank=False)
     procurement_method = models.CharField("Procurement Method", max_length=200,
                                           choices=PROCUREMENT_METHOD_CHOICES,
                                           default="To Be Determined")
@@ -289,11 +293,11 @@ class Opportunity(models.Model):
                                             choices=COMPETITION_CHOICES,
                                             default="To Be Determined")
     dollar_value_min = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=16, blank=True, null=True,
+                                    max_digits=16, blank=False, null=True,
                                     validators=[RegexValidator(regex="\d*(\.\d\d)?",
                                         message="Please enter a dollar value.")])
     dollar_value_max = models.DecimalField(max_length=200, decimal_places=2,
-                                    max_digits=16, blank=True, null=True)
+                                    max_digits=16, blank=False, null=True)
     including_options = models.BooleanField(default=False)
     delivery_order_value = models.CharField(max_length=200,
                                             blank=True, null=True)
@@ -301,24 +305,24 @@ class Opportunity(models.Model):
                                       max_length=400, blank=True, null=True)
     new_requirement = models.CharField(max_length=200,
                                        choices=NEW_REQUIREMENT_CHOICES,
-                                       default="To Be Determined")
+                                       default="To Be Determined", blank=False)
     funding_agency = models.CharField(max_length=200,
                                       choices=FUNDING_AGENCY_CHOICES,
-                                      default="To Be Determined")
-    estimated_solicitation_date = models.DateField(blank=True, null=True)
+                                      default="To Be Determined", blank=False)
+    estimated_solicitation_date = models.DateField(blank=False, null=True)
     fedbizopps_link = models.CharField(max_length=200, blank=True, null=True)
     estimated_fiscal_year = models.IntegerField(default=2016,
-                                                choices=FISCAL_YEARS)
+                                                choices=FISCAL_YEARS, blank=False)
     estimated_fiscal_year_quarter = models.CharField(max_length=50,
         default="To Be Determined", choices=FISCAL_QUARTERS
     )
     # Note: This can probably get split out into another model
     point_of_contact_name = models.CharField(max_length=200,
-                                             blank=True, null=True)
+                                             blank=False, null=True)
     point_of_contact_email = models.EmailField(max_length=200,
-                                               blank=True, null=True)
+                                               blank=False, null=True)
     point_of_contact_phone = PhoneNumberField(blank=True, null=True)
-    osbu_advisor = models.ForeignKey(OSBUAdvisor, blank=True, null=True,
+    osbu_advisor = models.ForeignKey(OSBUAdvisor, blank=False, null=True,
                                     verbose_name="OSBU Advisor")
     additional_information = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
