@@ -22,7 +22,7 @@ deploy:
   script: cf-blue-green-travis
   on:
     branch: feature/cf-deploys
-script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing
+script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
 after_success:
 - codecov
 - coveralls
