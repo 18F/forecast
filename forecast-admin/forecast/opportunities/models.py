@@ -15,10 +15,25 @@ class OfficeManager(models.Manager):
         return self.get(id=office_id)
 
 class Office(models.Model):
+    REGIONS = (
+        ("Region 1", "Region 1"),
+        ("Region 2", "Region 2"),
+        ("Region 3", "Region 3"),
+        ("Region 4", "Region 4"),
+        ("Region 5", "Region 5"),
+        ("Region 6", "Region 6"),
+        ("Region 7", "Region 7"),
+        ("Region 8", "Region 8"),
+        ("Region 9", "Region 9"),
+        ("Region 10", "Region 10"),
+        ("National Capital Region", "National Capital Region"),
+        ("Central Office", "Central Office")
+    )
+
     objects = OfficeManager()
 
     organization = models.CharField(max_length=100, blank=False)
-    region = models.CharField(max_length=100, blank=False)
+    region = models.CharField(max_length=100, blank=False, choices=REGIONS)
 
     def natural_key(self):
         return (self.organization, self.region)
