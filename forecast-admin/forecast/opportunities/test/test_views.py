@@ -2,6 +2,7 @@ from django.test import TestCase, RequestFactory
 from django.core.urlresolvers import reverse
 from opportunities.views import home
 
+
 class ViewsTests(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
