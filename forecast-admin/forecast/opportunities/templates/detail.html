@@ -37,7 +37,7 @@
       </tr>
       <tr>
         <td scope="row">Region</td>
-        <td>{{o.office.1|default:"–"}}</td>
+        <td>{{ o.office.1|default:"–" }}</td>
       </tr>
       <tr>
         <td scope="row">Award Status</td>
@@ -65,7 +65,17 @@
       </tr>
       <tr>
         <td scope="row">Estimated Value</td>
-        <td>>= ${{ o.dollar_value_min|floatformat:0|intcomma }} and < ${{ o.dollar_value_min|floatformat:0|intcomma }}</td>
+        <td>
+          {% if o.dollar_value_min %}
+            >= ${{ o.dollar_value_min|floatformat:0|intcomma }}
+          {% endif %}
+          {% if o.dollar_value_min and o.dollar_value_max %}
+            and
+          {% endif %}
+          {% if o.dollar_value_max %}
+            < ${{ o.dollar_value_max|floatformat:0|intcomma }}
+          {% endif %}
+        </td>
       </tr>
       <tr>
         <td scope="row">Delivery Order Value</td>
