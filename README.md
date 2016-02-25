@@ -25,14 +25,17 @@ Then, install and run the project with:
 git clone https://github.com/18F/forecast.git && cd forecast   # Clone the repository
 virtualenv .env   # Create a virtualenv
 source .env/bin/activate   # Activate virtualenv
-cd forecast-admin/forecast && pip install -r requirements.txt   # Install dependencies
+pip install -r requirements.txt   # Install dependencies
+cd forecast-admin/forecast
 ./manage.py collectstatic --noinput  
 sass static/assets/_scss/all.scss static/assets/css/main.css
 ./manage.py migrate
+./manage.py createcachetable
+./manage.py load_opportunities
 waitress-serve --port=8000 forecast.wsgi:application
 ```
 
-To load existing offices and opportunities from a CSV, run:
+To load existing offices and opportunities from a CSV other than the default file `forecast/data/fy16q1.csv` in `forecast/forecast-admin/forecast/opportunities/management/commands`, run:
 
 ```bash
 ./manage.py load_opportunities -f [path/to/csv]

@@ -1,17 +1,142 @@
 {% extends "layout.html" %}
+{% load humanize %}
+{% load filters %}
 {% load static from staticfiles %}
 
 {% block page_title %}{{ o.description }}<small> (#{{ id }})</small>{% endblock %}
 
 {% block content %}
-  <table class="usa-table-borderless">
+
+<div class="usa-width-two-thirds usa-offset-one-sixth">
+
+  <a href="/" class="no_underline details-back"><icon class="fa fa-angle-left fa-lg"></icon> Back to all opportunities</a>
+
+  <div class="details-description">
+    <p class="usa-text-small details-breadcrumb">
+      <span>{{ o.funding_agency}} </span>
+      <span class="h3">|</span>
+      <span> {{o.office|first}}</span>
+    </p>
+    <h2 class="details-header">{{ o.description }} <small> (#{{ id }})</small></h2>
+
+  </div>
+
+  <h3 class="details-table_header">Details</h3>
+  <hr />
+  <table class="usa-table-borderless details-table">
     <tbody>
-      {% for key, value in o.items %}
       <tr>
-        <td scope="row">{{ key }}</td>
-        <td>{{ value }}</td>
+        <td scope="row">Place of Performance</td>
+        <td>{% if o.place_of_performance_city %}
+          {{ o.place_of_performance_city }}, {% if o.place_of_performance_state %}
+            {{ o.place_of_performance_state }}
+          {% endif %}{% else %}
+            {{ o.place_of_performance_state|default:"–"}}
+          {% endif %}
+          </td>
       </tr>
-      {% endfor %}
+      <tr>
+        <td scope="row">Region</td>
+        <td>{{ o.office.1|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Award Status</td>
+        <td>{{ o.award_status|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Primary NIACS Code</td>
+        <td>{{ o.niacs|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Socioeconomic Category</td>
+        <td>{{ o.socioeconomic|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Contract Type</td>
+        <td>{{ o.contract_type|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Procurement Method</td>
+        <td>{{ o.procurement_method|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Competition Strategy</td>
+        <td>{{ o.competition_strategy|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Estimated Value</td>
+        <td>
+          {% if o.dollar_value_min %}
+            >= ${{ o.dollar_value_min|floatformat:0|intcomma }}
+          {% endif %}
+          {% if o.dollar_value_min and o.dollar_value_max %}
+            and
+          {% endif %}
+          {% if o.dollar_value_max %}
+            < ${{ o.dollar_value_max|floatformat:0|intcomma }}
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">Delivery Order Value</td>
+        <td>{{ o.delivery_order_value|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Incumbent Contractor Name<br />(if applicable)</td>
+        <td>{{ o.incumbent_name|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Contract Order Number</td>
+        <td>{{ o.delivery_order_value|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">New Requirement or Exercise of Option or Recompete</td>
+        <td>{{ o.new_requirement|default:"–" }}</td>
+      </tr>
+      <tr>
+        <td scope="row">Estimated Award Fiscal Year and Quarter</td>
+        <td>{{ o.estimated_fiscal_year }}–{{ o.estimated_fiscal_year_quarter }} Quarter</td>
+      </tr>
+      <tr>
+        <td scope="row">Link to Solicitation in FedBizOpps</td>
+        <td>
+          {% if o.fedbizopps_link %}
+            <a href="{{ o.fedbizopps_link }}">{{ o.fedbizopps_link }}</a>
+          {% else %}
+            –
+          {% endif %}
+        </td>
+      </tr>
+
+
     </tbody>
   </table>
+  <h3 class="details-table_header">Contact Information</h3>
+  <hr />
+  <table class="usa-table-borderless details-table">
+    <tr>
+      <td scope="row">Point of Contact<br />(Name)</td>
+      <td>{{ o.point_of_contact_name }}</td>
+    </tr>
+    <tr>
+      <td scope="row">Point of Contact<br />(Email Address)</td>
+      <td>
+        {% if o.fedbizopps_link %}
+          <a href="mailto:{{ o.point_of_contact_email }}">{{ o.point_of_contact_email }}</a>
+        {% else %}
+          –
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
+      <td><address>{{ o.osbu_advisor.0 }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
+    </tr>
+      <tr>
+        <td scope="row">Additional Information</td>
+        <td>{{ o.additional_information|default:"–" }}</td>
+      </tr>
+  </table>
+</div>
+
 {% endblock %}

@@ -97,7 +97,7 @@ class OpportunitiesLoader(object):
             description=row[3],
             place_of_performance_city=row[4],
             place_of_performance_state=row[5],
-            naics=row[6],
+            naics=cls.parse_socioeconomic(row[6]),
             socioeconomic=row[7],
             contract_type=row[8],
             procurement_method=row[9],
@@ -213,6 +213,13 @@ class OpportunitiesLoader(object):
             return adv
         except:
             return None
+
+    @staticmethod
+    def parse_socioeconomic(s):
+        if len(s) == 6:
+            return s
+        else:
+            return s[0:5]
 
     @classmethod
     def insert_office(cls, organization, region, replace=True):

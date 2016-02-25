@@ -1,22 +1,32 @@
+sudo: required
 language: python
 python:
-  - "3.4"
-  - "3.5"
-before_install: pip install codecov
-install: cd forecast-admin/forecast && pip install -r requirements.txt
+- '3.4'
+- '3.5'
+env:
+  global:
+  - CF_APP=forecast-staging
+  - CF_API=https://api.cloud.gov
+  - CF_USERNAME=18f-acq_deployer
+  - CF_ORGANIZATION=18f-ACQ
+  - CF_SPACE=staging
+  - secure: EgWok9RXCDkQEfTf++xwdxLlqx9tZWQbUQ6MsmuHgc3Sqe+KKbDDD6r/viSiAfeKhrHGYUauTEKf2BbUS4cEvfCVDH5Xa1LbwHHJ8SK6kuJPNAQpghxjoxMlMS/lXNoPk13Q04dbfIUnvelloUf3Ya+LhaJJLyBFukfNj7vYh9jLWu/C7SUD59xxOWcEQk+rt6Qr5hV+lEno18Cp5dG2NOAI8331dWdk2MYg0q/JGKiSA60k9bkh/gy//7qSE2E9FNVKf4xUexK82tNknHGBu5QqzcfBdoOiP/pYmUkNJp6/iqcGUORf0Eq+Bg20UrsJFIE2z4aMfGES3LpUh43l8WTEyYJ2DkL9VZJujLKYmcc00DjhAnH6Y+GKQZaE2i7vjOsmrhOAoATCQpT+3/Ll1IScLFSt09UWNFcfPioKQ/bjw1ryerz23rXjf6IhojroXqRTGSwzBNiziilQ1xQXUlqnFK502dR4j8FM7LlWPSt9bldzTqe/ULLaqp8Xi7ezsVQ2E/z2xHTmglRbEH73CvyrVtzChsZ7hhUGe8jd/KkExuDszDG2aSTybYpBmPNcBCqYv5MPCt/vKauXL8DV/Xp7g2CmbKIGsZxzp0ioTLQFCFz8Sfpzb8zHKezbqD61zq+VJ5wNcRdpf8rNLr6FdRiKZqksLWeQ8E3tRGMy5A8=
+addons:
+  postgresql: "9.4"
+before_install:
+- pip install codecov
+- psql -c 'create database "forecast-test";' -U postgres
+install: pip install -r requirements.txt
 cache:
   directories:
-    - $HOME/.cache/pip
-# deploy:
-#   edge: true
-#   provider: cloudfoundry
-#   username: vladlen.zvenyach@gsa.gov
-#   password:
-#     secure: TA4nWCJE/92wYnCa4t0Rg7ev31GQ8RUDCrDoZENd9bNGzmztke6w3CICGOwAmwv/lqEw5QHSKDKAFmpSivP80Ojvhu7WerPEFiTIDosySxuMeRQkFBxaXxusT5OuTGC44kTuJSCBTR2fknbe0hl1kBuSrNMZ/wKRjtwv7Jzy5nUvfUTLm/JoJ3y0nMDLcinhFnEQ/8Hx2Up3zc3Q8J5ISePpRgvG4gCnvs1OZ949G7OyzDqKilBh+CPRLzrMEHuvfCSQyvjPdt+OAwPMPctppXs1IBUBd84XwUlTvFItartVWL1iTyChCnlVNX8NfMJAkDHxgyE42Bz9I7CXbkJkCLv2Ct9ArzOaKl4bpTpgc7cjjObgaSwL6U52KDkWddYHcS96+28vJ5bPtKCXDi68kVn+yHw4Z592L4VEv9Qx+PNdabl7dbh4GBhtENR4srryGFkpT49dvmGTwTpJfAwqYXN+RdZy1O8tVexExavFDllo4TCYOsZwFfVwYUu72KeMO4hIZFKK/frpaZ+WD0+yrfbjBcebHfTRY692b9qBQB/pIEOnnBS3PG0R+HnsHuYLWaURTnmWbiOD3er2hjKdhJQZrEpHTQIBJ/BQ8y/uKXPgV50arTaLGGwonZ6xRNoKcghwCu2DODxvSq0ESHaufb806xolCPRo3WjnSnBdhQI=
-#   api: https://api.cloud.gov
-#   organization: sandbox
-#   space: vladlen.zvenyach
-script: py.test --cov opportunities --cov-report term-missing
+  - "$HOME/.cache/pip"
+before_deploy: npm install -g cf-blue-green
+deploy:
+- provider: script
+  script: cf-blue-green-travis
+  on:
+    branch: feature/cf-deploys
+script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
 after_success:
-  - codecov
-  - coveralls
+- codecov
+- coveralls
