@@ -27,6 +27,15 @@ def details(request, id):
     opportunity = json.loads(opportunity)
     return render(request, 'detail.html', {'o': opportunity[0]["fields"],'id': opportunity[0]["pk"]})
 
+class OpportunityFilter(django_filters.FilterSet):
+    """
+    Filters available when calling the API endpoint
+    """
+    description = django_filters.CharFilter(lookup_type='icontains')
+    class Meta:
+        model = Opportunity
+        fields = ['socioeconomic','place_of_performance_state','naics','description',
+                    'estimated_fiscal_year_quarter', 'dollar_value_min', 'dollar_value_max']
 
 class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -35,7 +44,7 @@ class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Opportunity.objects.all().filter(published=True)
     serializer_class = OpportunitySerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('socioeconomic','place_of_performance_state','naics')
+    filter_class = OpportunityFilter
 
 
 class OfficeViewSet(viewsets.ReadOnlyModelViewSet):

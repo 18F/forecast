@@ -11,7 +11,7 @@
       <button type="button" id="filter-button" class="usa-search usa-search-submit" data-sort="description naics">
         <span class="usa-search-submit-text">Search</span>
       </button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="download-spreadsheet"><a href="api/opportunities/?format=json&count=10">Download Spreadsheet</a></span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="download-spreadsheet"><a href="api/opportunities/?format=csv">Download Spreadsheet</a></span>
     </div>
   </form>
 
@@ -99,6 +99,8 @@
   };
   var listObj = new List('opportunities', listOptions)
   var data = {}
+  var queries = {}
+  var urlStem = "api/opportunities/?format=csv"
 
   /**
    *Initializes the More/Fewer Filters
@@ -110,6 +112,25 @@
     $("#award_amount-dropdown").parent().toggle();
     $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
   });
+
+  // A function to check whether an item matches any active filters
+  var filterCheck = function (item, queries) {
+    shouldReturn = true;
+    _.each(_.keys(queries), function (key) {
+      if (key === 'description') {
+        if (item.values()[key].indexOf(queries[key]) < 0) {
+          shouldReturn = false;
+          return shouldReturn;
+        }
+      } else {
+        if (item.values()[key] != queries[key]) {
+          shouldReturn = false;
+          return shouldReturn;
+        }
+      }
+    });
+    return shouldReturn;
+  }
 
   /**
    * Load the Data into the Filters
@@ -134,22 +155,38 @@
     // Add the filtering action to each dropdown
     var dropdown = "#" + name + "-dropdown";
     $(dropdown).change(function (){
-      listObj.filter(function(item) {
-        var value = $(dropdown).val();
-        if (value === "all") {
-          return true;
-        }
-        else {
-          return (item.values()[name] === value ? true : false);
-        }
+      var value = $(dropdown).val();
+      urlQuery = "";
+      queries = _.omit(queries, name);
+      if (value != "all") {
+        queries[name] = value;
+      }
+      _.each(_.keys(queries), function(key) {
+        urlQuery += "&"+key+"="+queries[key]
       })
-    })
-  })
+      $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+      listObj.filter(function(item) {
+        return (filterCheck(item, queries));
+      });
+    });
+  });
 
   $(document).ready(function () {
     // Search within list of opportunities
     $(".search").keyup(function () {
-      listObj.search($(this).val());
+      urlQuery = "";
+      if ($(this).val().length > 0) {
+        queries.description = $(this).val();
+      } else {
+        queries = _.omit(queries, "description");
+      }
+      _.each(_.keys(queries), function(key) {
+        urlQuery += "&"+key+"="+queries[key]
+      })
+      $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+      listObj.filter(function(item) {
+        return (filterCheck(item, queries));
+      });
     });
 
     // Disable search while it doesn't actually query the DB
@@ -157,8 +194,8 @@
       if (event.which == '13') {
         event.preventDefault();
       }
-    })
-  })
+    });
+  });
 
 </script>
 
