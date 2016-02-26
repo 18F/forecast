@@ -132,46 +132,52 @@
     return shouldReturn;
   }
 
-  /**
-   * Load the Data into the Filters
-   **/
-  _.each(listOptions.valueNames, function (name) {
+  $(document).ready(function () {
+    /**
+     * Load the Data into the Filters
+     **/
+    _.each(listOptions.valueNames, function (name) {
 
-    // Create an array for each filterable element
-    data[name] = [];
-    $('.'+name).each( function (index) {
-      data[name].push($(this).text());
-    })
-
-    // Find unique values and add them as options in dropdowns
-    var opt = _.uniq(data[name]);
-    $.each(opt, function(key, value) {
-      $('#' + name + '-dropdown')
-        .append($("<option></option>")
-        .attr("value",value)
-        .text(value));
-    });
-
-    // Add the filtering action to each dropdown
-    var dropdown = "#" + name + "-dropdown";
-    $(dropdown).change(function (){
-      var value = $(dropdown).val();
-      urlQuery = "";
-      queries = _.omit(queries, name);
-      if (value != "all") {
-        queries[name] = value;
-      }
-      _.each(_.keys(queries), function(key) {
-        urlQuery += "&"+key+"="+queries[key]
+      // Create an array for each filterable element
+      data[name] = [];
+      _.each(listObj.items, function(item) {
+        data[name].push(item.values()[name])
       })
-      $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
-      listObj.filter(function(item) {
-        return (filterCheck(item, queries));
+
+      // This jQuery won't work because list.js removes the items that aren't
+      // on the first page of results
+      // $('.'+name).each( function (index) {
+      //   data[name].push($(this).text());
+      // })
+
+      // Find unique values and add them as options in dropdowns
+      var opt = _.sortBy(_.uniq(data[name]));
+      $.each(opt, function(key, value) {
+        $('#' + name + '-dropdown')
+          .append($("<option></option>")
+          .attr("value",value)
+          .text(value));
+      });
+
+      // Add the filtering action to each dropdown
+      var dropdown = "#" + name + "-dropdown";
+      $(dropdown).change(function (){
+        var value = $(dropdown).val();
+        urlQuery = "";
+        queries = _.omit(queries, name);
+        if (value != "all") {
+          queries[name] = value;
+        }
+        _.each(_.keys(queries), function(key) {
+          urlQuery += "&"+key+"="+queries[key]
+        })
+        $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+        listObj.filter(function(item) {
+          return (filterCheck(item, queries));
+        });
       });
     });
-  });
 
-  $(document).ready(function () {
     // Search within list of opportunities
     $(".search").keyup(function () {
       urlQuery = "";
