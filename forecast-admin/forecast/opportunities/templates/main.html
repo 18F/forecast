@@ -107,11 +107,13 @@
   /**
    *Initializes the More/Fewer Filters
    **/
-  $("#award_amount-dropdown").parent().toggle();
+  $("#dollar-value-min").parent().toggle();
+  $("#dollar-value-max").parent().toggle();
   $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
   $("#more-filters").on('click', function(e){
     $("#more-filters").text("Fewer Filters");
-    $("#award_amount-dropdown").parent().toggle();
+    $("#dollar-value-min").parent().toggle();
+    $("#dollar-value-max").parent().toggle();
     $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
   });
 
