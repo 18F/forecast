@@ -314,4 +314,7 @@ li.usa-footer-primary-content {
   padding-left: $base-padding;
   width: 75%;
 
+  @include media($medium-screen) {
+    margin-bottom: 0;
+  }
 }
