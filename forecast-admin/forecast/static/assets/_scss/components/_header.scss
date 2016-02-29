@@ -1,0 +1,43 @@
+.header {
+  padding-bottom: $base-padding-lite;
+  padding-left: $grid-margins;
+  padding-right: $grid-margins;
+  padding-top: $base-padding-lite;
+  background-color: $color-gray-slate;
+  color: $color-white;
+  font-family: $font-sans;
+  display: table;
+  width: 100%;
+}
+
+.header-logo,
+.header-logo_link {
+  width: $gsa-logo-width;
+  height: $gsa-logo-width;
+  display: inline-block;
+}
+
+.header-logo_link {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.header-title {
+  margin: 0;
+  font-family: $font-sans;
+  font-weight: 200;
+  display: table-row;
+}
+
+.header-title_text {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: $base-padding;
+  padding-right: $base-padding;
+}
+
+.header-logo {
+  vertical-align: text-bottom;
+}
+
+

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, RegexValidator
 
 from localflavor.us.models import USStateField, PhoneNumberField
+from localflavor.us.us_states import US_STATES
 from opportunities.validators import validate_NAICS
 
 from datetime import date
@@ -16,8 +17,8 @@ class OfficeManager(models.Manager):
 class Office(models.Model):
     objects = OfficeManager()
 
-    organization = models.CharField(max_length=30)
-    region = models.CharField(max_length=30)
+    organization = models.CharField(max_length=100)
+    region = models.CharField(max_length=100)
 
     def natural_key(self):
         return (self.organization, self.region)
@@ -248,18 +249,34 @@ class Opportunity(models.Model):
         ("To Be Determined", "To Be Determined")
     )
 
+    NON_STATE_OPTIONS = (
+        ("International", "International"),
+        ("Nationwide", "Nationwide"),
+        ("Region 1", "Region 1"),
+        ("Region 2", "Region 2"),
+        ("Region 3", "Region 3"),
+        ("Region 4", "Region 4"),
+        ("Region 5", "Region 5"),
+        ("Region 6", "Region 6"),
+        ("Region 7", "Region 7"),
+        ("Region 8", "Region 8"),
+        ("Region 9", "Region 9")
+    )
+    STATES = US_STATES+NON_STATE_OPTIONS
+
     office = models.ForeignKey(Office, blank=True, null=True)
     award_status = models.CharField(max_length=50, default="Planning",
                                     choices=AWARD_STATUS_CHOICES)
     description = models.CharField("Product or Service Description",
-                                   max_length=200)
+                                   max_length=400)
     place_of_performance_city = models.CharField(max_length=100,
                                                  default="Washington")
-    place_of_performance_state = USStateField(default="DC")
+    place_of_performance_state = models.CharField(max_length=100,
+                                                  choices=STATES, default="DC")
     naics = models.CharField("Primary NAICS Code",
                              max_length=6, blank=True, null=True,
                              validators=[validate_NAICS])
-    socioeconomic = models.CharField("Socioeconomic Category", max_length=50,
+    socioeconomic = models.CharField("Socioeconomic Category", max_length=100,
                                      choices=SOCIOECONOMIC_CHOICES,
                                      default="To Be Determined")
     procurement_method = models.CharField("Procurement Method", max_length=200,
@@ -281,7 +298,7 @@ class Opportunity(models.Model):
     delivery_order_value = models.CharField(max_length=200,
                                             blank=True, null=True)
     incumbent_name = models.CharField("Incumbent Contractor Name",
-                                      max_length=200, blank=True, null=True)
+                                      max_length=400, blank=True, null=True)
     new_requirement = models.CharField(max_length=200,
                                        choices=NEW_REQUIREMENT_CHOICES,
                                        default="To Be Determined")

@@ -3,16 +3,44 @@
   padding-right: 20px;
   padding-bottom: 1.5em;
 }
+
 .office {
   border-top: 2px solid !important;
   padding-top: 1em;
 }
+
 .opportunity-row-alternate {
   background-color: $color-gray-lightest;
 }
-.detail-label {
+
+.description{
+  font-size: 3rem;
   font-weight: bold;
 }
+
+#results li:before {
+  content: "";
+}
+
+.usa-search-submit-text {
+  font-size: $h3-font-size;
+}
+
+.opportunity-row {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 1.5em;
+}
+
+.office {
+  border-top: 2px solid !important;
+  padding-top: 1em;
+}
+
+.opportunity-row-alternate {
+  background-color: $color-gray-lightest;
+}
+
 .description{
   font-size: 3rem;
   font-weight: bold;
@@ -33,4 +61,21 @@
 
 .form-group-dropdown {
   margin-left: -30px !important;
+}
+
+.pagination-menu {
+  border-top: 2px solid;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.paginationTop, .paginationBottom {
+  margin: auto;
+}
+
+.paginationTop > li,
+.paginationBottom > li {
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  margin: 0px;
 }
