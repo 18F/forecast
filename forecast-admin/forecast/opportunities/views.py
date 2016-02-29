@@ -32,6 +32,8 @@ class OpportunityFilter(django_filters.FilterSet):
     Filters available when calling the API endpoint
     """
     description = django_filters.CharFilter(lookup_type='icontains')
+    dollar_value_min = django_filters.NumberFilter(lookup_type='gt')
+    dollar_value_max = django_filters.NumberFilter(lookup_type='lt')
     class Meta:
         model = Opportunity
         fields = ['socioeconomic','place_of_performance_state','naics','description',
