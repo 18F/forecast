@@ -3,8 +3,9 @@
   @include outer-container();
   max-width: $site-max-width;
 
-
-
+  .usa-width-one-fourth {
+    @include is-drawer();
+  }
 
   @include media($medium) {
     .usa-offset-one-twelfth {
@@ -29,6 +30,7 @@
     }
     .usa-width-one-fourth {
       @include span-columns(3);
+
 
       &:nth-child(2n) {
         margin-right: 0;
@@ -71,6 +73,7 @@
     }
     .usa-width-one-fourth {
       @include span-columns(3);
+      @include drawer-in-page();
 
       &:nth-child(2n) {
         @include span-columns(3);
