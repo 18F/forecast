@@ -1,0 +1,25 @@
+.pagination-menu {
+  border-top: 2px solid;
+  font-weight: $font-bold;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.pagination-top,
+.pagination-bottom {
+  margin: auto;
+}
+
+.pagination-top > li,
+.pagination-bottom > li {
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  margin: 0px;
+}
+
+.pagination-top > li.active a,
+.pagination-bottom > li.active a {
+  color: $color-base;
+  cursor: default;
+  text-decoration: none;
+}
