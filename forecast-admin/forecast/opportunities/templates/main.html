@@ -17,8 +17,10 @@
 
 
   <div class="usa-grid">
-    <button data-drawer-toggle="">Filters</button>
+
     <drawer class="usa-width-one-fourth">
+      <button data-drawer-toggle="filters">Filters</button>
+      <button data-drawer-toggle="close">Close</button>
 
       {% include 'includes/filters.html' %}
 
@@ -26,11 +28,11 @@
     <section class="usa-width-three-fourths">
       <div id="opportunities">
         <div class="pagination-menu">Browse opportunities</div>
-        <ul class="pagination-top"></ul>
-        <ul class="list">
+        <ul class="usa-unstyled-list pagination-top"></ul>
+        <ul class="usa-unstyled-list list">
             {% include 'includes/opportunity.html' %}
         </ul>
-        <ul class="pagination-bottom"></ul>
+        <ul class="usa-unstyled-list pagination-bottom"></ul>
       </div>
     </section>
   </div>
@@ -44,7 +46,49 @@
 <script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.pagination.min.js' %}"></script>
+<script>
 
+</script>
+<script>
+  $(function(){
+
+    var throttle = function throttle(fn, threshhold, scope) {
+      threshhold || (threshhold = 250);
+      var last,
+          deferTimer;
+      return function () {
+        var context = scope || this;
+
+        var now = +new Date,
+            args = arguments;
+        if (last && now < last + threshhold) {
+          // hold on to it
+          clearTimeout(deferTimer);
+          deferTimer = setTimeout(function () {
+            last = now;
+            fn.apply(context, args);
+          }, threshhold);
+        } else {
+          last = now;
+          fn.apply(context, args);
+        }
+      };
+    };
+
+    var header = document.querySelector('header'),
+      drawer = document.querySelector('drawer');
+
+    function setDrawerTop () {
+      var newHeight = header.getBoundingClientRect().bottom;
+      drawer.style.top = newHeight + 'px';
+    };
+
+    // initialize height of drawer path
+    setDrawerTop();
+
+    window.addEventListener('resize', throttle(setDrawerTop, 150, window));
+  });
+</script>
 <script>
   $(function() {
 

@@ -1,0 +1,29 @@
+// TODO: move this to components/drawer
+
+@mixin drawer-in-page() {
+  position: static;
+  left: inherit;
+  background: transparent;
+  padding: 0;
+  max-width: none;
+}
+
+@mixin is-drawer() {
+  @include transition(left, 0.3s);
+  background: $color-white;
+  position: absolute;
+  left: 0;
+  padding: $base-padding;
+  background: $color-bisque;
+  width: $drawer-width;
+  max-width: $drawer-width;
+
+  &[aria-hidden=true] {
+    display: block !important;
+    left: (-1 * $drawer-width);
+  }
+
+  &[aria-expanded=false] {
+    left: 0;
+  }
+}
