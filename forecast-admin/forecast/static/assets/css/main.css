@@ -2464,7 +2464,7 @@ body {
     clear: both;
     content: "";
     display: table; }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 37.5em) {
     .usa-grid .usa-offset-one-twelfth,
     .usa-grid-full .usa-offset-one-twelfth {
       margin-left: 8.5298%; }
@@ -2561,7 +2561,7 @@ body {
       .usa-grid .usa-width-one-twelfth:nth-child(3n),
       .usa-grid-full .usa-width-one-twelfth:nth-child(3n) {
         margin-right: 0; } }
-  @media screen and (min-width: 1201px) {
+  @media screen and (min-width: 48em) {
     .usa-grid .usa-width-one-whole,
     .usa-grid-full .usa-width-one-whole {
       float: left;
@@ -3853,7 +3853,7 @@ a.usa-label, a.usa-label-big {
       padding-left: 2.5rem;
       padding-right: 2.5rem; } }
 
-@media screen and (min-width: min-width 600px 6) {
+@media screen and (min-width: min-width 37.5em 6) {
   .width-one-sixth {
     float: left;
     display: block;
@@ -4363,6 +4363,28 @@ fieldset {
 .usa-social-links a {
   display: inline-block; }
 
+.pagination-menu {
+  border-top: 2px solid;
+  font-weight: 700;
+  padding-top: 20px;
+  text-align: center; }
+
+.pagination-top,
+.pagination-bottom {
+  margin: auto; }
+
+.pagination-top > li,
+.pagination-bottom > li {
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  margin: 0px; }
+
+.pagination-top > li.active a,
+.pagination-bottom > li.active a {
+  color: #212121;
+  cursor: default;
+  text-decoration: none; }
+
 .detail-label {
   font-weight: bold; }
 
@@ -4432,28 +4454,6 @@ fieldset {
 .usa-search-submit-text {
   font-size: 2rem; }
 
-.opportunity-row {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 1.5em; }
-
-.office {
-  border-top: 2px solid !important;
-  padding-top: 1em; }
-
-.opportunity-row-alternate {
-  background-color: #f1f1f1; }
-
-.description {
-  font-size: 3rem;
-  font-weight: bold; }
-
-#results li:before {
-  content: ""; }
-
-.usa-search-submit-text {
-  font-size: 2rem; }
-
 .usa-heading-small {
   font-weight: 600;
   margin-bottom: -20px;
@@ -4461,19 +4461,5 @@ fieldset {
 
 .form-group-dropdown {
   margin-left: -30px !important; }
-
-.pagination-menu {
-  border-top: 2px solid;
-  padding-top: 20px;
-  text-align: center; }
-
-.paginationTop, .paginationBottom {
-  margin: auto; }
-
-.paginationTop > li,
-.paginationBottom > li {
-  display: inline-block;
-  padding: 0px 5px 0px 5px;
-  margin: 0px; }
 
 /*# sourceMappingURL=main.css.map */

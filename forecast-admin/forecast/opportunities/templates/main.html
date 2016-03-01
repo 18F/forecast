@@ -17,39 +17,22 @@
 
 
   <div class="usa-grid">
-    <div class="usa-width-one-fourth">
-
-      <form id="agency">
-        <div class="form-group-dropdown">
-          <label for="agency-dropdown">Filter by Agency</label>
-          <select name="agency-dropdown" id="agency-dropdown" >
-            <option default value="gsa">GSA</option>
-            <option value="state">Department of State</option>
-            <option value="ed">Department of Education</option>
-          </select>
-
-        </div>
-      </form>
-
-      <p>
-        <br>
-      </p>
-
-      <div class="usa-heading-small">(Only for GSA) Filter by:</div>
+    <button data-drawer-toggle="">Filters</button>
+    <drawer class="usa-width-one-fourth">
 
       {% include 'includes/filters.html' %}
 
-    </div>
-    <div class="usa-width-three-fourths">
+    </drawer>
+    <section class="usa-width-three-fourths">
       <div id="opportunities">
         <div class="pagination-menu">Browse opportunities</div>
-        <ul class="paginationTop"></ul>
+        <ul class="pagination-top"></ul>
         <ul class="list">
             {% include 'includes/opportunity.html' %}
         </ul>
-        <ul class="paginationBottom"></ul>
+        <ul class="pagination-bottom"></ul>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
@@ -61,6 +44,195 @@
 <script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.pagination.min.js' %}"></script>
-<script src="{% static 'assets/js/main.js' %}"></script>
+
+<script>
+  $(function() {
+
+    /**
+     * Utilities for setting or removing tabindex on all focusable elements
+     * in a parent div. Useful for hiding elements off-canvas without setting
+     * display:none, while still removing from the tab order
+     */
+    var accessibility = {
+      removeTabindex: function removeTabindex($elm) {
+        $elm
+          .find('a, button, :input, [tabindex]')
+          .attr('tabindex', '-1');
+      },
+      restoreTabindex: function restoreTabindex($elm) {
+        $elm
+          .find('a, button, :input, [tabindex]')
+          .attr('tabindex', '0');
+      }
+    };
+
+    var KEYCODE_ESC = 27;
+
+    var defaultSelectors = {
+      'body': 'drawer',
+      'toggle': '[data-drawer-toggle]'
+    };
+
+    /**
+     * Drawer widget
+     * @constructor
+     * @param {Array} terms - Term objects with
+     * @param {Object} selectors - CSS selectors for drawer components
+     */
+    var Drawer = function Drawer(selectors) {
+      var self = this;
+
+      self.selectors = $.extend({}, defaultSelectors, selectors);
+
+      self.$body = $(self.selectors.body);
+      self.$toggle = $(self.selectors.toggle);
+
+      // Initialize state
+      self.isOpen = true;
+
+      // Remove tabindices
+      accessibility.removeTabindex(self.$body);
+
+      // Bind listeners
+      self.$toggle.on('click', this.toggle.bind(this));
+    };
+
+    Drawer.prototype = {
+
+      toggle: function() {
+        console.log(this)
+        var method = this.isOpen ? this.hide : this.show;
+        method.apply(this);
+      },
+
+      show: function() {
+        this.$body.addClass('is-open').attr('aria-hidden', 'false');
+        this.$toggle.addClass('active');
+        this.isOpen = true;
+        accessibility.restoreTabindex(this.$body);
+      },
+
+      hide: function() {
+        this.$body.removeClass('is-open').attr('aria-hidden', 'true');
+        this.$toggle.removeClass('active');
+        this.isOpen = false;
+        accessibility.removeTabindex(this.$body);
+
+      },
+
+      /** Close drawer on escape keypress */
+      handleKeyup: function(e) {
+        if (e.keyCode == KEYCODE_ESC) {
+          if (this.isOpen) {
+            this.hide();
+          }
+        }
+      }
+    };
+
+    var drawer = new Drawer();
+
+  });
+</script>
+<script type="text/javascript">
+  /**
+   *Initializes list.js
+   **/
+  var paginationTopOptions = {
+    name: 'paginationTop',
+    paginationClass: 'pagination-top',
+    innerWindow: 5,
+    outerWinder: 1
+  }
+  var paginationBottomOptions = {
+    name: 'paginationBottom',
+    paginationClass: 'pagination-bottom',
+    innerWindow: 5,
+    outerWinder: 1
+  }
+  var listOptions = {
+    valueNames: [
+      'award_status',
+      'place_of_performance_state',
+      'naics',
+      'award_amount',
+      'estimated_fiscal_year_quarter',
+      'description',
+      'funding_agency',
+      'estimated_fiscal_year',
+      'place_of_performance_city',
+      'contract_type',
+      'office'
+    ]
+    , page: 25
+    , plugins: [
+      ListPagination(paginationTopOptions),
+      ListPagination(paginationBottomOptions)]
+
+  };
+  var listObj = new List('opportunities', listOptions)
+  var data = {}
+
+  /**
+   *Initializes the More/Fewer Filters
+   **/
+  $("#award_amount-dropdown").parent().toggle();
+  $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
+  $("#more-filters").on('click', function(e){
+    $("#more-filters").text("Fewer Filters");
+    $("#award_amount-dropdown").parent().toggle();
+    $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
+  });
+
+  /**
+   * Load the Data into the Filters
+   **/
+  _.each(listOptions.valueNames, function (name) {
+
+    // Create an array for each filterable element
+    data[name] = [];
+    $('.'+name).each( function (index) {
+      data[name].push($(this).text());
+    })
+
+    // Find unique values and add them as options in dropdowns
+    var opt = _.uniq(data[name]);
+    $.each(opt, function(key, value) {
+      $('#' + name + '-dropdown')
+        .append($("<option></option>")
+        .attr("value",value)
+        .text(value));
+    });
+
+    // Add the filtering action to each dropdown
+    var dropdown = "#" + name + "-dropdown";
+    $(dropdown).change(function (){
+      listObj.filter(function(item) {
+        var value = $(dropdown).val();
+        if (value === "all") {
+          return true;
+        }
+        else {
+          return (item.values()[name] === value ? true : false);
+        }
+      })
+    })
+  })
+
+  $(document).ready(function () {
+    // Search within list of opportunities
+    $(".search").keyup(function () {
+      listObj.search($(this).val());
+    });
+
+    // Disable search while it doesn't actually query the DB
+    $(".search").keypress(function (event) {
+      if (event.which == '13') {
+        event.preventDefault();
+      }
+    })
+  })
+
+</script>
 
 {% endblock %}
