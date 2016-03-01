@@ -58,7 +58,7 @@ var filterCheck = function (item, queries) {
   shouldReturn = true;
   _.each(_.keys(queries), function (key) {
     if (key === 'description') {
-      if (item.values()[key].search(new RegExp(queries[key], "i"))) {
+      if (item.values()[key].search(new RegExp(queries[key], "i")) < 0) {
         shouldReturn = false;
         return shouldReturn;
       }
