@@ -1,22 +1,27 @@
 // TODO: move this to components/drawer
 @mixin drawer-in-page() {
-  position: static;
+  background: $color-white;
+  color: $color-base;
   left: inherit;
-  background: transparent;
-  padding: 0;
   max-width: none;
+  padding: 0;
+  position: static;
+
+  #more-filters {
+    color: $color-base;
+  }
 }
 
 @mixin is-drawer() {
   @include transition(left, 0.3s);
-  background: $color-white;
-  position: absolute;
-  position: fixed;
+  background: $color-primary-darkest;
+  color: $color-white;
   left: 0;
-  padding: $base-padding;
-  background: $color-bisque;
-  width: $drawer-width;
   max-width: $drawer-width;
+  overflow-y: visible;
+  padding: $base-padding;
+  position: fixed;
+  width: $drawer-width;
 
   &[aria-hidden=true] {
     display: block !important;
@@ -25,5 +30,9 @@
 
   &[aria-hidden=false] {
     left: 0;
+  }
+
+  #more-filters {
+    color: $color-white;
   }
 }
