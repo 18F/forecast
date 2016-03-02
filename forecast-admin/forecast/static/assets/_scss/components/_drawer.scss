@@ -21,7 +21,11 @@
       margin-left: -30px !important;
     }
   }
+}
 
+drawer {
+  z-index: 1000;
+  overflow-y: auto;
 }
 
 drawer button[data-drawer-toggle="filters"],
@@ -33,7 +37,8 @@ drawer button[data-drawer-toggle="close"] {
   top: 0;
 }
 
-drawer button[data-drawer-toggle="filters"] {
+drawer button[data-drawer-toggle="filters"],
+#opportunity button[data-drawer-toggle="filters"] {
   left: 100%;
   display: none;
 }
@@ -41,10 +46,11 @@ drawer button[data-drawer-toggle="filters"] {
 drawer button[data-drawer-toggle="close"] {
   padding: 10px;
   right: 0;
-  width: 38px;
+  // width: 38px;
 }
 
-drawer[aria-hidden=true] {
+drawer[aria-hidden=true],
+#opportunity {
   button[data-drawer-toggle="filters"] {
     display: block;
   }
@@ -54,7 +60,8 @@ drawer[aria-hidden=true] {
   }
 }
 
-drawer[aria-hidden=false] {
+drawer[aria-hidden=false],
+#opportunity {
   button[data-drawer-toggle="filters"] {
     display: none;
   }

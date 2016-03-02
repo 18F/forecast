@@ -1,12 +1,11 @@
 .usa-grid {
 	padding: $base-padding;
 	padding-top: ($base-padding * 2);
-	padding-bottom: ($base-padding * 2);
+	padding-bottom: 0;
 }
 
 .grid-inner {
 	padding-left: 0;
 	padding-right: 0;
+	padding-top: 0;
 }
-
-

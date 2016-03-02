@@ -75,6 +75,11 @@
     .usa-width-two-thirds {
       @include span-columns(8);
     }
+
+    .filter-toggle {
+      display: none;
+    }
+
     .usa-width-one-fourth {
       @include span-columns(3);
       @include drawer-in-page();
