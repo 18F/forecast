@@ -2,7 +2,7 @@
   border-top: 1px solid $color-base;
   font-weight: $font-bold;
   padding-top: $base-padding;
-  text-align: center;
+  text-align: right;
 }
 
 .pagination-bottom {
@@ -29,4 +29,8 @@
   color: $color-base;
   cursor: default;
   text-decoration: none;
+}
+
+.pagination-top {
+  margin-right: 0;
 }

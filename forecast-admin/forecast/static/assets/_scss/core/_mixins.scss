@@ -11,6 +11,7 @@
   @include transition(left, 0.3s);
   background: $color-white;
   position: absolute;
+  position: fixed;
   left: 0;
   padding: $base-padding;
   background: $color-bisque;

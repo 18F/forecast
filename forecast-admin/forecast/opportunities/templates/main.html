@@ -22,7 +22,6 @@
   <div class="usa-grid grid-inner">
 
     <drawer class="usa-width-one-fourth" aria-hidden="true">
-      <button class="filter-toggle" data-drawer-toggle="filters">Filters</button>
       <button data-drawer-toggle="close">Close</button>
 
       {% include 'includes/filters.html' %}
@@ -30,7 +29,7 @@
     </drawer>
     <section class="usa-width-three-fourths">
       <div id="opportunities">
-        <!-- <button class="filter-toggle" data-drawer-toggle="filters">Filters</button> -->
+        <button class="filter-toggle" data-drawer-toggle="filters">Filters</button>
         <div class="pagination-menu">Browse opportunities</div>
         <ul class="usa-unstyled-list pagination-top"></ul>
         <ul class="usa-unstyled-list list">
@@ -53,6 +52,5 @@
 
 <script type="text/javascript" src="{% static 'assets/js/src/pagination.js' %}"></script>
 <script type="text/javascript" src="{% static 'assets/js/src/drawer.js' %}"></script>
-<script type="text/javascript" src="{% static 'assets/js/src/drawer-top.js' %}"></script>
 
 {% endblock %}
