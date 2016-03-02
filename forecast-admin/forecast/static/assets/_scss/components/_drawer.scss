@@ -26,20 +26,22 @@
 
 drawer button[data-drawer-toggle="filters"],
 drawer button[data-drawer-toggle="close"] {
-  position: absolute;
+  border-radius: 0;
   margin: 0;
   max-width: 100px;
+  position: absolute;
   top: 0;
-  border-radius: 0;
 }
 
 drawer button[data-drawer-toggle="filters"] {
   left: 100%;
+  display: none;
 }
 
 drawer button[data-drawer-toggle="close"] {
+  padding: 10px;
   right: 0;
-  display: none;
+  width: 38px;
 }
 
 drawer[aria-hidden=true] {

@@ -1,12 +1,20 @@
 .pagination-menu {
-  border-top: 2px solid;
+  border-top: 2px solid $color-base;
   font-weight: $font-bold;
-  padding-top: 20px;
+  padding-top: $base-padding;
   text-align: center;
+}
+
+.pagination-bottom {
+  border-bottom: 2px solid $color-base;
+  padding: $base-padding;
+  text-align: center;
+  width: 100%;
 }
 
 .pagination-top,
 .pagination-bottom {
+  padding-bottom: $base-padding;
   margin: auto;
 }
 

@@ -1,6 +1,7 @@
 .usa-grid,
 .usa-grid-full {
   @include outer-container();
+  padding: 0;
   max-width: $site-max-width;
 
   .usa-width-one-fourth {
@@ -59,6 +60,9 @@
   }
 
   @include media($large) {
+
+    @include outer-container();
+
     .usa-width-one-whole {
       @include span-columns(12);
     }

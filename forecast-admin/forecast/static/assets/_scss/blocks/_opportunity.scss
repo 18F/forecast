@@ -1,0 +1,38 @@
+.opportunity-row {
+  border-top: 2px solid $color-base;
+  float: left;
+  padding: $base-padding;
+  width: 100%;
+}
+
+.opportunity-row:nth-child(2n) {
+  background: $color-gray-lightest;
+}
+
+.opportunity-row:last-child {
+  border-bottom: 2px solid $color-base;
+}
+
+.opportunity-row .office {
+  margin: 0;
+  font-size: 0.7em;
+  font-weight: $font-bold;
+}
+
+.opportunity-row .description {
+  border-bottom: 1px solid $color-base;
+  font-size: 1.25em;
+  font-weight: $font-light;
+  margin-bottom: $base-padding-lite;
+  margin-top: ($base-padding-lite / 2);
+  padding-bottom: $base-padding-lite;
+}
+
+.details {
+  font-size: 0.7em;
+}
+
+.opportunity-details {
+  margin-bottom: 0;
+}
+
