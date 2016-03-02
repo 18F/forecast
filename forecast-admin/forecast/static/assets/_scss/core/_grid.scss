@@ -88,6 +88,10 @@
       margin: auto;
     }
 
+    drawer {
+      overflow-y: visible;
+    }
+
     .usa-width-one-fourth {
       @include span-columns(3);
       @include drawer-in-page();

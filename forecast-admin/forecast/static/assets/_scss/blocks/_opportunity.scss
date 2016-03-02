@@ -11,6 +11,7 @@
 
 .opportunity-row:nth-child(2n) {
   background: $color-gray-lightest;
+  background: $color-gray-cool-light;
 }
 
 .opportunity-row:last-child {
@@ -20,8 +21,25 @@
 .opportunity-row .office {
   margin: 0;
   font-size: 0.7em;
-  font-weight: $font-bold;
+  font-weight: $font-light;
 }
+
+.opportunity-row .detail-label,
+.opportunity-row .detail-field {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.opportunity-row .detail-field {
+  font-weight: $font-light;
+}
+
+.opportunity-row .detail-row {
+  font-weight: $font-light;
+  display: table-row;
+}
+
 
 .opportunity-row .description {
   border-bottom: 1px solid $color-base;

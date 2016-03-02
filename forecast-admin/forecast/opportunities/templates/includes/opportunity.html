@@ -1,20 +1,39 @@
 {% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
-  <p class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</p>
+  <p class="office">{{ o.fields.office.0 }} <span class="h5">|</span> {{ o.fields.office.1 }}</p>
   <p class="description">{{ o.fields.description }} (#{{ o.pk }})</p>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Award Status: </span><span class="award_status">{{ o.fields.award_status }}</span></p>
-        <p><span class="detail-label">Place of Performance: </span>{{ o.fields.place_of_performance_city }}, <span class="place_of_performance_state">{{ o.fields.place_of_performance_state }}</span></p>
-        <p><span class="detail-label">NAICS Code: </span><span class="naics">{{ o.fields.naics }}</span></p>
+        <p class="detail-row">
+          <span class="detail-label">Award Status: </span><span class="award_status detail-field">{{ o.fields.award_status|default:"–" }}</span>
+        </p>
+        <p class="detail-row">
+          <span class="detail-label">Place of Performance: </span>
+          <spam class="detail-field">{{ o.fields.place_of_performance_city }}, <span class="place_of_performance_state">{{ o.fields.place_of_performance_state }}</span>
+          </span>
+        </p>
+        <p class="detail-row">
+          <span class="detail-label">NAICS Code: </span><span class="detail-field naics">{{ o.fields.naics|default:"–"}}</span></p>
       </div>
       <div class="usa-width-one-half">
-        <p><span class="detail-label">Estimated Award Date: </span>FY {{ o.fields.estimated_fiscal_year }} - Quarter  <span class="estimated_fiscal_year_quarter">{{ o.fields.estimated_fiscal_year_quarter }}</span></p>
-        <p><span class="detail-label">Minimum Value: </span> <span class="dollar_value_min">{{ o.fields.dollar_value_min }}</span></p>
-        <p><span class="detail-label">Maximum Value: </span> <span class="dollar_value_max">{{ o.fields.dollar_value_max }}</span></p>
-        <p><span class="detail-label">Contract Type: </span> <span class="award_amount">{{ o.fields.contract_type }}</span></p>
-        <p class="opportunity-details"><a href="/details/{{ o.pk }}">View Details </a></p>
+        <p>
+          <span class="detail-label">Estimated Award Date: </span>
+          <span class="detail-field">FY {{ o.fields.estimated_fiscal_year }} - Quarter  <span class="estimated_fiscal_year_quarter">{{ o.fields.estimated_fiscal_year_quarter }}</span></span>
+          </p>
+        <p>
+          <span class="detail-label">Minimum Value: </span>
+          <span class="detail-field dollar_value_min">{{ o.fields.dollar_value_min|default:"–" }}</span>
+        </p>
+        <p>
+          <span class="detail-label">Maximum Value: </span>
+          <span class="detail-field dollar_value_max">{{ o.fields.dollar_value_max|default:"–" }}</span>
+        </p>
+        <p>
+          <span class="detail-label">Contract Type: </span>
+          <span class="detail-field award_amount">{{ o.fields.contract_type|default:"–" }}</span>
+        </p>
+        <p class="detail-row opportunity-details"><a href="/details/{{ o.pk }}">View Details </a></p>
       </div>
     </div>
   </div>
