@@ -84,11 +84,13 @@
       text-align: center;
     }
 
-    .pagination-top {
+    .pagination-status {
       margin: auto;
+      margin-bottom: $base-padding-lite;
     }
 
     drawer {
+      color: $color-base;
       overflow-y: visible;
     }
 

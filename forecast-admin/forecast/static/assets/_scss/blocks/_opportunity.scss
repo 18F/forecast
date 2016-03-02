@@ -3,7 +3,6 @@
 }
 
 .opportunity-row {
-  border-top: 1px solid $color-base;
   float: left;
   padding: $base-padding;
   width: 100%;
@@ -14,8 +13,8 @@
   background: $color-gray-cool-light;
 }
 
-.opportunity-row:last-child {
-  border-bottom: 1px solid $color-base;
+.opportunity-row:first-child {
+  border-top: 1px solid $color-base;
 }
 
 .opportunity-row .office {

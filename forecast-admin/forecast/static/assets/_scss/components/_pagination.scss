@@ -5,32 +5,30 @@
   text-align: right;
 }
 
+.pagination-status {
+  font-weight: $font-light;
+  margin-bottom: $base-padding-lite;
+}
+
 .pagination-bottom {
   padding: $base-padding;
   text-align: center;
   width: 100%;
 }
 
-.pagination-top,
 .pagination-bottom {
   padding-bottom: $base-padding;
   margin: auto;
 }
 
-.pagination-top > li,
 .pagination-bottom > li {
   display: inline-block;
   padding: 0px 5px 0px 5px;
   margin: 0px;
 }
 
-.pagination-top > li.active a,
 .pagination-bottom > li.active a {
   color: $color-base;
   cursor: default;
   text-decoration: none;
-}
-
-.pagination-top {
-  margin-right: 0;
 }

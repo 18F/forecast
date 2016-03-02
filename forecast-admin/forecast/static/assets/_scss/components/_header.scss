@@ -1,20 +1,20 @@
 .header {
+  background-color: $color-gray-dark;
+  color: $color-white;
+  display: table;
+  font-family: $font-sans;
   padding-bottom: $base-padding-lite;
   padding-left: $grid-margins;
   padding-right: $grid-margins;
   padding-top: $base-padding-lite;
-  background-color: $color-gray-slate;
-  color: $color-white;
-  font-family: $font-sans;
-  display: table;
   width: 100%;
 }
 
 .header-logo,
 .header-logo_link {
-  width: $gsa-logo-width;
-  height: $gsa-logo-width;
   display: inline-block;
+  height: $gsa-logo-width;
+  width: $gsa-logo-width;
 }
 
 .header-logo_link {
@@ -23,17 +23,17 @@
 }
 
 .header-title {
-  margin: 0;
+  display: table-row;
   font-family: $font-sans;
   font-weight: 200;
-  display: table-row;
+  margin: 0;
 }
 
 .header-title_text {
   display: table-cell;
-  vertical-align: middle;
   padding-left: $base-padding;
   padding-right: $base-padding;
+  vertical-align: middle;
 }
 
 .header-logo {
