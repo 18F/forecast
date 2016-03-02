@@ -80,6 +80,14 @@
       display: none;
     }
 
+    .pagination-menu {
+      text-align: center;
+    }
+
+    .pagination-top {
+      margin: auto;
+    }
+
     .usa-width-one-fourth {
       @include span-columns(3);
       @include drawer-in-page();
