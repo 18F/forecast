@@ -1,7 +1,7 @@
 {% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
-  <div class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
-  <div class="description">{{ o.fields.description }} (#{{ o.pk }})</div>
+  <p class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</p>
+  <p class="description">{{ o.fields.description }} (#{{ o.pk }})</p>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
@@ -14,7 +14,7 @@
         <p><span class="detail-label">Minimum Value: </span> <span class="dollar_value_min">{{ o.fields.dollar_value_min }}</span></p>
         <p><span class="detail-label">Maximum Value: </span> <span class="dollar_value_max">{{ o.fields.dollar_value_max }}</span></p>
         <p><span class="detail-label">Contract Type: </span> <span class="award_amount">{{ o.fields.contract_type }}</span></p>
-        <p><a href="/details/{{ o.pk }}">View Details </a></p>
+        <p class="opportunity-details"><a href="/details/{{ o.pk }}">View Details </a></p>
       </div>
     </div>
   </div>

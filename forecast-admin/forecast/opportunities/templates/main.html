@@ -16,11 +16,11 @@
   </form>
 
 
-  <div class="usa-grid">
+  <div class="usa-grid grid-inner">
 
-    <drawer class="usa-width-one-fourth">
+    <drawer class="usa-width-one-fourth" aria-hidden="true">
       <button data-drawer-toggle="filters">Filters</button>
-      <button data-drawer-toggle="close">Close</button>
+      <button class="fa fa-close" data-drawer-toggle="close" ></button>
 
       {% include 'includes/filters.html' %}
 
@@ -132,13 +132,16 @@
       self.$toggle = $(self.selectors.toggle);
 
       // Initialize state
-      self.isOpen = true;
+      self.isOpen = false;
 
       // Remove tabindices
       accessibility.removeTabindex(self.$body);
 
       // Bind listeners
       self.$toggle.on('click', this.toggle.bind(this));
+
+      // Handle tabbing
+      $(document.body).on('keyup', this.handleKeyup.bind(this));
     };
 
     Drawer.prototype = {
@@ -208,7 +211,7 @@
       'contract_type',
       'office'
     ]
-    , page: 25
+    , page: 10
     , plugins: [
       ListPagination(paginationTopOptions),
       ListPagination(paginationBottomOptions)]
