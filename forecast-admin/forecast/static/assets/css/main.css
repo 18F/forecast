@@ -3728,7 +3728,8 @@ button,
   display: table-cell;
   font-size: 0.8em;
   text-align: right;
-  vertical-align: middle; }
+  vertical-align: middle;
+  width: 100%; }
 
 table {
   border-spacing: 0;
