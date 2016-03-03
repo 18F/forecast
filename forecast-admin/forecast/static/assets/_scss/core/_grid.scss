@@ -164,6 +164,17 @@
     }
   }
 
+  @include media($extra-large) {
+    .button-download {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .button-download_text {
+      text-align: center;
+    }
+  }
+
   // Specificies end of a row.
   // Required if grid-box contains multiple rows.
   // Required if browser does not support :last-child

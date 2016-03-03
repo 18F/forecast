@@ -191,7 +191,10 @@ button,
   border-radius: 0;
   display: table-row;
   margin: 0;
-  padding: 9px;
+  min-height: 44px;
+  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: left;
 }
 
@@ -225,6 +228,11 @@ button,
   right: 115px;
   top: 0;
   width: 105px;
+}
+
+.button-download_above_opportunities .button-download {
+  min-height: initial;
+  padding: 9px;
 }
 
 .button-download_above_opportunities .button-download_button {

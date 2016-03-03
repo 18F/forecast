@@ -2780,6 +2780,14 @@ body {
         .usa-grid .usa-width-one-twelfth:nth-child(12n),
         .usa-grid-full .usa-width-one-twelfth:nth-child(12n) {
           margin-right: 0; } }
+  @media screen and (min-width: 1024px) {
+    .usa-grid .button-download,
+    .usa-grid-full .button-download {
+      padding-left: 15px;
+      padding-right: 15px; }
+    .usa-grid .button-download_text,
+    .usa-grid-full .button-download_text {
+      text-align: center; } }
   .usa-grid .usa-end-row,
   .usa-grid-full .usa-end-row {
     margin-right: 0; }
@@ -3719,7 +3727,10 @@ button,
   border-radius: 0;
   display: table-row;
   margin: 0;
-  padding: 9px;
+  min-height: 44px;
+  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: left; }
 
 .button-download_wrapper {
@@ -3747,6 +3758,10 @@ button,
   right: 115px;
   top: 0;
   width: 105px; }
+
+.button-download_above_opportunities .button-download {
+  min-height: initial;
+  padding: 9px; }
 
 .button-download_above_opportunities .button-download_button {
   padding: 0;
