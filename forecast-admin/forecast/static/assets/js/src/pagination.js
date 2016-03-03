@@ -172,10 +172,11 @@ $(function(){
   });
 
   // // Search within list of opportunities
-  // $(".search").keyup(function () {
-  //   listObj.search($(this).val());
-  //   renderPageStatus();
-  // });
+  $(".search").keyup(function () {
+    listObj.search($(this).val());
+    renderPageStatus();
+  });
+
 
   // Disable search while it doesn't actually query the DB
   $(".search").keypress(function (event) {
