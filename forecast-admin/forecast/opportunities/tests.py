@@ -151,3 +151,14 @@ class CutTests(TestCase):
         rendered = self.TEMPLATE.render(Context({}))
         self.assertIn(self.entry, rendered)
 
+class CurrencyTests(TestCase):
+
+    TEMPLATE = Template("{% load filters %} {{ '1234.56|currency:'-' }}")
+
+    def setUp(self):
+        self.entry = '1235'
+
+    def test_currency(self):
+        rendered = self.TEMPLATE.render(Context({}))
+        self.assertIn(self.entry, rendered)
+

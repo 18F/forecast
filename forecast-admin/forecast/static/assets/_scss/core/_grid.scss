@@ -61,6 +61,10 @@
     .button-download_wrapper {
       display: none;
     }
+
+    .drawer {
+      @include is-drawer();
+    }
   }
 
   @include media($large) {

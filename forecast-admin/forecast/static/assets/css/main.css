@@ -2467,24 +2467,25 @@ body {
     display: table; }
   .usa-grid .drawer,
   .usa-grid-full .drawer {
-    -webkit-transition: left, 0.3s;
-    -moz-transition: left, 0.3s;
-    transition: left, 0.3s;
+    -webkit-transition: right, 0.3s;
+    -moz-transition: right, 0.3s;
+    transition: right, 0.3s;
     background: #112e51;
     color: #ffffff;
-    left: 0;
-    max-width: 300px;
-    overflow-y: visible;
+    right: 0;
+    margin: 0;
+    max-width: 200px;
+    overflow-y: auto;
     padding: 1.25em;
     position: fixed;
-    width: 300px; }
+    width: 200px; }
     .usa-grid .drawer[aria-hidden=true],
     .usa-grid-full .drawer[aria-hidden=true] {
       display: block !important;
-      left: -300px; }
+      right: -200px; }
     .usa-grid .drawer[aria-hidden=false],
     .usa-grid-full .drawer[aria-hidden=false] {
-      left: 0; }
+      right: 0; }
     .usa-grid .drawer #more-filters,
     .usa-grid-full .drawer #more-filters {
       color: #ffffff; }
@@ -2587,7 +2588,31 @@ body {
         margin-right: 0; }
     .usa-grid .button-download_wrapper,
     .usa-grid-full .button-download_wrapper {
-      display: none; } }
+      display: none; }
+    .usa-grid .drawer,
+    .usa-grid-full .drawer {
+      -webkit-transition: right, 0.3s;
+      -moz-transition: right, 0.3s;
+      transition: right, 0.3s;
+      background: #112e51;
+      color: #ffffff;
+      right: 0;
+      margin: 0;
+      max-width: 200px;
+      overflow-y: auto;
+      padding: 1.25em;
+      position: fixed;
+      width: 200px; }
+      .usa-grid .drawer[aria-hidden=true],
+      .usa-grid-full .drawer[aria-hidden=true] {
+        display: block !important;
+        right: -200px; }
+      .usa-grid .drawer[aria-hidden=false],
+      .usa-grid-full .drawer[aria-hidden=false] {
+        right: 0; }
+      .usa-grid .drawer #more-filters,
+      .usa-grid-full .drawer #more-filters {
+        color: #ffffff; } }
   @media screen and (min-width: 768px) {
     .usa-grid,
     .usa-grid-full {
@@ -2678,8 +2703,9 @@ body {
       .usa-grid-full .drawer {
         background: #ffffff;
         color: #212121;
-        left: inherit;
+        right: inherit;
         max-width: none;
+        overflow-y: initial;
         padding: 0;
         position: static; }
         .usa-grid .drawer #more-filters,
@@ -3700,6 +3726,7 @@ button,
 
 .button-download_text {
   display: table-cell;
+  font-size: 0.8em;
   text-align: right;
   vertical-align: middle; }
 
@@ -3767,6 +3794,9 @@ label {
 .usa-grid {
   padding: 1.25em;
   padding-bottom: 0; }
+
+footer .usa-grid {
+  padding: 1.25em; }
 
 .grid-inner {
   margin-top: 1.25em;
@@ -4662,6 +4692,9 @@ drawer form {
 
 .opportunity-details {
   margin-bottom: 0; }
+
+.opportunity-details a {
+  font-weight: 200; }
 
 .opportunity-header {
   display: inline-block;
