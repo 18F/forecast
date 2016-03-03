@@ -6,6 +6,8 @@
 }
 
 .pagination-status {
+  display: inline-block;
+  float: left;
   font-weight: $font-light;
   margin-bottom: $base-padding-lite;
 }
