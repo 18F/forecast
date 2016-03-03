@@ -29,7 +29,8 @@
   margin: 0px;
 }
 
-.pagination-bottom > li.active a {
+.pagination-bottom > li.active a,
+.pagination-bottom > li.disabled a {
   color: $color-base;
   cursor: default;
   text-decoration: none;

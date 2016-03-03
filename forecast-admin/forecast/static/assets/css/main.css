@@ -4523,7 +4523,8 @@ fieldset {
   padding: 0px 5px 0px 5px;
   margin: 0px; }
 
-.pagination-bottom > li.active a {
+.pagination-bottom > li.active a,
+.pagination-bottom > li.disabled a {
   color: #212121;
   cursor: default;
   text-decoration: none; }
