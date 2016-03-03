@@ -2584,7 +2584,10 @@ body {
         margin-right: 0; }
       .usa-grid .usa-width-one-twelfth:nth-child(3n),
       .usa-grid-full .usa-width-one-twelfth:nth-child(3n) {
-        margin-right: 0; } }
+        margin-right: 0; }
+    .usa-grid .button-download_wrapper,
+    .usa-grid-full .button-download_wrapper {
+      display: none; } }
   @media screen and (min-width: 768px) {
     .usa-grid,
     .usa-grid-full {
@@ -2633,7 +2636,9 @@ body {
         .usa-grid-full .usa-width-two-thirds:last-child {
           margin-right: 0; }
       .usa-grid .opportunity-filter_toggle,
-      .usa-grid-full .opportunity-filter_toggle {
+      .usa-grid drawer[aria-hidden=false] button[data-drawer-toggle="close"],
+      .usa-grid-full .opportunity-filter_toggle,
+      .usa-grid-full drawer[aria-hidden=false] button[data-drawer-toggle="close"] {
         display: none; }
       .usa-grid .pagination-menu,
       .usa-grid-full .pagination-menu {
@@ -2645,6 +2650,9 @@ body {
       .usa-grid .button-download_wrapper,
       .usa-grid-full .button-download_wrapper {
         display: inline-block; }
+      .usa-grid .grid-inner,
+      .usa-grid-full .grid-inner {
+        margin-top: 2.85em; }
       .usa-grid .usa-width-one-fourth,
       .usa-grid-full .usa-width-one-fourth {
         float: left;
@@ -3686,7 +3694,7 @@ button,
 
 .button-download_icon {
   display: table-cell;
-  padding-left: 0.42em;
+  padding-right: 0.42em;
   text-align: left;
   vertical-align: middle; }
 
@@ -3753,11 +3761,15 @@ a.usa-label, a.usa-label-big {
     border-bottom: none;
     color: #ffffff; }
 
+label {
+  margin-top: 1.25em; }
+
 .usa-grid {
   padding: 1.25em;
   padding-bottom: 0; }
 
 .grid-inner {
+  margin-top: 1.25em;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0; }
@@ -4308,6 +4320,9 @@ fieldset {
       background-repeat: no-repeat;
       width: 4.5rem; } }
 
+.usa-search {
+  margin: 0; }
+
 .usa-alert {
   background-color: #f1f1f1;
   background-position: 1rem 2rem;
@@ -4590,9 +4605,6 @@ drawer form {
     padding-right: 0;
     font-weight: 200; }
 
-#opportunities {
-  margin-top: 1.25em; }
-
 .opportunity-row {
   float: left;
   padding: 1.25em;
@@ -4614,6 +4626,12 @@ drawer form {
 .opportunity-row .office span {
   display: table-cell;
   vertical-align: middle; }
+
+.opportunity-row .office span:first-child {
+  padding-right: 5px; }
+
+.opportunity-row .office span:last-child {
+  padding-left: 5px; }
 
 .opportunity-row .detail-label,
 .opportunity-row .detail-field {
