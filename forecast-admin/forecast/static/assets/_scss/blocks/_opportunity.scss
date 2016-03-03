@@ -1,5 +1,6 @@
 #opportunities {
   // position: relative;
+  margin-top: $base-padding;
 }
 
 .opportunity-row {
@@ -18,9 +19,15 @@
 }
 
 .opportunity-row .office {
+  display: table-row;
   margin: 0;
   font-size: 0.7em;
   font-weight: $font-light;
+}
+
+.opportunity-row .office span {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .opportunity-row .detail-label,
@@ -55,5 +62,32 @@
 
 .opportunity-details {
   margin-bottom: 0;
+}
+
+.opportunity-header {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.opportunity-pagination_status {
+  bottom: 0;
+  display: inline-block;
+  font-weight: $font-light;
+  margin-bottom: $base-padding-lite;
+  position: absolute;
+  text-align: left;
+  width: 200px;
+
+  @include media($small-screen) {
+    width: inherit;
+  }
+}
+
+.opportunity-filter_toggle {
+  border-radius: 0;
+  float: right;
+  margin-right: 0;
+  width: 100px;
 }
 

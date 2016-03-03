@@ -185,3 +185,33 @@ button,
     box-shadow: initial;
   }
 }
+
+// Custom
+.button-download {
+  border-radius: 0;
+  display: table-row;
+  margin: 0;
+  text-align: left;
+}
+
+
+.button-download_wrapper {
+  display: none;
+}
+
+.button-download_wrapper a {
+  text-decoration: none;
+}
+
+.button-download_icon {
+  display: table-cell;
+  padding-left: $base-padding-lite;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.button-download_text {
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+}

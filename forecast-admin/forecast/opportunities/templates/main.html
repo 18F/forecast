@@ -5,7 +5,17 @@
 
 <div id="results">
   <form class="usa-search usa-search-big">
-    <div role="search" class="usa-width-five-sixths search-wrapper">
+    <div class="button-download_wrapper usa-width-one-fourth">
+
+        <a href="api/opportunities/?format=json&count=10">
+          <button class="usa-button-gray button-download">
+            <icon class="button-download_icon fa fa-download"></icon>
+            <span class="button-download_text">Download Spreadsheet</span>
+          </button>
+        </a>
+    </div>
+
+    <div role="search" class="usa-width-three-fourths search-wrapper">
       <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
       <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
       <button type="button" id="filter-button" class="usa-search usa-search-submit " data-sort="description naics">
@@ -13,15 +23,13 @@
       </button>
 
     </div>
-    <div class="usa-width-one-sixth">
-      <a href="api/opportunities/?format=json&count=10">Download Spreadsheet</a>
-    </div>
+
   </form>
 
 
   <div class="usa-grid grid-inner">
 
-    <drawer class="usa-width-one-fourth" aria-hidden="true">
+    <drawer class="usa-width-one-fourth drawer" aria-hidden="true">
       <button class="fa fa-close" data-drawer-toggle="close"></button>
 
       {% include 'includes/filters.html' %}
@@ -29,9 +37,10 @@
     </drawer>
     <section class="usa-width-three-fourths">
       <div id="opportunities">
-        <button class="filter-toggle" data-drawer-toggle="filters">Filters</button>
-        <div class="pagination-status"></div>
-        <!-- <ul class="usa-unstyled-list pagination-top"></ul> -->
+        <div class="opportunity-header">
+          <div class="opportunity-pagination_status">Browse Opportunities</div>
+          <button class="usa-button-outline opportunity-filter_toggle" data-drawer-toggle="filters">Filters</button>
+        </div>
         <ul class="usa-unstyled-list list">
             {% include 'includes/opportunity.html' %}
         </ul>

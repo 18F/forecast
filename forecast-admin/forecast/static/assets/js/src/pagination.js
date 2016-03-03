@@ -94,8 +94,8 @@ _.each(listOptions.valueNames, function (name) {
 });
 
 $(function(){
-   // Update current page (.pagination-status)
-  $paginationStatus = $('.pagination-status');
+   // Update current page (.opportunity-pagination_status)
+  $paginationStatus = $('.opportunity-pagination_status');
 
   function renderPageStatus() {
     if (listObj.matchingItems.length) {

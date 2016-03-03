@@ -4,7 +4,7 @@
   padding: 0;
   max-width: $site-max-width;
 
-  .usa-width-one-fourth {
+  .drawer {
     @include is-drawer();
   }
 
@@ -76,7 +76,7 @@
       @include span-columns(8);
     }
 
-    .filter-toggle {
+    .opportunity-filter_toggle {
       display: none;
     }
 
@@ -84,19 +84,17 @@
       text-align: center;
     }
 
-    .pagination-status {
+    .opportunity-pagination_status {
       margin: auto;
       margin-bottom: $base-padding-lite;
     }
 
-    drawer {
-      color: $color-base;
-      overflow-y: visible;
+    .button-download_wrapper {
+      display: inline-block;
     }
 
     .usa-width-one-fourth {
       @include span-columns(3);
-      @include drawer-in-page();
 
       &:nth-child(2n) {
         @include span-columns(3);
@@ -106,6 +104,11 @@
         margin-right: 0;
       }
     }
+
+    .drawer {
+      @include drawer-in-page();
+    }
+
     .usa-width-three-fourths {
       @include span-columns(9);
     }
