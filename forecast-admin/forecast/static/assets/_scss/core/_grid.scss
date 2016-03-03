@@ -8,6 +8,10 @@
     @include is-drawer();
   }
 
+  .button-download_above_opportunities {
+    display: none;
+  }
+
   @include media($medium) {
     .usa-offset-one-twelfth {
       @include shift(1);
@@ -62,6 +66,10 @@
       display: none;
     }
 
+    .button-download_above_opportunities {
+      display: inline-block;
+    }
+
     .drawer {
       @include is-drawer();
     }
@@ -104,6 +112,10 @@
 
     .grid-inner {
       margin-top: $base-padding-large;
+    }
+
+    .button-download_above_opportunities {
+      display: none;
     }
 
     .usa-width-one-fourth {

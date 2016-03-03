@@ -191,6 +191,7 @@ button,
   border-radius: 0;
   display: table-row;
   margin: 0;
+  padding: 9px;
   text-align: left;
 }
 
@@ -199,7 +200,8 @@ button,
   display: none;
 }
 
-.button-download_wrapper a {
+.button-download_wrapper a,
+.button-download_above_opportunities a {
   text-decoration: none;
 }
 
@@ -217,3 +219,24 @@ button,
   vertical-align: middle;
   width: 100%;
 }
+
+.button-download_above_opportunities {
+  position: absolute;
+  right: 115px;
+  top: 0;
+  width: 105px;
+}
+
+.button-download_above_opportunities .button-download_button {
+  padding: 0;
+  padding-right: $base-padding-lite;
+  vertical-align: bottom;
+}
+
+.button-download_above_opportunities .button-download_text {
+  font-size: 1rem;
+  width: 100%;
+}
+
+
+

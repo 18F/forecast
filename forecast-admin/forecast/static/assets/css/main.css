@@ -2489,6 +2489,9 @@ body {
     .usa-grid .drawer #more-filters,
     .usa-grid-full .drawer #more-filters {
       color: #ffffff; }
+  .usa-grid .button-download_above_opportunities,
+  .usa-grid-full .button-download_above_opportunities {
+    display: none; }
   @media screen and (min-width: 600px) {
     .usa-grid .usa-offset-one-twelfth,
     .usa-grid-full .usa-offset-one-twelfth {
@@ -2589,6 +2592,9 @@ body {
     .usa-grid .button-download_wrapper,
     .usa-grid-full .button-download_wrapper {
       display: none; }
+    .usa-grid .button-download_above_opportunities,
+    .usa-grid-full .button-download_above_opportunities {
+      display: inline-block; }
     .usa-grid .drawer,
     .usa-grid-full .drawer {
       -webkit-transition: right, 0.3s;
@@ -2678,6 +2684,9 @@ body {
       .usa-grid .grid-inner,
       .usa-grid-full .grid-inner {
         margin-top: 2.85em; }
+      .usa-grid .button-download_above_opportunities,
+      .usa-grid-full .button-download_above_opportunities {
+        display: none; }
       .usa-grid .usa-width-one-fourth,
       .usa-grid-full .usa-width-one-fourth {
         float: left;
@@ -3710,12 +3719,14 @@ button,
   border-radius: 0;
   display: table-row;
   margin: 0;
+  padding: 9px;
   text-align: left; }
 
 .button-download_wrapper {
   display: none; }
 
-.button-download_wrapper a {
+.button-download_wrapper a,
+.button-download_above_opportunities a {
   text-decoration: none; }
 
 .button-download_icon {
@@ -3729,6 +3740,21 @@ button,
   font-size: 0.8em;
   text-align: right;
   vertical-align: middle;
+  width: 100%; }
+
+.button-download_above_opportunities {
+  position: absolute;
+  right: 115px;
+  top: 0;
+  width: 105px; }
+
+.button-download_above_opportunities .button-download_button {
+  padding: 0;
+  padding-right: 0.42em;
+  vertical-align: bottom; }
+
+.button-download_above_opportunities .button-download_text {
+  font-size: 1rem;
   width: 100%; }
 
 table {
@@ -4646,8 +4672,7 @@ drawer form {
   width: 100%; }
 
 .opportunity-row:nth-child(2n) {
-  background: #f1f1f1;
-  background: #dce4ef; }
+  background: #F0F8FF; }
 
 .opportunity-row:first-child {
   border-top: 1px solid #212121; }
@@ -4713,12 +4738,13 @@ drawer form {
   width: 200px; }
   @media screen and (min-width: 481px) {
     .opportunity-pagination_status {
-      width: inherit; } }
+      width: initial; } }
 
 .opportunity-filter_toggle {
   border-radius: 0;
   float: right;
   margin-right: 0;
+  margin-top: 0;
   width: 100px; }
 
 .filter-agency {
