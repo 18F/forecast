@@ -114,7 +114,7 @@ $(function(){
       var status = currentOpportunities + ' of ' + totalOpportunities + opportunitiesText;
       $paginationStatus.text(status);
     } else {
-      $paginationStatus.text('no opportunities found');
+      $paginationStatus.text('No opportunities found.');
     }
   }
 

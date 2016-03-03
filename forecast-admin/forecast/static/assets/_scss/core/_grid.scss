@@ -57,6 +57,10 @@
         margin-right: 0;
       }
     }
+
+    .button-download_wrapper {
+      display: none;
+    }
   }
 
   @include media($large) {
@@ -76,7 +80,8 @@
       @include span-columns(8);
     }
 
-    .opportunity-filter_toggle {
+    .opportunity-filter_toggle,
+    drawer[aria-hidden=false] button[data-drawer-toggle="close"] {
       display: none;
     }
 
@@ -91,6 +96,10 @@
 
     .button-download_wrapper {
       display: inline-block;
+    }
+
+    .grid-inner {
+      margin-top: $base-padding-large;
     }
 
     .usa-width-one-fourth {
