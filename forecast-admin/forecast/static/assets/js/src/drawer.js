@@ -53,11 +53,6 @@ $(function() {
   };
 
   Drawer.prototype = {
-    // isMobile: function() {
-    //   var windowWidth = window.innerWidth || document.body.clientWidth;
-    //   return windowWidth < 768;
-    // },
-
     toggle: function() {
       console.log(this)
       var method = this.isOpen ? this.hide : this.show;
