@@ -54,7 +54,6 @@ $(function() {
 
   Drawer.prototype = {
     toggle: function() {
-      console.log(this)
       var method = this.isOpen ? this.hide : this.show;
       method.apply(this);
     },
