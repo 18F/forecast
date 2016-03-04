@@ -156,7 +156,7 @@ class CurrencyTests(TestCase):
     TEMPLATE = Template("{% load filters %} {{ '1234.56'|currency:'-' }}")
 
     def setUp(self):
-        self.entry = '$1,235.00'
+        self.entry = '$1,234.56'
 
     def test_currency(self):
         rendered = self.TEMPLATE.render(Context({}))

@@ -11,7 +11,7 @@ def cut(value, arg):
 @register.filter(name='currency')
 def currency(dollars, default):
   try:
-    dollars = round(float(dollars), 0)
+    dollars = round(float(dollars), 2)
     return "$%s%s" % (intcomma(int(dollars)), ("%0.2f" % dollars)[-3:])
   except TypeError:
     return default
