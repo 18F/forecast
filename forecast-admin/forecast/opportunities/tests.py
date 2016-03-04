@@ -138,7 +138,7 @@ class ImporterTestCase(TestCase):
             ['Really Fakeperson', '555-555-5555', 'really.fakeperson@gsa.gov'])
         self.assertEquals(parse_advisor('Different Fakeperson, 555-555-5555 different.fakeperson@gsa.gov'),
             ['Different Fakeperson', '555-555-5555', 'different.fakeperson@gsa.gov'])
-        self.assertIsNone(parse_advisor('TBD'))
+        self.assertEquals(parse_advisor('Just the Name'),['Just the Name','',''])
 
 class CutTests(TestCase):
 
@@ -150,4 +150,3 @@ class CutTests(TestCase):
     def test_cut(self):
         rendered = self.TEMPLATE.render(Context({}))
         self.assertIn(self.entry, rendered)
-

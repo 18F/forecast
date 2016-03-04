@@ -307,11 +307,16 @@ class OpportunitiesLoader(object):
         try:
             # Some entries have commas and some don't, so work around that
             # TODO: account for improper name formatting without miscapitalizing names
-            split = s.replace(","," ").replace("  "," ").split(' ')
-            adv = [' '.join(split[0:-2]), split[-2], split[-1]]
-            return adv
+            if "," in s:
+                split = s.replace(","," ").replace("  "," ").split(' ')
+                print(split)
+                adv = [' '.join(split[0:-2]), split[-2], split[-1]]
+                print(adv)
+                return adv
+            else:
+                return [s,'','']
         except:
-            return [s,'','']
+            None
 
     @staticmethod
     def parse_socioeconomic(s):
