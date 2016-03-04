@@ -1,10 +1,11 @@
 {% for o in o %}
 <li class="opportunity-row" id="opportunity-row">
-  <div class="office">{{ o.fields.office.0 }}, {{ o.fields.office.1 }}</div>
+  <div class="office">{% if o.fields.office.1 %}{{ o.fields.office.0 }}, {{ o.fields.office.1 }}{% endif %}</div>
   <div class="description">{{ o.fields.description }} (#{{ o.pk }})</div>
   <div class="details">
     <div class="row">
       <div class="usa-width-one-half">
+        <p><span class="detail-label">Agency: </span><span class="agency">{{ o.fields.agency}}</span></p>
         <p><span class="detail-label">Award Status: </span><span class="award_status">{{ o.fields.award_status }}</span></p>
         <p><span class="detail-label">Place of Performance: </span>{{ o.fields.place_of_performance_city }}, <span class="place_of_performance_state">{{ o.fields.place_of_performance_state }}</span></p>
         <p><span class="detail-label">NAICS Code: </span><span class="naics">{{ o.fields.naics }}</span></p>

@@ -283,10 +283,11 @@ class Opportunity(models.Model):
     STATES = US_STATES+NON_STATE_OPTIONS
 
     office = models.ForeignKey(Office, blank=True, null=True)
+    agency = models.CharField(max_length=100, default="GSA", editable=False)
     award_status = models.CharField(max_length=50, default="Planning",
                                     choices=AWARD_STATUS_CHOICES, blank=False)
     description = models.CharField("Product or Service Description",
-                                   max_length=400, blank=False)
+                                   max_length=1000, blank=False)
     place_of_performance_city = models.CharField(max_length=100,
                                                  default="Washington", blank=False)
     place_of_performance_state = models.CharField(max_length=100,

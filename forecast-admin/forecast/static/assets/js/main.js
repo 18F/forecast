@@ -15,6 +15,7 @@ var paginationBottomOptions = {
 };
 var listOptions = {
   valueNames: [
+    'agency',
     'award_status',
     'place_of_performance_state',
     'naics',
