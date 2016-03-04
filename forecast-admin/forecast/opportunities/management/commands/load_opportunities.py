@@ -309,9 +309,7 @@ class OpportunitiesLoader(object):
             # TODO: account for improper name formatting without miscapitalizing names
             if "," in s:
                 split = s.replace(","," ").replace("  "," ").split(' ')
-                print(split)
                 adv = [' '.join(split[0:-2]), split[-2], split[-1]]
-                print(adv)
                 return adv
             else:
                 return [s,'','']

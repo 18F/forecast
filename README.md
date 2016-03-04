@@ -29,16 +29,10 @@ pip install -r requirements.txt   # Install dependencies
 cd forecast-admin/forecast
 ./manage.py collectstatic --noinput  
 sass static/assets/_scss/all.scss static/assets/css/main.css
-./manage.py migrate
+./manage.py syncdb
 ./manage.py createcachetable
-./manage.py load_opportunities
+./manage.py loaddata forecast/data/multi-agency.json
 waitress-serve --port=8000 forecast.wsgi:application
-```
-
-To load existing offices and opportunities from a CSV other than the default file `forecast/data/fy16q1.csv` in `forecast/forecast-admin/forecast/opportunities/management/commands`, run:
-
-```bash
-./manage.py load_opportunities -f [path/to/csv]
 ```
 
 ### Public domain
