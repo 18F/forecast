@@ -142,7 +142,7 @@ $(function(){
       _.each(_.keys(queries), function(key) {
         urlQuery += "&"+key+"="+queries[key];
       });
-      $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+      $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
       listObj.filter(function(item) {
         return (filterCheck(item, queries));
       });
@@ -154,6 +154,7 @@ $(function(){
 
   // Search within list of opportunities
   $(".search").keyup(function () {
+    console.log('hello');
     urlQuery = "";
     if ($(this).val().length > 0) {
       queries.description = $(this).val();
@@ -163,7 +164,7 @@ $(function(){
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
@@ -182,7 +183,7 @@ $(function(){
   $(".search").keypress(function (event) {
     if (event.which == '13') {
       event.preventDefault();
-    };
+    }
     renderPageStatus();
   });
 
@@ -194,7 +195,7 @@ $(function(){
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
@@ -208,7 +209,7 @@ $(function(){
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
