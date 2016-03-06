@@ -31,7 +31,7 @@ cd forecast-admin/forecast
 sass static/assets/_scss/all.scss static/assets/css/main.css
 ./manage.py syncdb
 ./manage.py createcachetable
-./manage.py loaddata forecast/data/multi-agency.json
+./manage.py loaddata forecast/fixtures/multi-agency.json
 waitress-serve --port=8000 forecast.wsgi:application
 ```
 
