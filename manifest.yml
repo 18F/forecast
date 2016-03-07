@@ -3,8 +3,8 @@
 memory: 512M
 instances: 1
 applications:
-- name: forecast
-  path: forecast-admin/forecast
+- name: forecast-production
+  path: .
   timeout: 180
-command: ./manage.py migrate && waitress-serve --port=$VCAP_APP_PORT forecast.wsgi:application
 domain: 18f.gov
+host: gsaforecast
