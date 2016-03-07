@@ -15,7 +15,7 @@
     <p class="usa-text-small details-breadcrumb">
       <span>{{ o.funding_agency}} </span>
       <span class="h3">|</span>
-      <span> {{o.office|first}}</span>
+      {% if o.office %}<span> {{o.office|first}}</span>{% endif %}
     </p>
     <h2 class="details-header">{{ o.description }} <small> (#{{ id }})</small></h2>
 
