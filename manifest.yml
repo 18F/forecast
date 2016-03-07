@@ -1,10 +1,12 @@
 ---
 # all applications use these settings and services
-memory: 512M
-instances: 1
 applications:
 - name: forecast-production
   path: .
   timeout: 180
-domain: 18f.gov
-host: gsaforecast
+  memory: 512M
+  instances: 1
+  domain: 18f.gov
+  host: gsaforecast
+  services:
+  - forecast-production-db
