@@ -147,7 +147,7 @@ class OpportunitiesLoader(object):
                 funding_agency=row[4],
                 estimated_solicitation_date=cls.parse_date(row[12]),
                 estimated_fiscal_year=year,
-                estimated_fiscal_year_quarter="TBD",
+                estimated_fiscal_year_quarter="To Be Determined",
                 point_of_contact_name=row[1],
                 additional_information=row[13],
                 published=True
