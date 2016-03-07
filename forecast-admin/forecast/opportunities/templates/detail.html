@@ -130,7 +130,12 @@
     </tr>
     <tr>
       <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
-      <td><address>{{ o.osbu_advisor.0 }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
+      <td>
+        {% if o.osbu_advisor %}
+          <address>{{ o.osbu_advisor.0 }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
+        {% else %}
+          –
+        {% endif %}
     </tr>
       <tr>
         <td scope="row">Additional Information</td>
