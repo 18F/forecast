@@ -85,7 +85,7 @@ var filterCheck = function (item, queries) {
   return shouldReturn;
 };
 
-$(function(){
+$(document).ready(function() {
 
   // Update current page (.opportunity-pagination_status)
   $paginationStatus = $('.opportunity-pagination_status');
