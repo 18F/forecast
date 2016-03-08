@@ -1,18 +1,17 @@
+
 /**
  *Initializes list.js
  **/
-var paginationTopOptions = {
-  name: 'paginationTop',
-  paginationClass: 'paginationTop',
-  innerWindow: 5,
-  outerWinder: 1
-};
+
+var opportunitiesPerPage = 10;
+
 var paginationBottomOptions = {
   name: 'paginationBottom',
-  paginationClass: 'paginationBottom',
-  innerWindow: 5,
+  paginationClass: 'pagination-bottom',
+  innerWindow: 2,
   outerWinder: 1
 };
+
 var listOptions = {
   valueNames: [
     'agency',
@@ -30,13 +29,14 @@ var listOptions = {
     'dollar_value_min',
     'dollar_value_max'
   ],
-  page: 25,
+  page: opportunitiesPerPage,
   plugins: [
-    ListPagination(paginationTopOptions),
     ListPagination(paginationBottomOptions)
   ]
 };
+
 var listObj = new List('opportunities', listOptions);
+
 var data = {};
 var queries = {};
 var urlStem = "api/opportunities/?format=csv";
@@ -64,12 +64,14 @@ var filterCheck = function (item, queries) {
         return shouldReturn;
       }
     } else if (key === 'dollar_value_min') {
-      if (parseInt(item.values()[key]) < parseInt(queries[key])) {
+      var value = item.values()[key].replace('$','').replace(',','');
+      if (parseInt(value) < parseInt(queries[key])) {
         shouldReturn = false;
         return shouldReturn;
       }
     } else if (key === 'dollar_value_max') {
-      if (parseInt(item.values()[key]) > parseInt(queries[key])) {
+      var value = item.values()[key].replace('$','').replace(',','');
+      if (parseInt(value) > parseInt(queries[key])) {
         shouldReturn = false;
         return shouldReturn;
       }
@@ -83,7 +85,32 @@ var filterCheck = function (item, queries) {
   return shouldReturn;
 };
 
-$(document).ready(function () {
+$(function(){
+
+  // Update current page (.opportunity-pagination_status)
+  $paginationStatus = $('.opportunity-pagination_status');
+
+  var renderPageStatus = function renderPageStatus() {
+    if (listObj.matchingItems.length) {
+      var pageLimit = listObj.i + opportunitiesPerPage - 1,
+        totalOpportunities = listObj.matchingItems.length;
+
+      var lastOpportunity = (pageLimit > totalOpportunities)
+        ? totalOpportunities
+        : pageLimit;
+
+      var currentOpportunities = listObj.i + ' – ' + lastOpportunity;
+
+      var opportunitiesText = (totalOpportunities === 1)
+        ? ' opportunity'
+        : ' opportunities';
+      var status = currentOpportunities + ' of ' + totalOpportunities + opportunitiesText;
+      $paginationStatus.text(status);
+    } else {
+      $paginationStatus.text('No opportunities found.');
+    }
+  }
+
   /**
    * Load the Data into the Filters
    **/
@@ -94,12 +121,6 @@ $(document).ready(function () {
     _.each(listObj.items, function(item) {
       data[name].push(item.values()[name]);
     });
-
-    // This jQuery won't work because list.js removes the items that aren't
-    // on the first page of results
-    // $('.'+name).each( function (index) {
-    //   data[name].push($(this).text());
-    // })
 
     // Find unique values and add them as options in dropdowns
     var opt = _.sortBy(_.uniq(data[name]));
@@ -122,15 +143,19 @@ $(document).ready(function () {
       _.each(_.keys(queries), function(key) {
         urlQuery += "&"+key+"="+queries[key];
       });
-      $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+      $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
       listObj.filter(function(item) {
         return (filterCheck(item, queries));
       });
+      renderPageStatus();
     });
   });
 
+
+
   // Search within list of opportunities
   $(".search").keyup(function () {
+    console.log('hello');
     urlQuery = "";
     if ($(this).val().length > 0) {
       queries.description = $(this).val();
@@ -140,17 +165,27 @@ $(document).ready(function () {
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
+
+    renderPageStatus();
   });
+
+  // // Search within list of opportunities
+  $(".search").keyup(function () {
+    listObj.search($(this).val());
+    renderPageStatus();
+  });
+
 
   // Disable search while it doesn't actually query the DB
   $(".search").keypress(function (event) {
     if (event.which == '13') {
       event.preventDefault();
     }
+    renderPageStatus();
   });
 
   $("#dollar-value-min").keyup(function (event) {
@@ -161,7 +196,7 @@ $(document).ready(function () {
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
@@ -175,9 +210,17 @@ $(document).ready(function () {
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".download-spreadsheet>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
   });
+
+  renderPageStatus();
+
+  // listen for list to update
+  listObj.on('updated', function() {
+    renderPageStatus();
+  });
+
 });

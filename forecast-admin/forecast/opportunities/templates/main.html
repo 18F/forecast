@@ -5,34 +5,56 @@
 
 <div id="results">
   <form class="usa-search usa-search-big">
-    <div role="search">
+    <div class="button-download_wrapper usa-width-one-fourth">
+
+        <a href="api/opportunities/?format=csv">
+          <button class="usa-button-outline button-download">
+            <icon class="button-download_icon fa fa-download"></icon>
+            <span class="button-download_text">Download as spreadsheet</span>
+          </button>
+        </a>
+    </div>
+
+    <div role="search" class="usa-width-three-fourths search-wrapper">
       <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
       <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
-      <button type="button" id="filter-button" class="usa-search usa-search-submit" data-sort="description naics">
+      <button type="button" id="filter-button" class="usa-search usa-search-submit " data-sort="description naics">
         <span class="usa-search-submit-text">Search</span>
       </button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="download-spreadsheet"><a href="api/opportunities/?format=csv">Download Spreadsheet</a></span>
+
     </div>
   </form>
 
 
-  <div class="usa-grid">
-    <div class="usa-width-one-fourth">
-      <div class="usa-heading-small">Filter by:</div>
+  <div class="usa-grid grid-inner">
+
+    <drawer class="usa-width-one-fourth drawer" aria-hidden="true">
+      <button class="fa fa-close" data-drawer-toggle="close"></button>
 
       {% include 'includes/filters.html' %}
 
-    </div>
-    <div class="usa-width-three-fourths">
+    </drawer>
+    <section class="usa-width-three-fourths">
       <div id="opportunities">
-        <div class="pagination-menu">Browse opportunities</div>
-        <ul class="paginationTop"></ul>
-        <ul class="list">
+        <div class="opportunity-header">
+          <div class="opportunity-pagination_status">Loading opportunities...</div>
+          <div class="button-download_above_opportunities">
+
+              <a href="api/opportunities/?format=csv">
+                <button class="usa-button-outline button-download">
+                  <icon class="button-download_icon fa fa-download"></icon>
+                  <span class="button-download_text">Download as spreadsheet</span>
+                </button>
+              </a>
+          </div>
+          <button class="usa-button-outline opportunity-filter_toggle" data-drawer-toggle="filters">Filters</button>
+        </div>
+        <ul class="usa-unstyled-list list">
             {% include 'includes/opportunity.html' %}
         </ul>
-        <ul class="paginationBottom"></ul>
+        <ul class="usa-unstyled-list pagination-bottom"></ul>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
@@ -44,6 +66,8 @@
 <script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.pagination.min.js' %}"></script>
-<script src="{% static 'assets/js/main.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'assets/js/src/pagination.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/src/drawer.js' %}"></script>
 
 {% endblock %}

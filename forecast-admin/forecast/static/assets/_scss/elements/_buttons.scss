@@ -185,3 +185,66 @@ button,
     box-shadow: initial;
   }
 }
+
+// Custom
+.button-download {
+  border-radius: 0;
+  display: table-row;
+  margin: 0;
+  min-height: 44px;
+  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+}
+
+
+.button-download_wrapper {
+  display: none;
+}
+
+.button-download_wrapper a,
+.button-download_above_opportunities a {
+  text-decoration: none;
+}
+
+.button-download_icon {
+  display: table-cell;
+  padding-right: $base-padding-lite;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.button-download_text {
+  display: table-cell;
+  font-size: 0.8em;
+  text-align: right;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.button-download_above_opportunities {
+  position: absolute;
+  right: 115px;
+  top: 0;
+  width: 105px;
+}
+
+.button-download_above_opportunities .button-download {
+  min-height: initial;
+  padding: 9px;
+}
+
+.button-download_above_opportunities .button-download_button {
+  padding: 0;
+  padding-right: $base-padding-lite;
+  vertical-align: bottom;
+}
+
+.button-download_above_opportunities .button-download_text {
+  font-size: 1rem;
+  width: 100%;
+}
+
+
+

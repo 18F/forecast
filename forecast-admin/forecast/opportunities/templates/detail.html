@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="usa-width-two-thirds usa-offset-one-sixth">
+<div id="detail" class="usa-width-two-thirds usa-offset-one-sixth">
 
   <a href="/" class="no_underline details-back"><icon class="fa fa-angle-left fa-lg"></icon> Back to all opportunities</a>
 
@@ -67,13 +67,13 @@
         <td scope="row">Estimated Value</td>
         <td>
           {% if o.dollar_value_min %}
-            >= ${{ o.dollar_value_min|floatformat:0|intcomma }}
+            >= {{ o.dollar_value_min|currency:'' }}
           {% endif %}
           {% if o.dollar_value_min and o.dollar_value_max %}
             and
           {% endif %}
           {% if o.dollar_value_max %}
-            < ${{ o.dollar_value_max|floatformat:0|intcomma }}
+            < {{ o.dollar_value_max|currency:'' }}
           {% endif %}
         </td>
       </tr>
@@ -95,7 +95,7 @@
       </tr>
       <tr>
         <td scope="row">Estimated Award Fiscal Year and Quarter</td>
-        <td>{{ o.estimated_fiscal_year }}–{{ o.estimated_fiscal_year_quarter }} Quarter</td>
+        <td>FY {{ o.estimated_fiscal_year }}–{{ o.estimated_fiscal_year_quarter }} Quarter</td>
       </tr>
       <tr>
         <td scope="row">Link to Solicitation in FedBizOpps</td>
