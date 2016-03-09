@@ -1,7 +1,16 @@
 .usa-grid,
 .usa-grid-full {
   @include outer-container();
+  padding: 0;
   max-width: $site-max-width;
+
+  .drawer {
+    @include is-drawer();
+  }
+
+  .button-download_above_opportunities {
+    display: none;
+  }
 
   @include media($medium) {
     .usa-offset-one-twelfth {
@@ -27,6 +36,7 @@
     .usa-width-one-fourth {
       @include span-columns(3);
 
+
       &:nth-child(2n) {
         margin-right: 0;
       }
@@ -51,9 +61,24 @@
         margin-right: 0;
       }
     }
+
+    .button-download_wrapper {
+      display: none;
+    }
+
+    .button-download_above_opportunities {
+      display: inline-block;
+    }
+
+    .drawer {
+      @include is-drawer();
+    }
   }
 
   @include media($large) {
+
+    @include outer-container();
+
     .usa-width-one-whole {
       @include span-columns(12);
     }
@@ -66,6 +91,33 @@
     .usa-width-two-thirds {
       @include span-columns(8);
     }
+
+    .opportunity-filter_toggle,
+    drawer[aria-hidden=false] button[data-drawer-toggle="close"] {
+      display: none;
+    }
+
+    .pagination-menu {
+      text-align: center;
+    }
+
+    .opportunity-pagination_status {
+      margin: auto;
+      margin-bottom: $base-padding-lite;
+    }
+
+    .button-download_wrapper {
+      display: inline-block;
+    }
+
+    .grid-inner {
+      margin-top: $base-padding-large;
+    }
+
+    .button-download_above_opportunities {
+      display: none;
+    }
+
     .usa-width-one-fourth {
       @include span-columns(3);
 
@@ -77,6 +129,11 @@
         margin-right: 0;
       }
     }
+
+    .drawer {
+      @include drawer-in-page();
+    }
+
     .usa-width-three-fourths {
       @include span-columns(9);
     }
@@ -104,6 +161,17 @@
       &:nth-child(12n) {
         margin-right: 0;
       }
+    }
+  }
+
+  @include media($extra-large) {
+    .button-download {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .button-download_text {
+      text-align: center;
     }
   }
 

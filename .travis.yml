@@ -5,11 +5,7 @@ python:
 - '3.5'
 env:
   global:
-  - CF_APP=forecast-staging
-  - CF_API=https://api.cloud.gov
   - CF_USERNAME=18f-acq_deployer
-  - CF_ORGANIZATION=18f-ACQ
-  - CF_SPACE=staging
   - secure: EgWok9RXCDkQEfTf++xwdxLlqx9tZWQbUQ6MsmuHgc3Sqe+KKbDDD6r/viSiAfeKhrHGYUauTEKf2BbUS4cEvfCVDH5Xa1LbwHHJ8SK6kuJPNAQpghxjoxMlMS/lXNoPk13Q04dbfIUnvelloUf3Ya+LhaJJLyBFukfNj7vYh9jLWu/C7SUD59xxOWcEQk+rt6Qr5hV+lEno18Cp5dG2NOAI8331dWdk2MYg0q/JGKiSA60k9bkh/gy//7qSE2E9FNVKf4xUexK82tNknHGBu5QqzcfBdoOiP/pYmUkNJp6/iqcGUORf0Eq+Bg20UrsJFIE2z4aMfGES3LpUh43l8WTEyYJ2DkL9VZJujLKYmcc00DjhAnH6Y+GKQZaE2i7vjOsmrhOAoATCQpT+3/Ll1IScLFSt09UWNFcfPioKQ/bjw1ryerz23rXjf6IhojroXqRTGSwzBNiziilQ1xQXUlqnFK502dR4j8FM7LlWPSt9bldzTqe/ULLaqp8Xi7ezsVQ2E/z2xHTmglRbEH73CvyrVtzChsZ7hhUGe8jd/KkExuDszDG2aSTybYpBmPNcBCqYv5MPCt/vKauXL8DV/Xp7g2CmbKIGsZxzp0ioTLQFCFz8Sfpzb8zHKezbqD61zq+VJ5wNcRdpf8rNLr6FdRiKZqksLWeQ8E3tRGMy5A8=
 addons:
   postgresql: "9.4"
@@ -20,12 +16,25 @@ install: pip install -r requirements.txt
 cache:
   directories:
   - "$HOME/.cache/pip"
-before_deploy: npm install -g cf-blue-green
+before_deploy:
+- export PATH=$HOME:$PATH
+- travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
+- tar xzvf $HOME/cf.tgz -C $HOME
+- mkdir -p ${HOME}/Godeps/_workspace
+- export GOPATH=${HOME}/Godeps/_workspace
+- go get github.com/concourse/autopilot
+- cf install-plugin -f $GOPATH/bin/autopilot
 deploy:
 - provider: script
-  script: cf-blue-green-travis
+  script: "./deploy.sh staging"
+  skip_cleanup: true
   on:
-    branch: feature/cf-deploys
+    branch: develop
+- provider: script
+  script: "./deploy.sh production"
+  skip_cleanup: true
+  on:
+    branch: master
 script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
 after_success:
 - codecov

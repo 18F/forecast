@@ -1,1 +1,1 @@
-web: cd forecast-admin/forecast && ./manage.py migrate && ./manage.py collectstatic --noinput && ./manage.py createcachetable && ./manage.py load_opportunities && waitress-serve --port=$PORT forecast.wsgi:application
+web: cd forecast-admin/forecast && ./manage.py migrate && ./manage.py collectstatic --noinput && ./manage.py createcachetable && waitress-serve --port=$PORT forecast.wsgi:application

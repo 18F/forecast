@@ -1,0 +1,100 @@
+.opportunity-row {
+  float: left;
+  padding: $base-padding;
+  width: 100%;
+}
+
+.opportunity-row:nth-child(2n) {
+  background: $color-alice-blue;
+}
+
+.opportunity-row:first-child {
+  border-top: 1px solid $color-base;
+}
+
+.opportunity-row .office {
+  display: table-row;
+  margin: 0;
+  font-size: 0.7em;
+  font-weight: $font-light;
+}
+
+.opportunity-row .office span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.opportunity-row .office span:first-child {
+  padding-right: 5px;
+}
+
+.opportunity-row .office span:last-child {
+  padding-left: 5px;
+}
+
+.opportunity-row .detail-label,
+.opportunity-row .detail-field {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.opportunity-row .detail-field {
+  font-weight: $font-light;
+}
+
+.opportunity-row .detail-row {
+  font-weight: $font-light;
+  display: table-row;
+}
+
+
+.opportunity-row .description {
+  border-bottom: 1px solid $color-base;
+  font-size: 1.25em;
+  font-weight: $font-light;
+  margin-bottom: $base-padding-lite;
+  margin-top: ($base-padding-lite / 2);
+  padding-bottom: $base-padding-lite;
+}
+
+.details {
+  font-size: 0.7em;
+}
+
+.opportunity-details {
+  margin-bottom: 0;
+}
+
+.opportunity-details a {
+  font-weight: $font-light;
+}
+
+.opportunity-header {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.opportunity-pagination_status {
+  bottom: 0;
+  display: inline-block;
+  font-weight: $font-light;
+  margin-bottom: $base-padding-lite;
+  position: absolute;
+  text-align: left;
+  width: 200px;
+
+  @include media($small-screen) {
+    width: initial;
+  }
+}
+
+.opportunity-filter_toggle {
+  border-radius: 0;
+  float: right;
+  margin-right: 0;
+  margin-top: 0;
+  width: 100px;
+}
+

@@ -1,6 +1,19 @@
 .usa-grid {
-	padding: $base-padding;
-	padding-top: ($base-padding * 2);
-	padding-bottom: ($base-padding * 2);
+  padding: $base-padding;
+  padding-bottom: 0;
 }
 
+footer .usa-grid {
+  padding: $base-padding;
+}
+
+.grid-inner {
+  margin-top: $base-padding;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+}
+
+.content-wrapper {
+  padding-top: ($base-padding * 2);
+}

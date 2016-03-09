@@ -5,51 +5,56 @@
 
 <div id="results">
   <form class="usa-search usa-search-big">
-    <div role="search">
+    <div class="button-download_wrapper usa-width-one-fourth">
+
+        <a href="api/opportunities/?format=csv">
+          <button class="usa-button-outline button-download">
+            <icon class="button-download_icon fa fa-download"></icon>
+            <span class="button-download_text">Download as spreadsheet</span>
+          </button>
+        </a>
+    </div>
+
+    <div role="search" class="usa-width-three-fourths search-wrapper">
       <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
       <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
-      <button type="button" id="filter-button" class="usa-search usa-search-submit" data-sort="description naics">
+      <button type="button" id="filter-button" class="usa-search usa-search-submit " data-sort="description naics">
         <span class="usa-search-submit-text">Search</span>
       </button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="api/opportunities/?format=json&count=10">Download Spreadsheet</a>
+
     </div>
   </form>
 
 
-  <div class="usa-grid">
-    <div class="usa-width-one-fourth">
+  <div class="usa-grid grid-inner">
 
-      <form id="agency">
-        <div class="form-group-dropdown">
-          <label for="agency-dropdown">Filter by Agency</label>
-          <select name="agency-dropdown" id="agency-dropdown" >
-            <option default value="gsa">GSA</option>
-            <option value="state">Department of State</option>
-            <option value="ed">Department of Education</option>
-          </select>
-
-        </div>
-      </form>
-
-      <p>
-        <br>
-      </p>
-
-      <div class="usa-heading-small">(Only for GSA) Filter by:</div>
+    <drawer class="usa-width-one-fourth drawer" aria-hidden="true">
+      <button class="fa fa-close" data-drawer-toggle="close"></button>
 
       {% include 'includes/filters.html' %}
 
-    </div>
-    <div class="usa-width-three-fourths">
+    </drawer>
+    <section class="usa-width-three-fourths">
       <div id="opportunities">
-        <div class="pagination-menu">Browse opportunities</div>
-        <ul class="paginationTop"></ul>
-        <ul class="list">
+        <div class="opportunity-header">
+          <div class="opportunity-pagination_status">Loading opportunities...</div>
+          <div class="button-download_above_opportunities">
+
+              <a href="api/opportunities/?format=csv">
+                <button class="usa-button-outline button-download">
+                  <icon class="button-download_icon fa fa-download"></icon>
+                  <span class="button-download_text">Download as spreadsheet</span>
+                </button>
+              </a>
+          </div>
+          <button class="usa-button-outline opportunity-filter_toggle" data-drawer-toggle="filters">Filters</button>
+        </div>
+        <ul class="usa-unstyled-list list">
             {% include 'includes/opportunity.html' %}
         </ul>
-        <ul class="paginationBottom"></ul>
+        <ul class="usa-unstyled-list pagination-bottom"></ul>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
@@ -61,105 +66,8 @@
 <script src="{% static 'assets/js/vendor/underscore-min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.min.js' %}"></script>
 <script src="{% static 'assets/js/vendor/list.pagination.min.js' %}"></script>
-<script type="text/javascript">
-  /**
-   *Initializes list.js
-   **/
-  var paginationTopOptions = {
-    name: 'paginationTop',
-    paginationClass: 'paginationTop',
-    innerWindow: 5,
-    outerWinder: 1
-  }
-  var paginationBottomOptions = {
-    name: 'paginationBottom',
-    paginationClass: 'paginationBottom',
-    innerWindow: 5,
-    outerWinder: 1
-  }
-  var listOptions = {
-    valueNames: [
-      'award_status',
-      'place_of_performance_state',
-      'naics',
-      'award_amount',
-      'estimated_fiscal_year_quarter',
-      'description',
-      'funding_agency',
-      'estimated_fiscal_year',
-      'place_of_performance_city',
-      'contract_type',
-      'office'
-    ]
-    , page: 25
-    , plugins: [
-      ListPagination(paginationTopOptions),
-      ListPagination(paginationBottomOptions)]
 
-  };
-  var listObj = new List('opportunities', listOptions)
-  var data = {}
-
-  /**
-   *Initializes the More/Fewer Filters
-   **/
-  $("#award_amount-dropdown").parent().toggle();
-  $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
-  $("#more-filters").on('click', function(e){
-    $("#more-filters").text("Fewer Filters");
-    $("#award_amount-dropdown").parent().toggle();
-    $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
-  });
-
-  /**
-   * Load the Data into the Filters
-   **/
-  _.each(listOptions.valueNames, function (name) {
-
-    // Create an array for each filterable element
-    data[name] = [];
-    $('.'+name).each( function (index) {
-      data[name].push($(this).text());
-    })
-
-    // Find unique values and add them as options in dropdowns
-    var opt = _.uniq(data[name]);
-    $.each(opt, function(key, value) {
-      $('#' + name + '-dropdown')
-        .append($("<option></option>")
-        .attr("value",value)
-        .text(value));
-    });
-
-    // Add the filtering action to each dropdown
-    var dropdown = "#" + name + "-dropdown";
-    $(dropdown).change(function (){
-      listObj.filter(function(item) {
-        var value = $(dropdown).val();
-        if (value === "all") {
-          return true;
-        }
-        else {
-          return (item.values()[name] === value ? true : false);
-        }
-      })
-    })
-  })
-
-  $(document).ready(function () {
-    // Search within list of opportunities
-    $(".search").keyup(function () {
-      listObj.search($(this).val());
-    });
-
-    // Disable search while it doesn't actually query the DB
-    $(".search").keypress(function (event) {
-      if (event.which == '13') {
-        event.preventDefault();
-      }
-    })
-  })
-
-</script>
+<script type="text/javascript" src="{% static 'assets/js/src/pagination.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/src/drawer.js' %}"></script>
 
 {% endblock %}
