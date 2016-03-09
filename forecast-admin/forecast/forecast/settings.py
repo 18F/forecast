@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY") or '!=uy%w6m1jgg9$!+z!+f!z)\
 if 'DEBUG' in os.environ:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

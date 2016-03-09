@@ -2,12 +2,12 @@ applications:
 - command: curl https://18f-tmate-bootstrap.s3.amazonaws.com/tmate-debug-init.sh |
     sh
   domain: 18f.gov
-  host: forecast-staging
+  host: gsaforecast
   instances: 1
   memory: 512M
-  name: forecast-staging-ssh
+  name: forecast-production-ssh
   no-route: true
   path: .
   services:
-  - forecast-staging-db
+  - forecast-production-db
   timeout: 180
