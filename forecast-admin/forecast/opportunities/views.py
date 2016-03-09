@@ -8,12 +8,8 @@ from .serializers import (
     OpportunitySerializer, OfficeSerializer, OSBUAdvisorSerializer
 )
 
-
 def home(request):
-    opportunities = serializers.serialize("json", Opportunity.objects.all(),
-                                            use_natural_foreign_keys=True,
-                                            use_natural_primary_keys=True)
-    opportunities = json.loads(opportunities)
+    opportunities = Opportunity.objects.all().select_related('office__id')
     return render(request, 'main.html', {'o': opportunities})
 
 
