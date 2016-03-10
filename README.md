@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/18F/forecast.svg?branch=master)](https://travis-ci.org/18F/forecast)[![Code Climate](https://codeclimate.com/github/18F/forecast/badges/gpa.svg)](https://codeclimate.com/github/18F/forecast)[![codecov.io](https://codecov.io/github/18F/forecast/coverage.svg?branch=master)](https://codecov.io/github/18F/forecast?branch=master)
 
+Public Law 100-656, the Business Opportunity Development Reform Act of 1988, amended the Small Business Act to place new emphasis on acquisition planning. The law requires agencies to compile and make available projections of contracting opportunities small and small disadvantaged firms may be able to perform. This is an application compiling contracting forecast information from multiple agencies for greater visibility.
+
 An API that provides an interface for the OSBU Forecast Tool, which is an MVP of a better version of http://www.gsa.gov/portal/content/101163. To learn more about the Office of Small Business Utilization at GSA, visit http://www.gsa.gov/portal/category/21015.
 
 ### Features
