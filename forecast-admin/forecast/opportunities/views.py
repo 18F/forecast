@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Opportunity, Office, OSBUAdvisor
 from rest_framework import viewsets, filters
 from django.core import serializers
+from django.shortcuts import get_object_or_404
 import json
 import django_filters
 from .serializers import (
@@ -17,11 +18,9 @@ def details(request, id):
     """
     A page displaying details about a particular contracting opportunity
     """
-    opportunity = serializers.serialize("json", Opportunity.objects.all().filter(id=id),
-                                            use_natural_foreign_keys=True,
-                                            use_natural_primary_keys=True)
-    opportunity = json.loads(opportunity)
-    return render(request, 'detail.html', {'o': opportunity[0]["fields"],'id': opportunity[0]["pk"]})
+    opportunity = get_object_or_404(Opportunity.objects.filter(id=id).select_related('office__id', 'osbu_advisor__id'))
+    print(opportunity)
+    return render(request, 'detail.html', {'o': opportunity})
 
 class OpportunityFilter(django_filters.FilterSet):
     """
