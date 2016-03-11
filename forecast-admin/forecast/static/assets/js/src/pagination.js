@@ -143,7 +143,7 @@ $(document).ready(function() {
       _.each(_.keys(queries), function(key) {
         urlQuery += "&"+key+"="+queries[key];
       });
-      $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
+      $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
       listObj.filter(function(item) {
         return (filterCheck(item, queries));
       });
@@ -155,7 +155,6 @@ $(document).ready(function() {
 
   // Search within list of opportunities
   $(".search").keyup(function () {
-    console.log('hello');
     urlQuery = "";
     if ($(this).val().length > 0) {
       queries.description = $(this).val();
@@ -165,7 +164,7 @@ $(document).ready(function() {
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
@@ -196,7 +195,7 @@ $(document).ready(function() {
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });
@@ -210,7 +209,7 @@ $(document).ready(function() {
     _.each(_.keys(queries), function(key) {
       urlQuery += "&"+key+"="+queries[key];
     });
-    $(".button-download_wrapper>a").attr("href",urlStem+urlQuery);
+    $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
     listObj.filter(function(item) {
       return (filterCheck(item, queries));
     });

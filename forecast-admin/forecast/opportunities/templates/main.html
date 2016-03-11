@@ -4,31 +4,31 @@
 {% block content %}
 
 <div id="results">
-  <form class="usa-search usa-search-big">
+  <section class="usa-grid-full">
     <div class="button-download_wrapper usa-width-one-fourth">
-
         <a href="api/opportunities/?format=csv">
-          <button class="usa-button-outline button-download">
+          <button class="usa-button usa-button-outline button-download"
+            style="-webkit-appearance: button">
             <icon class="button-download_icon fa fa-download"></icon>
             <span class="button-download_text">Download as spreadsheet</span>
           </button>
         </a>
     </div>
-
-    <div role="search" class="usa-width-three-fourths search-wrapper">
+    <form role="search" class="usa-search usa-search-big usa-width-three-fourths search-wrapper">
       <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
       <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
       <button type="button" id="filter-button" class="usa-search usa-search-submit " data-sort="description naics">
         <span class="usa-search-submit-text">Search</span>
       </button>
 
-    </div>
-  </form>
+    </form>
+  </section>
 
 
   <div class="usa-grid grid-inner">
 
     <drawer class="usa-width-one-fourth drawer" aria-hidden="true">
+
       <button class="fa fa-close" data-drawer-toggle="close"></button>
 
       {% include 'includes/filters.html' %}
