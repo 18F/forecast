@@ -54,6 +54,10 @@ team:
 - github: ddotrollins
   id: Duane Rollins
   role: User Experience Lead
+  
+- github: gemfarmer
+  id: Brian Hedberg
+  role: Front End Designer/Developer
 
 # Partners for whom the project is developed
 partners:
@@ -73,7 +77,7 @@ milestones:
 # Technologies used to build the project
 stack:
 - Django
-- SQLite
+- PostgreSQL
 
 # Brief description of the project's outcomes
 impact: Improving discoverability of contracting opportunities for vendors across the country.
@@ -93,7 +97,36 @@ services:
 #     name: Name of the license from the Software Package Data Exchange (SPDX): https://spdx.org/licenses/
 #     url: URL for the text of the license
 licenses:
-  placeholder_label:
+  Django:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
+  PostgreSQL:
+    name: PostgreSQL
+    url: http://www.postgresql.org/about/licence/
+  Django REST Framework:
+    name: BSD-2-Clause
+    url: http://opensource.org/licenses/BSD-2-Clause
+  Django REST Swagger:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
+  Waitress:
+    name: ZPL-2.1
+    url: https://spdx.org/licenses/ZPL-2.1.html#licenseText
+  pytest:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  psycopg2:
+    name: LGPL-3.0
+    url: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+  whitenoise:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  localflavor:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
+  coveralls:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
 
 # Tag to use when blogging about this project
 blogTag: GSA, contracting, federal procurement
