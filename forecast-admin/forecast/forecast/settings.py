@@ -126,6 +126,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# X-Frame-Options Header
+
+X_FRAME_OPTIONS = 'DENY'
+
 # API settings
 
 REST_FRAMEWORK = {
