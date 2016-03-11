@@ -16,6 +16,10 @@ install: pip install -r requirements.txt
 cache:
   directories:
   - "$HOME/.cache/pip"
+script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
+after_success:
+- codecov
+- coveralls
 before_deploy:
 - export PATH=$HOME:$PATH
 - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
@@ -35,7 +39,3 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
-after_success:
-- codecov
-- coveralls
