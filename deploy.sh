@@ -10,15 +10,15 @@ if [ $# -ne 1 ]; then
 fi
 
 if [ $SPACE = 'production' ]; then
-  NAME="micropurchase"
+  NAME="forecast"
   MANIFEST="manifest.yml"
 elif [ $SPACE = 'staging' ]; then
-  NAME="micropurchase-staging"
+  NAME="forecast-staging"
   MANIFEST="manifest-staging.yml"
 else
   echo "Unknown space: $SPACE"
   exit
 fi
 
-cf login --a $API --u $CF_USERNAME --p $CF_PASSWORD --o $ORG -s $SPACE
+cf login -a $API -u $CF_USERNAME -p $CF_PASSWORD -o $ORG -s $SPACE
 cf zero-downtime-push $NAME -f $MANIFEST

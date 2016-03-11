@@ -2,7 +2,7 @@
 # .about.yml project metadata
 #
 # Short name that acts as the project identifier (required)
-name: Forecast
+name: Forecast Tool
 
 # Full proper name of the project (required)
 full_name: OSBU Forecasting Tool
@@ -16,17 +16,17 @@ type: app
 owner_type: project
 
 # Name of the main project repo if this is a sub-repo; name of the working group/guild repo if this is a working group/guild subproject
-parent:
+parent: forecast
 
 # Maturity stage of the project (required)
 # values: discovery, alpha, beta, live, sunset, transfer, end
-stage: alpha
+stage: beta
 
 # Description of the project
-description: A procurement forecasting tool, providing an interface and API
+description: A federal procurement forecasting tool, providing an interface and API
 
 # Tags that describe the project or aspects of the project
-tags:
+tags: contracting, procurement, foreasting data, gsa
 -
 
 # Should this repo have automated tests? If so, set to `true`. (required)
@@ -76,7 +76,7 @@ stack:
 - SQLite
 
 # Brief description of the project's outcomes
-impact: Improving discoverability of contracting opportunities
+impact: Improving discoverability of contracting opportunities for vendors across the country.
 
 # Services used to supply project status information
 # Items:
@@ -96,7 +96,7 @@ licenses:
   placeholder_label:
 
 # Tag to use when blogging about this project
-blogTag:
+blogTag: GSA, contracting, federal procurement
 -
 
 # Links to project artifacts
@@ -105,10 +105,14 @@ blogTag:
 #   text: Anchor text for the link
 #   category: Type of the link
 links:
-- url: forecast-alpha.18f.gov
+- url: gsaforecast.18f.gov
   text: Forecast
   category:
 
+- url: http://www.gsa.gov/portal/category/100122
+  text: GSA OSBU Forescting Opportunities Data
+  category: government resource
+  
 # URIs for points-of-contact
 # Items:
 # - url: URL for the link

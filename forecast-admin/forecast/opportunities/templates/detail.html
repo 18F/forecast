@@ -3,7 +3,7 @@
 {% load filters %}
 {% load static from staticfiles %}
 
-{% block page_title %}{{ o.description }}<small> (#{{ id }})</small>{% endblock %}
+{% block page_title %}{{ o.description }}<small> (#{{ o.id }})</small>{% endblock %}
 
 {% block content %}
 
@@ -15,9 +15,9 @@
     <p class="usa-text-small details-breadcrumb">
       <span>{{ o.funding_agency}} </span>
       <span class="h3">|</span>
-      {% if o.office %}<span> {{o.office|first}}</span>{% endif %}
+      {% if o.office %}<span> {{o.office}}</span>{% endif %}
     </p>
-    <h2 class="details-header">{{ o.description }} <small> (#{{ id }})</small></h2>
+    <h2 class="details-header">{{ o.description }} <small> (#{{ o.id }})</small></h2>
 
   </div>
 
@@ -132,7 +132,7 @@
       <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
       <td>
         {% if o.osbu_advisor %}
-          <address>{{ o.osbu_advisor.0 }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.1 }}">{{ o.osbu_advisor.1 }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.2|cut:'-' }}">{{ o.osbu_advisor.2 }}</a></address></td>
+          <address>{{ o.osbu_advisor.name }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.email }}">{{ o.osbu_advisor.email }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.phone|cut:'-' }}">{{ o.osbu_advisor.phone }}</a></address></td>
         {% else %}
           –
         {% endif %}

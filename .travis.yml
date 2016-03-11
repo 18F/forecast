@@ -1,12 +1,11 @@
 sudo: required
 language: python
 python:
-- '3.4'
 - '3.5'
 env:
   global:
   - CF_USERNAME=18f-acq_deployer
-  - secure: EgWok9RXCDkQEfTf++xwdxLlqx9tZWQbUQ6MsmuHgc3Sqe+KKbDDD6r/viSiAfeKhrHGYUauTEKf2BbUS4cEvfCVDH5Xa1LbwHHJ8SK6kuJPNAQpghxjoxMlMS/lXNoPk13Q04dbfIUnvelloUf3Ya+LhaJJLyBFukfNj7vYh9jLWu/C7SUD59xxOWcEQk+rt6Qr5hV+lEno18Cp5dG2NOAI8331dWdk2MYg0q/JGKiSA60k9bkh/gy//7qSE2E9FNVKf4xUexK82tNknHGBu5QqzcfBdoOiP/pYmUkNJp6/iqcGUORf0Eq+Bg20UrsJFIE2z4aMfGES3LpUh43l8WTEyYJ2DkL9VZJujLKYmcc00DjhAnH6Y+GKQZaE2i7vjOsmrhOAoATCQpT+3/Ll1IScLFSt09UWNFcfPioKQ/bjw1ryerz23rXjf6IhojroXqRTGSwzBNiziilQ1xQXUlqnFK502dR4j8FM7LlWPSt9bldzTqe/ULLaqp8Xi7ezsVQ2E/z2xHTmglRbEH73CvyrVtzChsZ7hhUGe8jd/KkExuDszDG2aSTybYpBmPNcBCqYv5MPCt/vKauXL8DV/Xp7g2CmbKIGsZxzp0ioTLQFCFz8Sfpzb8zHKezbqD61zq+VJ5wNcRdpf8rNLr6FdRiKZqksLWeQ8E3tRGMy5A8=
+  - secure: "C7WZsev2RfK17s/PkP9z40k3HaJTlE9SBAe/DKDLTaAlcydBd21C8m+wzN8sTACS8rx2gKpKARTxlcuuLtj2u5qHcmG72N7j3xcQqJNghHOKZgpYwy3CyGLwhxdZPstaFB3vI5DXQNEkELgELySYhSbVTTvI9Q4zc55+9yqlIO3lbyYjiTc1aURju9wYAMPmMtX8reafcJAM8lGEdWgZY0w9MUC7sCbq0ZPgd+U2RWttHlGYPL0j7Ne2ih7yTGYzomB4zISK5xpuQ97Vp79ZtUbkpSUxvMHewxYRkIvpvASKB1zx2AvXn/sWPpAcOPDRQJc0Aqa+cMuVN8sqJfhEGZj/jcipMI6m3u5ZlaAunNQNdUNuGXyDQzi5c3f/1pnrHQVBS7coG0q2O4zUQ9SF+xMuhesqcT2afoQqnWh1I4oD8BSr9ISwZOliDfzjaaT6+HLKyTIYzrttEwmVk532tpKY6XuuNPnt9l/1efc8M8pPIvNOp/fg/eN1KEnbc63uRNJTBMM15Vxvfa8nZVgYEXDItLwkUyoHmZAaXEAI0gA8Err6n3eQ9ac92ixuHug6wZxBZzggEfynQwnHLIyDe6RxgnRS0FgmjT7q8NNemUwyLmur/qNT5P+ZmfpeMOFFwT0abcE2rD4SSYktrnVYQAlWKvz/xUXEZgVNFtWCquM="
 addons:
   postgresql: "9.4"
 before_install:
@@ -16,6 +15,10 @@ install: pip install -r requirements.txt
 cache:
   directories:
   - "$HOME/.cache/pip"
+script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
+after_success:
+- codecov
+- coveralls
 before_deploy:
 - export PATH=$HOME:$PATH
 - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
@@ -35,7 +38,3 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-script: cd forecast-admin/forecast && py.test --cov opportunities --cov-report term-missing && cd ../..
-after_success:
-- codecov
-- coveralls
