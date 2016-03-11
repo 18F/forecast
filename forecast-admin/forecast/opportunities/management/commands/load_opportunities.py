@@ -106,6 +106,7 @@ class OpportunitiesLoader(object):
             opportunity = cls.model(
                 agency=agency,
                 office=office,
+                award_status=row[2],
                 description=row[3],
                 place_of_performance_city=row[4],
                 place_of_performance_state=row[5],
