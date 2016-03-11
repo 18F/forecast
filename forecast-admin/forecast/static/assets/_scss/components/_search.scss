@@ -56,6 +56,7 @@ $usa-btn-big-width:     11.6rem;
 
   .usa-search-submit-text {
     display: none;
+    font-size: $h3-font-size;
 
     @include media($small-screen) {
       display: block;
