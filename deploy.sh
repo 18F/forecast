@@ -10,10 +10,10 @@ if [ $# -ne 1 ]; then
 fi
 
 if [ $SPACE = 'production' ]; then
-  NAME="micropurchase"
+  NAME="forecast"
   MANIFEST="manifest.yml"
 elif [ $SPACE = 'staging' ]; then
-  NAME="micropurchase-staging"
+  NAME="forecast-staging"
   MANIFEST="manifest-staging.yml"
 else
   echo "Unknown space: $SPACE"
