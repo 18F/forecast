@@ -188,6 +188,8 @@ button,
 
 // Custom
 .button-download {
+  @extend button;
+
   border-radius: 0;
   display: table-row;
   margin: 0;
