@@ -34,10 +34,10 @@ deploy:
   skip_cleanup: true
   on:
     branch: develop
-    python: 3.5
+    python: 3.5.0
 - provider: script
   script: "./deploy.sh production"
   skip_cleanup: true
   on:
     branch: master
-    python: 3.5
+    python: 3.5.0
