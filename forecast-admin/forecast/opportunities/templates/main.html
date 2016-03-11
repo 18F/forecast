@@ -4,26 +4,28 @@
 {% block content %}
 
 <div id="results">
-  <form class="usa-search usa-search-big">
+  <div class="usa-width-one-whole">
     <div class="button-download_wrapper usa-width-one-fourth">
 
-        <a href="api/opportunities/?format=csv">
-          <button class="usa-button-outline button-download">
-            <icon class="button-download_icon fa fa-download"></icon>
-            <span class="button-download_text">Download as spreadsheet</span>
-          </button>
-        </a>
+      <a href="api/opportunities/?format=csv">
+        <button class="usa-button-outline button-download">
+          <icon class="button-download_icon fa fa-download"></icon>
+          <span class="button-download_text">Download as spreadsheet</span>
+        </button>
+      </a>
     </div>
+    <form class="usa-search usa-search-big usa-width-three-fourths">
 
-    <div role="search" class="usa-width-three-fourths search-wrapper">
-      <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
-      <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
-      <button type="button" id="filter-button" class="usa-search usa-search-submit " data-sort="description naics">
-        <span class="usa-search-submit-text">Search</span>
-      </button>
-
-    </div>
-  </form>
+      <div role="search" class="search-wrapper">
+        <label for="search" class="usa-sr-only" for="search-field-big">Search opportunities</label>
+        <input class="search" id="search-field-big" type="search" name="search" placeholder="Enter keyword">
+        <button type="button" id="filter-button" class="usa-search usa-search-submit " data-sort="description naics">
+          <span class="usa-search-submit-text">Search</span>
+        </button>
+        
+      </div>
+    </form>
+  </div>
 
 
   <div class="usa-grid grid-inner">

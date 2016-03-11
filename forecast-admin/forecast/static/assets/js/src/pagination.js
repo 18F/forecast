@@ -155,7 +155,6 @@ $(document).ready(function() {
 
   // Search within list of opportunities
   $(".search").keyup(function () {
-    console.log('hello');
     urlQuery = "";
     if ($(this).val().length > 0) {
       queries.description = $(this).val();
