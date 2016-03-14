@@ -132,7 +132,25 @@
       <td scope="row">Small Business Technical Advisor<br />(SBTA)</td>
       <td>
         {% if o.osbu_advisor %}
-          <address>{{ o.osbu_advisor.name }}, <a class="no_underline" href="mailto:{{ o.osbu_advisor.email }}">{{ o.osbu_advisor.email }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.phone|cut:'-' }}">{{ o.osbu_advisor.phone }}</a></address></td>
+          <address>
+            {% if o.osbu_advisor.name %}
+              {% if o.osbu_advisor.email or o.osbu_advisor.phone %}
+                {{ o.osbu_advisor.name }},
+                {% if o.osbu_advisor.email %}
+                  {% if o.osbu_advisor.email and o.osbu_advisor.phone %}
+                    <a class="no_underline" href="mailto:{{ o.osbu_advisor.email }}">{{ o.osbu_advisor.email }}</a>, <a class="no_underline" href="tel:{{ o.osbu_advisor.phone|cut:'-' }}">{{ o.osbu_advisor.phone }}</a>
+                  {% else %}
+                    <a class="no_underline" href="mailto:{{ o.osbu_advisor.email }}">{{ o.osbu_advisor.email }}</a>
+                  {% endif %}
+                {% elsif o.osbu_advisor.phone %}
+                  <a class="no_underline" href="tel:{{ o.osbu_advisor.phone|cut:'-' }}">{{ o.osbu_advisor.phone }}</a>
+                {% endif %}
+
+              {% else %}
+                {{ o.osbu_advisor.name }}
+              {% endif %}
+            {% elsif %}
+          </address></td>
         {% else %}
           –
         {% endif %}
