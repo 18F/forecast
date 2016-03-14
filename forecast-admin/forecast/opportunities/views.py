@@ -19,7 +19,6 @@ def details(request, id):
     A page displaying details about a particular contracting opportunity
     """
     opportunity = get_object_or_404(Opportunity.objects.filter(id=id).select_related('office__id', 'osbu_advisor__id'))
-    print(opportunity)
     return render(request, 'detail.html', {'o': opportunity})
 
 class OpportunityFilter(django_filters.FilterSet):
