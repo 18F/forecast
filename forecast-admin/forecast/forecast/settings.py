@@ -33,6 +33,14 @@ else:
 ALLOWED_HOSTS = ['*']
 
 
+# TEMPLATE_LOADERS = (
+#     'django.template.loaders.filesystem.Loader',
+#     'django.template.loaders.app_directories.Loader',
+# )
+
+# TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -68,7 +76,7 @@ ROOT_URLCONF = 'forecast.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
