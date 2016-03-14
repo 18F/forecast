@@ -13,9 +13,9 @@
 
   <div class="details-description">
     <p class="usa-text-small details-breadcrumb">
-      <span>{{ o.funding_agency}} </span>
+      <span>{{ o.agency}} </span>
       <span class="h3">|</span>
-      {% if o.office %}<span> {{o.office}}</span>{% endif %}
+      {% if o.office %}<span> {{o.office.organization}}</span>{% endif %}
     </p>
     <h2 class="details-header">{{ o.description }} <small> (#{{ o.id }})</small></h2>
 
@@ -142,14 +142,13 @@
                   {% else %}
                     <a class="no_underline" href="mailto:{{ o.osbu_advisor.email }}">{{ o.osbu_advisor.email }}</a>
                   {% endif %}
-                {% elsif o.osbu_advisor.phone %}
+                {% elif o.osbu_advisor.phone %}
                   <a class="no_underline" href="tel:{{ o.osbu_advisor.phone|cut:'-' }}">{{ o.osbu_advisor.phone }}</a>
                 {% endif %}
-
               {% else %}
                 {{ o.osbu_advisor.name }}
               {% endif %}
-            {% elsif %}
+            {% endif %}
           </address></td>
         {% else %}
           –
