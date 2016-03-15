@@ -27,7 +27,8 @@ var listOptions = {
     'contract_type',
     'office',
     'dollar_value_min',
-    'dollar_value_max'
+    'dollar_value_max',
+    'socioeconomic'
   ],
   page: opportunitiesPerPage,
   plugins: [
@@ -225,3 +226,4 @@ $(document).ready(function() {
   });
 
 });
+
