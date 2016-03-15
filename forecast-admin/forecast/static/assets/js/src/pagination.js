@@ -27,7 +27,8 @@ var listOptions = {
     'contract_type',
     'office',
     'dollar_value_min',
-    'dollar_value_max'
+    'dollar_value_max',
+    'socioeconomic'
   ],
   page: opportunitiesPerPage,
   plugins: [
@@ -44,14 +45,16 @@ var urlStem = "api/opportunities/?format=csv";
 /**
  *Initializes the More/Fewer Filters
  **/
-$("#dollar-value-min").parent().toggle();
-$("#dollar-value-max").parent().toggle();
-$("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
-$("#more-filters").on('click', function(e){
-  $("#more-filters").text("Fewer Filters");
-  $("#dollar-value-min").parent().toggle();
-  $("#dollar-value-max").parent().toggle();
-  $("#estimated_fiscal_year_quarter-dropdown").parent().toggle();
+$("#more-filters").hide();
+$("#toggle-filters").on('click', function(e) {
+    var filters = $("#more-filters");
+    if (filters.is(":visible")) {
+        filters.hide();
+        $("#toggle-filters").text("More Filters");
+    } else {
+        filters.show();
+        $("#toggle-filters").text("Fewer Filters");
+    }
 });
 
 // A function to check whether an item matches any active filters
@@ -223,3 +226,4 @@ $(document).ready(function() {
   });
 
 });
+

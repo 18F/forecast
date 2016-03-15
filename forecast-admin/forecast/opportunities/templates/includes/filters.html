@@ -1,30 +1,15 @@
 <aside id="agency" class="filter-agency">
   <h2 class="h3 filter-header">Filter by:</h2>
 
+  <!-- Agency -->
   <div class="form-group-dropdown">
   <label for="agency-dropdown">Agency</label>
   <select name="agency-dropdown" id="agency-dropdown" >
     <option default value="all">All</option>
   </select>
-
   </div>
 
-  <div class="form-group-dropdown">
-  <label for="award_status-dropdown">Award Status</label>
-  <select name="award_status-dropdown" id="award_status-dropdown" >
-    <option default value="all">All</option>
-  </select>
-
-  </div>
-
-  <div class="form-group-dropdown">
-  <label for="naics-dropdown">NAICS Code</label>
-  <select name="naics-dropdown" id="naics-dropdown" >
-    <option default value="all">All</option>
-  </select>
-  </div>
-
-
+  <!-- Place of Performance -->
   <div class="form-group-dropdown">
   <label for="place_of_performance_state-dropdown">Place of Performance</label>
   <select name="place_of_performance_state-dropdown" id="place_of_performance_state-dropdown" >
@@ -32,26 +17,65 @@
   </select>
   </div>
 
-<!-- The following filters initialize as hidden -->
-
-  <div class="form-group-input">
-    <label for="dollar-value-min">Minimum Value</label>
-    <input type="text" name="dollar-value-min" id="dollar-value-min">
-  </div>
-
-  <div class="form-group-input">
-    <label for="dollar-value-max">Maximum Value</label>
-    <input type="text" name="dollar-value-max" id="dollar-value-max">
-  </div>
-
+  <!-- Socioeconomic Category -->
   <div class="form-group-dropdown">
-  <label for="estimated_fiscal_year_quarter-dropdown">Projected Solicitation Quarter</label>
-  <select name="estimated_fiscal_year_quarter-dropdown" id="estimated_fiscal_year_quarter-dropdown" >
+  <label for="socioeconomic-dropdown">Socioeconomic Category</label>
+  <select name="socioeconomic-dropdown" id="socioeconomic-dropdown" >
     <option default value="all">All</option>
   </select>
   </div>
 
-<!-- The following link allows for showing additional filters -->
-    <div class="usa-heading-small"><p><a href="#" id="more-filters">More filters</a></p></div>
+  <!-- NAICS Code -->
+  <div class="form-group-dropdown">
+  <label for="naics-dropdown">NAICS Code</label>
+  <select name="naics-dropdown" id="naics-dropdown" >
+    <option default value="all">All</option>
+  </select>
+  </div>
+
+  <!-- The following filters initialize as hidden -->
+  <div id="more-filters">
+
+    <!-- Minimum Value -->
+    <div class="form-group-input">
+      <label for="dollar-value-min">Minimum Value</label>
+      <input type="text" name="dollar-value-min" id="dollar-value-min">
+    </div>
+
+    <!-- Maximum Value -->
+    <div class="form-group-input">
+      <label for="dollar-value-max">Maximum Value</label>
+      <input type="text" name="dollar-value-max" id="dollar-value-max">
+    </div>
+
+    <!-- Projected Solicitation Quarter -->
+    <div class="form-group-dropdown">
+    <label for="estimated_fiscal_year_quarter-dropdown">Projected Solicitation Quarter</label>
+    <select name="estimated_fiscal_year_quarter-dropdown" id="estimated_fiscal_year_quarter-dropdown" >
+      <option default value="all">All</option>
+    </select>
+    </div>
+
+    <!-- Contract Type -->
+    <div class="form-group-dropdown">
+    <label for="contract_type-dropdown">Contract Type</label>
+    <select name="contract_type-dropdown" id="contract_type-dropdown" >
+      <option default value="all">All</option>
+    </select>
+    </div>
+
+    <!-- Award Status -->
+    <div class="form-group-dropdown">
+    <label for="award_status-dropdown">Award Status</label>
+    <select name="award_status-dropdown" id="award_status-dropdown" >
+      <option default value="all">All</option>
+    </select>
+    </div>
+  </div>
+
+  <!-- The following link allows for showing additional filters -->
+  <div class="usa-heading-small">
+    <p><a href="#" id="toggle-filters">More filters</a></p>
+  </div>
 
 </aside>
