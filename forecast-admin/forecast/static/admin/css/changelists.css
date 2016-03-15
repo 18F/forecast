@@ -174,12 +174,14 @@
 
 #changelist-filter li.selected {
     border-left: 5px solid #eaeaea;
+    border-left: 5px solid #00CFFF;
     padding-left: 10px;
     margin-left: -15px;
 }
 
 #changelist-filter li.selected a {
     color: #5b80b2;
+    color: #0071bc;
 }
 
 /* DATE DRILLDOWN */

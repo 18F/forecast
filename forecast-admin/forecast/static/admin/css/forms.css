@@ -30,14 +30,25 @@ form .form-row p {
 
 label {
     font-weight: normal;
-    color: #666;
+    color: #333;
     font-size: 13px;
+    font-weight: 600;
 }
 
-.required label, label.required {
+/*.required label,
+label.required {
     font-weight: bold;
     color: #333;
+}*/
+
+.required label:before,
+label.required:before {
+    color: #333;
+    content: '*';
+    display: inline-block;
+    margin-right: 2px;
 }
+
 
 /* RADIO BUTTONS */
 

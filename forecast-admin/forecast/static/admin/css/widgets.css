@@ -6,6 +6,7 @@
 }
 
 .selector select {
+    background-image: none;
     width: 380px;
     height: 17.2em;
 }
@@ -19,16 +20,22 @@
 
 .selector-chosen select {
     border-top: none;
+    border-radius: 0;
 }
 
-.selector-available h2, .selector-chosen h2 {
+.selector-available h2,
+.selector-chosen h2 {
     border: 1px solid #ccc;
-    border-radius: 4px 4px 0 0;
+    /*border-radius: 4px 4px 0 0;*/
+    border-radius: 0;
 }
 
 .selector-chosen h2 {
-    background: #79aec8;
+    /*background: #79aec8;*/
+    /* Dark */
+    background-color: #1C304A;
     color: #fff;
+    border-radius: 0;
 }
 
 .selector .selector-available h2 {
@@ -103,7 +110,7 @@
 }
 
 .selector-remove {
-    background: url(../img/svg/selector-icons.svg) 0 -64px no-repeat;
+    background: url(../img/svg/selector-icons.svg) 0 -66px no-repeat;
     cursor: default;
 }
 
@@ -141,7 +148,7 @@ a.selector-chooseall {
 }
 
 a.active.selector-chooseall {
-    background-position: 100% -176px;
+    background-position: 100% -172px;
     cursor: pointer;
 }
 

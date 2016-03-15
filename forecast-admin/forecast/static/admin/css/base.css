@@ -1,3 +1,15 @@
+/*COLOR PALETTE*/
+
+/*
+White – #FFFFFF
+Light – #B3EFFF
+Bright – #00CFFF
+Medium – #046B99
+Dark – #1C304A
+Black –#000000
+*/
+
+
 /*
     DJANGO Admin styles
 */
@@ -8,21 +20,25 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px;
-    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
     color: #333;
     background: #fff;
 }
 
 
 /* LINKS */
-
+a {
+    color:#0071bc;
+}
 a:link, a:visited {
     color: #447e9b;
+    /*color:#0071bc;*/
     text-decoration: none;
 }
 
 a:hover {
-    color: #036;
+    /*color: #036;*/
+    color:#0071bc;
 }
 
 a img {
@@ -247,7 +263,7 @@ td, th {
     border-bottom: 1px solid #eee;
     vertical-align: top;
     padding: 8px;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
 }
 
 th {
@@ -280,7 +296,8 @@ tr.alt {
 }
 
 .row2 {
-    background: #f9f9f9;
+    /* Pale */
+    background-color: #F0F8FF;
 }
 
 /* SORTABLE TABLES */
@@ -290,6 +307,8 @@ thead th {
     line-height: normal;
     text-transform: uppercase;
     background: #f6f6f6;
+    background-color: #1C304A;
+    color: #fff;
 }
 
 thead th a:link, thead th a:visited {
@@ -313,6 +332,14 @@ table thead th .text a {
     display: block;
     cursor: pointer;
     padding: 8px 10px;
+    color: #fff;
+    background-color: #1C304A;
+}
+
+table thead th .text a:hover,
+table thead th .text a:focus {
+    color: #fff;
+    background-color: #1C304A;
 }
 
 table thead th.sortable:hover {
@@ -438,6 +465,7 @@ input[type=url],
 input[type=number],
 textarea {
     border-radius: 0;
+    font-weight: 200;
 }
 
 select {
@@ -453,8 +481,13 @@ select {
 
 /* FORM BUTTONS */
 
-.button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #79aec8;
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+    /* Medium */
+    background-color: #046B99;
     padding: 10px 15px;
     border: none;
     outline: none;
@@ -469,23 +502,31 @@ a.button {
 
 .button:active, input[type=submit]:active, input[type=button]:active,
 .button:hover, input[type=submit]:hover, input[type=button]:hover {
-    background: #609ab6;
+    /*background: #609ab6;*/
+    /* Light */
+    background-color: #00CFFF;
 }
 
 .button[disabled], input[type=submit][disabled], input[type=button][disabled] {
     opacity: 0.4;
 }
 
-.button.default, input[type=submit].default, .submit-row input.default {
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
     float: right;
     border: none;
     font-weight: 400;
-    background: #417690;
+    /*background: #417690;*/
+    /* Dark */
+    background-color: #1C304A;
 }
 
 .button.default:active, input[type=submit].default:active,
 .button.default:hover, input[type=submit].default:hover {
-    background: #205067;
+    /*background: #205067;*/
+    /* Bright */
+    background-color: #00CFFF;
 }
 
 .button[disabled].default,
@@ -503,7 +544,7 @@ input[type=button][disabled].default {
     background: #fff;
 }
 
-.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
+.module p, .module ul, .module h3, .module h4, .module dl, .module p#branding h1 a:link {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -526,7 +567,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #79aec8;
+    background: #00CFFF;
     color: #fff;
 }
 
@@ -537,8 +578,51 @@ input[type=button][disabled].default {
     text-transform: uppercase;
 }
 
+.module caption {
+    background: transparent;
+    color: #666;
+    padding-left: 0;
+    text-transform: capitalize;
+}
+
+.module caption a,
+.module caption a:link,
+.module caption a:visited {
+    color: #666;
+}
+
 .module table {
     border-collapse: collapse;
+}
+
+.module table th,
+.module table td,
+.module table th a,
+.module table td a {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2rem;
+}
+
+.module table th {
+    color: #fff;
+}
+
+.module table th a:hover,
+.module table td a:hover,
+.module table th a:focus,
+.module table td a:focus {
+    color: #666;
+}
+
+
+/* MODEL */
+
+.model-group td,
+.model-grpup th {
+    color: #333;
+    font-weight: 200;
 }
 
 /* MESSAGES & ERRORS */
@@ -650,20 +734,20 @@ div.system-message p.system-message-title {
 /* BREADCRUMBS */
 
 div.breadcrumbs {
-    background: #79aec8;
+    background: #F0F8FF;
     padding: 10px 40px;
     border: none;
     font-size: 14px;
-    color: #c4dce8;
+    color: #333;
     text-align: left;
 }
 
 div.breadcrumbs a {
-    color: #fff;
+    color: #333;
 }
 
 div.breadcrumbs a:hover {
-    color: #c4dce8;
+    color: #666;
 }
 
 /* ACTION ICONS */
@@ -671,16 +755,19 @@ div.breadcrumbs a:hover {
 .addlink {
     padding-left: 16px;
     background: url(../img/svg/icon-addlink.svg) 0 1px no-repeat;
+    background-position: left;
 }
 
 .changelink, .inlinechangelink {
     padding-left: 16px;
     background: url(../img/svg/icon-changelink.svg) 0 1px no-repeat;
+    background-position: left;
 }
 
 .deletelink {
     padding-left: 16px;
     background: url(../img/svg/icon-deletelink.svg) 0 1px no-repeat;
+    background-position: left;
 }
 
 a.deletelink:link, a.deletelink:visited {
@@ -718,7 +805,7 @@ a.deletelink:hover {
 }
 
 .object-tools a {
-    border-radius: 15px;
+    border-radius: 3px;
 }
 
 .object-tools a:link, .object-tools a:visited {
@@ -734,7 +821,7 @@ a.deletelink:hover {
 }
 
 .object-tools a:hover, .object-tools li:hover a {
-    background-color: #417690;
+    background-color: #00CFFF;
 }
 
 .object-tools a.viewsitelink, .object-tools a.golink {
@@ -838,7 +925,6 @@ table#change-history tbody th {
     background: #417690;
     line-height: 40px;
     color: #ffc;
-    overflow: hidden;
 }
 
 #header a:link, #header a:visited {
@@ -861,10 +947,6 @@ table#change-history tbody th {
     color: #f5dd5d;
 }
 
-#branding h1, #branding h1 a:link, #branding h1 a:visited {
-    color: #f5dd5d;
-}
-
 #branding h2 {
     padding: 0 10px;
     font-size: 14px;
@@ -884,18 +966,23 @@ table#change-history tbody th {
     font-weight: 300;
     font-size: 11px;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-align: right;
 }
 
 #user-tools a {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    font-weight: 400;
 }
+
+#user-tools a.top-link:hover {
+    color: #fff;
+}
+
 
 #user-tools a:hover {
     text-decoration: none;
-    border-bottom-color: #79aec8;
-    color: #79aec8;
+    border-bottom-color: #00CFFF;
+    color: #00CFFF;
 }
 
 /* HEADER OVERRIDES */
@@ -999,3 +1086,112 @@ table#change-history tbody th {
 .popup #header {
     padding: 10px 20px;
 }
+
+
+/* DROPDOWN */
+
+/*==================================================
+  $A11Y Dropdown
+  ==================================================*/
+
+/* Top level nav */
+.nav {
+    float: left;
+    margin: 20px 0;
+}
+
+/* Dropdowns */
+.nav ul {
+    background-color: #112e51;
+    font-weight: 400;
+    left: -9999px;
+    min-width: 150px;
+    opacity: 0;
+    position: absolute;
+    top: 2.5em;
+    transition: 0.1s linear opacity;
+}
+
+.nav li {
+    float: left;
+    list-style-type: none;
+    position: relative;
+}
+
+/* Top level nav items */
+.nav li > a {
+    float: left;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.nav li a.top-link {
+    background: url(../img/angle-down-white.svg) no-repeat;
+    background-position: right 0px bottom 5px;
+    background-size: 30px auto;
+    padding-right: 25px;
+}
+
+/* Top level hover state, preserve hover state when hovering dropdown  */
+.nav li > a:hover,
+.nav li > a:focus,
+.nav li:focus > a,
+.nav li:hover > a {
+    background-color: #112e51;
+    outline: 0;
+}
+
+.nav li:focus a.top-link,
+.nav li:hover a.top-link {
+    color: #fff;
+
+}
+
+.nav li:hover,
+.nav li:focus,
+.nav li.active {
+    background-color: #112e51;
+}
+
+
+
+.nav li:hover ul,
+.nav li:focus ul,
+ul.show-menu {
+    left: -100%;
+    opacity: 0.99;
+    right: 0;
+    text-align: right;
+    z-index: 9000;
+}
+
+.nav ul li {
+    float: none;
+    position: static;
+}
+
+.nav ul a {
+    float: none;
+    display: block;
+    font-size: 12px;
+    text-shadow: none;
+    transition: 0.1s linear all;
+}
+
+.nav ul a:hover,
+.nav ul a:focus {
+    text-shadow: none;
+}
+
+
+/*==================================================
+  $Helpers
+  ==================================================*/
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
