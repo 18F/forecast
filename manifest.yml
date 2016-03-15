@@ -4,8 +4,8 @@ applications:
 - name: forecast-production
   path: .
   timeout: 180
-  memory: 512M
-  instances: 1
+  memory: 1024M
+  instances: 2
   domain: 18f.gov
   host: gsaforecast
   services:
