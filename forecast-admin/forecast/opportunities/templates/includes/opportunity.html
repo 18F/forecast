@@ -45,7 +45,11 @@
         </p>
         <p class="detail-row">
           <span class="detail-label">Contract Type: </span>
-          <span class="detail-field award_amount">{{ o.contract_type|default:"–" }}</span>
+          <span class="detail-field contract_type">{{ o.contract_type|default:"–" }}</span>
+        </p>
+        <p class="detail-row">
+          <span class="detail-label">Socioeconomic Category: </span>
+          <span class="detail-field socioeconomic">{{ o.socioeconomic|default:"–" }}</span>
         </p>
         <p class="detail-row opportunity-details"><a class="detail-label" href="/details/{{ o.id }}">View Details </a></p>
       </div>

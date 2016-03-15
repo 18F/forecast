@@ -2282,7 +2282,7 @@ samp {
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
-button,
+button, .button-download,
 input,
 optgroup,
 select,
@@ -2297,7 +2297,7 @@ textarea {
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
-button {
+button, .button-download {
   overflow: visible; }
 
 /**
@@ -2306,7 +2306,7 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
  * Correct `select` style inheritance in Firefox.
  */
-button,
+button, .button-download,
 select {
   text-transform: none; }
 
@@ -2317,7 +2317,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-button,
+button, .button-download,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -2329,14 +2329,14 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-button[disabled],
+button[disabled], [disabled].button-download,
 html input[disabled] {
   cursor: default; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-button::-moz-focus-inner,
+button::-moz-focus-inner, .button-download::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0; }
@@ -2668,8 +2668,10 @@ body {
           margin-right: 0; }
       .usa-grid .opportunity-filter_toggle,
       .usa-grid drawer[aria-hidden=false] button[data-drawer-toggle="close"],
+      .usa-grid drawer[aria-hidden=false] [data-drawer-toggle="close"].button-download,
       .usa-grid-full .opportunity-filter_toggle,
-      .usa-grid-full drawer[aria-hidden=false] button[data-drawer-toggle="close"] {
+      .usa-grid-full drawer[aria-hidden=false] button[data-drawer-toggle="close"],
+      .usa-grid-full drawer[aria-hidden=false] [data-drawer-toggle="close"].button-download {
         display: none; }
       .usa-grid .pagination-menu,
       .usa-grid-full .pagination-menu {
@@ -3317,6 +3319,7 @@ input[type=range]:focus::-ms-thumb {
 .usa-button:visited,
 .usa-button-primary:visited,
 button,
+.button-download,
 [type="button"],
 [type="submit"],
 [type="reset"],
@@ -3349,7 +3352,9 @@ button,
   .usa-button-primary:visited:hover,
   .usa-button-primary:visited.usa-button-hover,
   button:hover,
+  .button-download:hover,
   button.usa-button-hover,
+  .usa-button-hover.button-download,
   [type="button"]:hover,
   [type="button"].usa-button-hover,
   [type="submit"]:hover,
@@ -3370,7 +3375,9 @@ button,
   .usa-button-primary:visited:focus,
   .usa-button-primary:visited.usa-button-focus,
   button:focus,
+  .button-download:focus,
   button.usa-button-focus,
+  .usa-button-focus.button-download,
   [type="button"]:focus,
   [type="button"].usa-button-focus,
   [type="submit"]:focus,
@@ -3388,7 +3395,9 @@ button,
   .usa-button-primary:visited:active,
   .usa-button-primary:visited.usa-button-active,
   button:active,
+  .button-download:active,
   button.usa-button-active,
+  .usa-button-active.button-download,
   [type="button"]:active,
   [type="button"].usa-button-active,
   [type="submit"]:active,
@@ -3404,6 +3413,7 @@ button,
     .usa-button:visited,
     .usa-button-primary:visited,
     button,
+    .button-download,
     [type="button"],
     [type="submit"],
     [type="reset"],
@@ -3414,6 +3424,7 @@ button,
   .usa-button:visited.usa-button-primary-alt,
   .usa-button-primary:visited.usa-button-primary-alt,
   button.usa-button-primary-alt,
+  .usa-button-primary-alt.button-download,
   [type="button"].usa-button-primary-alt,
   [type="submit"].usa-button-primary-alt,
   [type="reset"].usa-button-primary-alt,
@@ -3428,7 +3439,9 @@ button,
     .usa-button-primary:visited.usa-button-primary-alt:hover,
     .usa-button-primary:visited.usa-button-primary-alt.usa-button-hover,
     button.usa-button-primary-alt:hover,
+    .usa-button-primary-alt.button-download:hover,
     button.usa-button-primary-alt.usa-button-hover,
+    .usa-button-primary-alt.usa-button-hover.button-download,
     [type="button"].usa-button-primary-alt:hover,
     [type="button"].usa-button-primary-alt.usa-button-hover,
     [type="submit"].usa-button-primary-alt:hover,
@@ -3446,7 +3459,9 @@ button,
     .usa-button-primary:visited.usa-button-primary-alt:active,
     .usa-button-primary:visited.usa-button-primary-alt.usa-button-active,
     button.usa-button-primary-alt:active,
+    .usa-button-primary-alt.button-download:active,
     button.usa-button-primary-alt.usa-button-active,
+    .usa-button-primary-alt.usa-button-active.button-download,
     [type="button"].usa-button-primary-alt:active,
     [type="button"].usa-button-primary-alt.usa-button-active,
     [type="submit"].usa-button-primary-alt:active,
@@ -3462,6 +3477,7 @@ button,
   .usa-button:visited.usa-button-secondary,
   .usa-button-primary:visited.usa-button-secondary,
   button.usa-button-secondary,
+  .usa-button-secondary.button-download,
   [type="button"].usa-button-secondary,
   [type="submit"].usa-button-secondary,
   [type="reset"].usa-button-secondary,
@@ -3475,7 +3491,9 @@ button,
     .usa-button-primary:visited.usa-button-secondary:hover,
     .usa-button-primary:visited.usa-button-secondary.usa-button-hover,
     button.usa-button-secondary:hover,
+    .usa-button-secondary.button-download:hover,
     button.usa-button-secondary.usa-button-hover,
+    .usa-button-secondary.usa-button-hover.button-download,
     [type="button"].usa-button-secondary:hover,
     [type="button"].usa-button-secondary.usa-button-hover,
     [type="submit"].usa-button-secondary:hover,
@@ -3493,7 +3511,9 @@ button,
     .usa-button-primary:visited.usa-button-secondary:active,
     .usa-button-primary:visited.usa-button-secondary.usa-button-active,
     button.usa-button-secondary:active,
+    .usa-button-secondary.button-download:active,
     button.usa-button-secondary.usa-button-active,
+    .usa-button-secondary.usa-button-active.button-download,
     [type="button"].usa-button-secondary:active,
     [type="button"].usa-button-secondary.usa-button-active,
     [type="submit"].usa-button-secondary:active,
@@ -3508,6 +3528,7 @@ button,
   .usa-button:visited.usa-button-gray,
   .usa-button-primary:visited.usa-button-gray,
   button.usa-button-gray,
+  .usa-button-gray.button-download,
   [type="button"].usa-button-gray,
   [type="submit"].usa-button-gray,
   [type="reset"].usa-button-gray,
@@ -3521,7 +3542,9 @@ button,
     .usa-button-primary:visited.usa-button-gray:hover,
     .usa-button-primary:visited.usa-button-gray.usa-button-hover,
     button.usa-button-gray:hover,
+    .usa-button-gray.button-download:hover,
     button.usa-button-gray.usa-button-hover,
+    .usa-button-gray.usa-button-hover.button-download,
     [type="button"].usa-button-gray:hover,
     [type="button"].usa-button-gray.usa-button-hover,
     [type="submit"].usa-button-gray:hover,
@@ -3539,7 +3562,9 @@ button,
     .usa-button-primary:visited.usa-button-gray:active,
     .usa-button-primary:visited.usa-button-gray.usa-button-active,
     button.usa-button-gray:active,
+    .usa-button-gray.button-download:active,
     button.usa-button-gray.usa-button-active,
+    .usa-button-gray.usa-button-active.button-download,
     [type="button"].usa-button-gray:active,
     [type="button"].usa-button-gray.usa-button-active,
     [type="submit"].usa-button-gray:active,
@@ -3554,6 +3579,7 @@ button,
   .usa-button:visited.usa-button-outline,
   .usa-button-primary:visited.usa-button-outline,
   button.usa-button-outline,
+  .usa-button-outline.button-download,
   [type="button"].usa-button-outline,
   [type="submit"].usa-button-outline,
   [type="reset"].usa-button-outline,
@@ -3569,7 +3595,9 @@ button,
     .usa-button-primary:visited.usa-button-outline:hover,
     .usa-button-primary:visited.usa-button-outline.usa-button-hover,
     button.usa-button-outline:hover,
+    .usa-button-outline.button-download:hover,
     button.usa-button-outline.usa-button-hover,
+    .usa-button-outline.usa-button-hover.button-download,
     [type="button"].usa-button-outline:hover,
     [type="button"].usa-button-outline.usa-button-hover,
     [type="submit"].usa-button-outline:hover,
@@ -3588,7 +3616,9 @@ button,
     .usa-button-primary:visited.usa-button-outline:active,
     .usa-button-primary:visited.usa-button-outline.usa-button-active,
     button.usa-button-outline:active,
+    .usa-button-outline.button-download:active,
     button.usa-button-outline.usa-button-active,
+    .usa-button-outline.usa-button-active.button-download,
     [type="button"].usa-button-outline:active,
     [type="button"].usa-button-outline.usa-button-active,
     [type="submit"].usa-button-outline:active,
@@ -3607,7 +3637,9 @@ button,
     .usa-button-primary:visited.usa-button-outline:focus,
     .usa-button-primary:visited.usa-button-outline.usa-button-focus,
     button.usa-button-outline:focus,
+    .usa-button-outline.button-download:focus,
     button.usa-button-outline.usa-button-focus,
+    .usa-button-outline.usa-button-focus.button-download,
     [type="button"].usa-button-outline:focus,
     [type="button"].usa-button-outline.usa-button-focus,
     [type="submit"].usa-button-outline:focus,
@@ -3622,6 +3654,7 @@ button,
   .usa-button:visited.usa-button-outline-inverse,
   .usa-button-primary:visited.usa-button-outline-inverse,
   button.usa-button-outline-inverse,
+  .usa-button-outline-inverse.button-download,
   [type="button"].usa-button-outline-inverse,
   [type="submit"].usa-button-outline-inverse,
   [type="reset"].usa-button-outline-inverse,
@@ -3637,7 +3670,9 @@ button,
     .usa-button-primary:visited.usa-button-outline-inverse:hover,
     .usa-button-primary:visited.usa-button-outline-inverse.usa-button-hover,
     button.usa-button-outline-inverse:hover,
+    .usa-button-outline-inverse.button-download:hover,
     button.usa-button-outline-inverse.usa-button-hover,
+    .usa-button-outline-inverse.usa-button-hover.button-download,
     [type="button"].usa-button-outline-inverse:hover,
     [type="button"].usa-button-outline-inverse.usa-button-hover,
     [type="submit"].usa-button-outline-inverse:hover,
@@ -3656,7 +3691,9 @@ button,
     .usa-button-primary:visited.usa-button-outline-inverse:active,
     .usa-button-primary:visited.usa-button-outline-inverse.usa-button-active,
     button.usa-button-outline-inverse:active,
+    .usa-button-outline-inverse.button-download:active,
     button.usa-button-outline-inverse.usa-button-active,
+    .usa-button-outline-inverse.usa-button-active.button-download,
     [type="button"].usa-button-outline-inverse:active,
     [type="button"].usa-button-outline-inverse.usa-button-active,
     [type="submit"].usa-button-outline-inverse:active,
@@ -3675,7 +3712,9 @@ button,
     .usa-button-primary:visited.usa-button-outline-inverse:focus,
     .usa-button-primary:visited.usa-button-outline-inverse.usa-button-focus,
     button.usa-button-outline-inverse:focus,
+    .usa-button-outline-inverse.button-download:focus,
     button.usa-button-outline-inverse.usa-button-focus,
+    .usa-button-outline-inverse.usa-button-focus.button-download,
     [type="button"].usa-button-outline-inverse:focus,
     [type="button"].usa-button-outline-inverse.usa-button-focus,
     [type="submit"].usa-button-outline-inverse:focus,
@@ -3690,6 +3729,7 @@ button,
   .usa-button:visited.usa-button-big,
   .usa-button-primary:visited.usa-button-big,
   button.usa-button-big,
+  .usa-button-big.button-download,
   [type="button"].usa-button-big,
   [type="submit"].usa-button-big,
   [type="reset"].usa-button-big,
@@ -4082,7 +4122,7 @@ li.usa-footer-primary-content {
   padding-right: 2.5rem; }
   .usa-sign_up-block label:first-of-type {
     margin-top: 0; }
-  .usa-sign_up-block button {
+  .usa-sign_up-block button, .usa-sign_up-block .button-download {
     float: none;
     margin-right: 0;
     margin-top: 1.5rem; }
@@ -4212,13 +4252,13 @@ li.usa-footer-primary-content {
     max-width: 32rem; } }
 form a {
   border-bottom: 0; }
-form button[type="submit"],
+form button[type="submit"], form [type="submit"].button-download,
 form input[type="submit"] {
   display: block;
   margin-top: 2.5rem;
   margin-bottom: 1.5em; }
   @media screen and (min-width: 600px) {
-    form button[type="submit"],
+    form button[type="submit"], form [type="submit"].button-download,
     form input[type="submit"] {
       padding-left: 2.7em;
       padding-right: 2.7em;
@@ -4295,8 +4335,9 @@ fieldset {
   font-style: italic;
   font-weight: normal; }
 
-.usa-input-buttons-inline button,
+.usa-input-buttons-inline button, .usa-input-buttons-inline .button-download,
 .usa-input-buttons-inline button[type="submit"],
+.usa-input-buttons-inline [type="submit"].button-download,
 .usa-input-buttons-inline input[type="submit"], .usa-input-buttons-inline > * {
   display: inline;
   margin-right: 1.5em; }
@@ -4369,7 +4410,8 @@ fieldset {
         background-image: none;
         width: 8.5rem; } }
   .usa-search .usa-search-submit-text {
-    display: none; }
+    display: none;
+    font-size: 2rem; }
     @media screen and (min-width: 481px) {
       .usa-search .usa-search-submit-text {
         display: block; } }
@@ -4477,14 +4519,16 @@ fieldset {
     list-style: none;
     margin-bottom: 6px;
     width: 100%; }
-.usa-accordion button[aria-expanded=false],
-.usa-accordion-bordered button[aria-expanded=false] {
+.usa-accordion button[aria-expanded=false], .usa-accordion [aria-expanded=false].button-download,
+.usa-accordion-bordered button[aria-expanded=false],
+.usa-accordion-bordered [aria-expanded=false].button-download {
   background-image: url("../img/plus.png");
   background-image: url("../img/plus.svg");
   background-repeat: no-repeat;
   background-size: 1.3rem; }
-.usa-accordion button,
-.usa-accordion-bordered button {
+.usa-accordion button, .usa-accordion .button-download,
+.usa-accordion-bordered button,
+.usa-accordion-bordered .button-download {
   background-color: #f1f1f1;
   background-image: url("../img/minus.png");
   background-image: url("../img/minus.svg");
@@ -4501,20 +4545,28 @@ fieldset {
   padding-right: 5.5rem;
   padding-top: 1.5rem;
   width: 100%; }
-  .usa-accordion button:focus,
-  .usa-accordion-bordered button:focus {
+  .usa-accordion button:focus, .usa-accordion .button-download:focus,
+  .usa-accordion-bordered button:focus,
+  .usa-accordion-bordered .button-download:focus {
     box-shadow: 0 0 3px #3e94cf, 0 0 7px #3e94cf; }
-  .usa-accordion button:hover,
-  .usa-accordion-bordered button:hover {
+  .usa-accordion button:hover, .usa-accordion .button-download:hover,
+  .usa-accordion-bordered button:hover,
+  .usa-accordion-bordered .button-download:hover {
     background-color: #d6d7d9;
     color: #212121; }
-  .usa-accordion button h1, .usa-accordion button h2, .usa-accordion button h3, .usa-accordion button h4, .usa-accordion button h5, .usa-accordion button h6,
+  .usa-accordion button h1, .usa-accordion .button-download h1, .usa-accordion button h2, .usa-accordion .button-download h2, .usa-accordion button h3, .usa-accordion .button-download h3, .usa-accordion button h4, .usa-accordion .button-download h4, .usa-accordion button h5, .usa-accordion .button-download h5, .usa-accordion button h6, .usa-accordion .button-download h6,
   .usa-accordion-bordered button h1,
+  .usa-accordion-bordered .button-download h1,
   .usa-accordion-bordered button h2,
+  .usa-accordion-bordered .button-download h2,
   .usa-accordion-bordered button h3,
+  .usa-accordion-bordered .button-download h3,
   .usa-accordion-bordered button h4,
+  .usa-accordion-bordered .button-download h4,
   .usa-accordion-bordered button h5,
-  .usa-accordion-bordered button h6 {
+  .usa-accordion-bordered .button-download h5,
+  .usa-accordion-bordered button h6,
+  .usa-accordion-bordered .button-download h6 {
     margin: 0; }
 
 .usa-accordion-bordered .usa-accordion-content {
@@ -4595,37 +4647,43 @@ drawer {
   top: 0;
   z-index: 1000; }
 
-drawer button[data-drawer-toggle="filters"],
-drawer button[data-drawer-toggle="close"] {
+drawer button[data-drawer-toggle="filters"], drawer [data-drawer-toggle="filters"].button-download,
+drawer button[data-drawer-toggle="close"],
+drawer [data-drawer-toggle="close"].button-download {
   border-radius: 0;
   margin: 0;
   max-width: 100px;
   position: absolute;
   top: 0; }
 
-drawer button[data-drawer-toggle="filters"],
-#opportunity button[data-drawer-toggle="filters"] {
+drawer button[data-drawer-toggle="filters"], drawer [data-drawer-toggle="filters"].button-download,
+#opportunity button[data-drawer-toggle="filters"],
+#opportunity [data-drawer-toggle="filters"].button-download {
   left: 100%;
   display: none; }
 
-drawer button[data-drawer-toggle="close"] {
+drawer button[data-drawer-toggle="close"], drawer [data-drawer-toggle="close"].button-download {
   background: transparent;
   padding: 10px;
   right: 0;
   width: 38px; }
 
-drawer[aria-hidden=true] button[data-drawer-toggle="filters"],
-#opportunity button[data-drawer-toggle="filters"] {
+drawer[aria-hidden=true] button[data-drawer-toggle="filters"], drawer[aria-hidden=true] [data-drawer-toggle="filters"].button-download,
+#opportunity button[data-drawer-toggle="filters"],
+#opportunity [data-drawer-toggle="filters"].button-download {
   display: block; }
-drawer[aria-hidden=true] button[data-drawer-toggle="close"],
-#opportunity button[data-drawer-toggle="close"] {
+drawer[aria-hidden=true] button[data-drawer-toggle="close"], drawer[aria-hidden=true] [data-drawer-toggle="close"].button-download,
+#opportunity button[data-drawer-toggle="close"],
+#opportunity [data-drawer-toggle="close"].button-download {
   display: none; }
 
-drawer[aria-hidden=false] button[data-drawer-toggle="filters"],
-#opportunity button[data-drawer-toggle="filters"] {
+drawer[aria-hidden=false] button[data-drawer-toggle="filters"], drawer[aria-hidden=false] [data-drawer-toggle="filters"].button-download,
+#opportunity button[data-drawer-toggle="filters"],
+#opportunity [data-drawer-toggle="filters"].button-download {
   display: none; }
-drawer[aria-hidden=false] button[data-drawer-toggle="close"],
-#opportunity button[data-drawer-toggle="close"] {
+drawer[aria-hidden=false] button[data-drawer-toggle="close"], drawer[aria-hidden=false] [data-drawer-toggle="close"].button-download,
+#opportunity button[data-drawer-toggle="close"],
+#opportunity [data-drawer-toggle="close"].button-download {
   display: block; }
 
 drawer form {
@@ -4770,9 +4828,8 @@ drawer form {
   margin: 0; }
 
 #filter-button {
-  border-radius: 0; }
-
-.usa-search-submit-text {
-  font-size: 2rem; }
+  border-radius: 0;
+  background-color: #0071bc;
+  color: white; }
 
 /*# sourceMappingURL=main.css.map */
