@@ -403,7 +403,14 @@ span.clearable-file-input label {
     color: #333;
 }
 
-.calendar th {
+.calendar caption {
+    background-color: #F0F8FF;
+    border-bottom: 1px solid #ccc;
+    color: #1C304A;
+}
+
+.calendar th,
+.calendar tbody th {
     padding: 8px 5px;
     background: #f8f8f8;
     border-bottom: 1px solid #ddd;
@@ -424,7 +431,9 @@ span.clearable-file-input label {
 
 .calendar td.selected a {
     background: #79aec8;
-    color: #fff;
+    /* Bright */
+    background-color: #00CFFF;
+    color: #000;
 }
 
 .calendar td.nonday {
@@ -433,6 +442,7 @@ span.clearable-file-input label {
 
 .calendar td.today a {
     font-weight: 700;
+    background-color: #F0F8FF;
 }
 
 .calendar td a, .timelist a {
@@ -443,13 +453,17 @@ span.clearable-file-input label {
     color: #444;
 }
 
-.calendar td a:hover, .timelist a:hover {
-    background: #79aec8;
+.calendar tbody td a:hover,
+.timelist a:hover {
+    background-color: #1C304A;
     color: white;
 }
 
-.calendar td a:active, .timelist a:active {
-    background: #417690;
+.calendar td a:active,
+.calendar td a:focus,
+.timelist a:active,
+.timelist a:focus {
+    background-color: #1C304A;
     color: white;
 }
 
