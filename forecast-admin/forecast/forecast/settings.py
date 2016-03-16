@@ -33,14 +33,6 @@ else:
 ALLOWED_HOSTS = ['*']
 
 
-# TEMPLATE_LOADERS = (
-#     'django.template.loaders.filesystem.Loader',
-#     'django.template.loaders.app_directories.Loader',
-# )
-
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
-
-
 # Application definition
 
 INSTALLED_APPS = (
