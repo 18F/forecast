@@ -1179,7 +1179,8 @@ a.deletelink:hover {
     display: block;
     float: left;
     padding: 3px 12px;
-    background: #999;
+    /*background: #999;*/
+    background-color: #046B99;
     font-weight: 400;
     font-size: 11px;
     text-transform: uppercase;
@@ -1398,7 +1399,7 @@ table#change-history tbody th {
     margin-bottom: 16px;
     border-bottom: 1px solid #eaeaea;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 400;
     color: #333;
 }
 
