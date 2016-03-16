@@ -231,7 +231,6 @@
 .paginator a:link,
 .paginator a:visited {
     padding: 2px 6px;
-    background: #79aec8;
     /* Medium */
     background-color: #046B99;
     text-decoration: none;
@@ -265,7 +264,6 @@
 
 .paginator a:hover {
     color: white;
-    /*background: #036;*/
     /* Bright */
     background-color: #00CFFF;
 }
@@ -340,7 +338,6 @@
     line-height: 1;
     padding: 4px 8px;
     margin: 0;
-
     border: 1px solid #1C304A;
     vertical-align: middle;
     background: #1C302C;
