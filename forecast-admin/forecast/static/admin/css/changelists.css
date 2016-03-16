@@ -171,20 +171,24 @@
     color: #999;
 }
 
-#changelist-filter a:hover {
-    color: #036;
+#changelist-filter a:hover,
+#changelist-filter li.selected a:hover {
+    font-weight: 600;
+    /* Dark */
+    color: #1C304A;
 }
 
 #changelist-filter li.selected {
-    border-left: 5px solid #eaeaea;
+    /* Bright */
     border-left: 5px solid #00CFFF;
     padding-left: 10px;
     margin-left: -15px;
 }
 
 #changelist-filter li.selected a {
-    color: #5b80b2;
-    color: #0071bc;
+    /* Dark */
+    color: #1C304A;
+    font-weight: 600;
 }
 
 /* DATE DRILLDOWN */
@@ -223,9 +227,12 @@
     border-top: 1px solid #ddd;
 }
 
-.paginator a:link, .paginator a:visited {
+.paginator a:link,
+.paginator a:visited {
     padding: 2px 6px;
     background: #79aec8;
+    /* Medium */
+    background-color: #046B99;
     text-decoration: none;
     color: #fff;
 }
@@ -234,11 +241,13 @@
     padding: 0;
     border: none;
     background: none;
-    color: #5b80b2;
+    /* Dark */
+    color: #1C304A;
 }
 
 .paginator a.showall:hover {
-    color: #036;
+    /* Medium */
+    color: #046B99;
     background: none;
 }
 
@@ -255,7 +264,9 @@
 
 .paginator a:hover {
     color: white;
-    background: #036;
+    /*background: #036;*/
+    /* Bright */
+    background-color: #00CFFF;
 }
 
 /* ACTIONS */

@@ -920,13 +920,16 @@ input[type=button][disabled].default {
     margin-top: .6em;
 }
 
-.module h2, .module caption, .inline-group h2 {
+.module h2,
+.module caption,
+.inline-group h2 {
     margin: 0;
     padding: 8px;
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #00CFFF;
+    /* Dark */
+    background: #1C304A;
     color: #fff;
 }
 
@@ -1232,19 +1235,6 @@ table#change-history tbody th {
     margin-right: -300px;
 }
 
-/*
-#content-main {
-    float: left;
-    width: 60%;
-    margin: 0;
-    margin-left: 10%;
-}
-
-#content-related {
-    float: left;
-    width: 20%;
-}
-*/
 
 #footer {
     clear: both;
@@ -1360,7 +1350,8 @@ table#change-history tbody th {
 /* SIDEBAR */
 
 #content-related {
-    background: #f8f8f8;
+    /* Pale */
+    background-color: #F0F8FF;
 }
 
 #content-related .module {
@@ -1369,6 +1360,7 @@ table#change-history tbody th {
 
 #content-related h3 {
     font-size: 14px;
+    font-weight: 400;
     color: #666;
     padding: 0 16px;
     margin: 0 0 16px;
@@ -1381,6 +1373,7 @@ table#change-history tbody th {
 #content-related p {
     padding-left: 16px;
     padding-right: 16px;
+    font-weight: 200;
 }
 
 #content-related .actionlist {
@@ -1400,6 +1393,7 @@ table#change-history tbody th {
     margin-bottom: 16px;
     border-bottom: 1px solid #eaeaea;
     font-size: 18px;
+    font-weight: 200;
     color: #333;
 }
 
