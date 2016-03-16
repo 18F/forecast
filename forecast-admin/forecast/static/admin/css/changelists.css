@@ -47,6 +47,9 @@
 /* CHANGELIST TABLES */
 
 #changelist table thead th {
+    /* Dark */
+    background-color: #1C304A;
+    color: #fff;
     padding: 0;
     white-space: nowrap;
     vertical-align: middle;
