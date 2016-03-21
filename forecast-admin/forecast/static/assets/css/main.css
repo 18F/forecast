@@ -2493,7 +2493,17 @@ html {
   box-sizing: inherit; }
 
 body {
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%; }
 
 .lt-ie9 * {
   filter: none !important; }
@@ -3936,7 +3946,10 @@ footer .usa-grid {
 
 .content-wrapper {
   padding-top: 2.5em;
-  min-height: 50rem; }
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto; }
 
 .header {
   background-color: #323a45;
@@ -4075,6 +4088,12 @@ footer .usa-grid {
     padding-left: 3.8rem; }
   .usa-sidenav-sub_list .usa-sidenav-sub_list a:hover {
     padding-left: 3.8rem; }
+
+footer {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none; }
 
 .usa-footer .usa-unstyled-list {
   display: block; }
@@ -4884,8 +4903,12 @@ drawer form {
 .error-page {
   text-align: center; }
 
-.error-page .error-page-header {
-  font-size: 7rem;
+.error-page .error-page-header,
+.error-page .error-page-hero {
   margin: 0; }
+
+.error-page .error-page-hero {
+  font-size: 7rem;
+  font-weight: 400; }
 
 /*# sourceMappingURL=main.css.map */

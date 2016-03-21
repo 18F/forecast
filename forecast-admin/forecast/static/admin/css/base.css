@@ -47,6 +47,13 @@ body {
   height: 100%;
 }
 
+#content {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
 footer {
   -webkit-box-flex: 0;
   -webkit-flex: none;
@@ -1229,10 +1236,6 @@ table#change-history tbody th {
 }
 
 #content {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
   padding: 20px 40px;
 }
 
