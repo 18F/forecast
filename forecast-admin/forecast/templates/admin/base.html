@@ -18,138 +18,138 @@
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
-<!-- Container -->
-<div id="container">
+    <!-- Container -->
+    <div id="container">
 
-    {% if not is_popup %}
-    <!-- Header -->
-    <div id="header">
-        <div id="branding">
-        {% block branding %}{% endblock %}
-        </div>
-        {% block usertools %}
-        {% if has_permission %}
-        <div id="user-tools">
-            {% block userlinks %}
+        {% if not is_popup %}
+        <!-- Header -->
+        <div id="header">
+            <div id="branding">
+            {% block branding %}{% endblock %}
+            </div>
+            {% block usertools %}
+            {% if has_permission %}
+            <div id="user-tools">
+                {% block userlinks %}
 
-                <!-- Navigation -->
-                <nav class="menu" id="a11y-menu" role="navigation" aria-label="Main menu">
+                    <!-- Navigation -->
+                    <nav class="menu" id="a11y-menu" role="navigation" aria-label="Main menu">
 
-                  <ul class="nav level-1 list-reset" role="menubar" aria-hidden="false">
-                    <li class="has-subnav" role="menuitem" aria-haspopup="true">
-                      <a href="javacript:void(0)" class="top-link">Account</a>
-                      <ul class="level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
+                      <ul class="nav level-1 list-reset" role="menubar" aria-hidden="false">
+                        <li class="has-subnav" role="menuitem" aria-haspopup="true">
+                          <a href="javacript:void(0)" class="top-link">Account</a>
+                          <ul class="level-2 list-reset" data-test="true" aria-hidden="true" role="menu">
 
-                        {% if site_url %}
-                            <li role="menuitem">
-                                <a href="{{ site_url }}" tabindex="-1">{% trans 'View site' %}</a>
-                            </li>
-                        {% endif %}
-                        {% if user.is_active and user.is_staff %}
-                            {% url 'django-admindocs-docroot' as docsroot %}
-                            {% if docsroot %}
-                                <li role="menuitem"><a href="{{ docsroot }}" tabindex="-1">{% trans 'Documentation' %}</a></li>
+                            {% if site_url %}
+                                <li role="menuitem">
+                                    <a href="{{ site_url }}" tabindex="-1">{% trans 'View site' %}</a>
+                                </li>
                             {% endif %}
-                        {% endif %}
-                        {% if user.has_usable_password %}
-                            <li role="menuitem"><a href="{% url 'admin:password_change' %}" tabindex="-1">{% trans 'Change password' %}</a></li>
-                        {% endif %}
-                        <li role="menuitem"><a href="{% url 'admin:logout' %}" tabindex="-1">{% trans 'Log out' %}</a></li>
+                            {% if user.is_active and user.is_staff %}
+                                {% url 'django-admindocs-docroot' as docsroot %}
+                                {% if docsroot %}
+                                    <li role="menuitem"><a href="{{ docsroot }}" tabindex="-1">{% trans 'Documentation' %}</a></li>
+                                {% endif %}
+                            {% endif %}
+                            {% if user.has_usable_password %}
+                                <li role="menuitem"><a href="{% url 'admin:password_change' %}" tabindex="-1">{% trans 'Change password' %}</a></li>
+                            {% endif %}
+                            <li role="menuitem"><a href="{% url 'admin:logout' %}" tabindex="-1">{% trans 'Log out' %}</a></li>
 
+                          </ul>
+                        </li>
                       </ul>
-                    </li>
-                  </ul>
-                </nav>
+                    </nav>
+                {% endblock %}
+            </div>
+            {% endif %}
             {% endblock %}
+            {% block nav-global %}{% endblock %}
         </div>
-        {% endif %}
+        <!-- END Header -->
+        {% block breadcrumbs %}
+        <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        {% if title %} &rsaquo; {{ title }}{% endif %}
+        </div>
         {% endblock %}
-        {% block nav-global %}{% endblock %}
-    </div>
-    <!-- END Header -->
-    {% block breadcrumbs %}
-    <div class="breadcrumbs">
-    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-    {% if title %} &rsaquo; {{ title }}{% endif %}
-    </div>
-    {% endblock %}
-    {% endif %}
-
-    {% block messages %}
-        {% if messages %}
-        <ul class="messagelist">{% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-        {% endfor %}</ul>
         {% endif %}
-    {% endblock messages %}
 
-    <!-- Content -->
-    <div id="content" class="{% block coltype %}colM{% endblock %}">
-        {% include "admin/includes/sidebar.html" %}
-        {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block messages %}
+            {% if messages %}
+            <ul class="messagelist">{% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+            {% endfor %}</ul>
+            {% endif %}
+        {% endblock messages %}
 
-        {% block content %}
+        <!-- Content -->
+        <div id="content" class="{% block coltype %}colM{% endblock %}">
+            {% include "admin/includes/sidebar.html" %}
+            {% block pretitle %}{% endblock %}
+            {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
 
-        {% block object-tools %}{% endblock %}
-        {{ content }}
-        {% endblock %}
-        {% block sidebar %}{% endblock %}
-        <br class="clear" />
-    </div>
-    <!-- END Content -->
+            {% block content %}
 
-    {% block footer %}
-
-
-<footer class="usa-footer usa-footer-medium usa-sans" role="contentinfo">
-    <div class="usa-footer-secondary_section">
-      <div class="usa-grid">
-        <div class="usa-footer-logo usa-width-one-half">
-          <img class="usa-footer-logo-img" src="{% static 'assets/img/nav-logo.jpg' %}" alt="GSA Logo" />
-          <h3 class="usa-footer-logo-heading usa-width-three-quarters">U.S. General Services Administration</h3>
+            {% block object-tools %}{% endblock %}
+            {{ content }}
+            {% endblock %}
+            {% block sidebar %}{% endblock %}
+            <br class="clear" />
         </div>
+        <!-- END Content -->
+        {% if user.is_authenticated %}
 
-        <div class="usa-footer-contact-links usa-width-one-half">
-          <div class="usa-social-links">
-            <a href="https://www.facebook.com/GSA-Office-of-Small-Business-Utilization-219614578049300/">
-              <span class="usa-sr-only">https://www.facebook.com/GSA-Office-of-Small-Business-Utilization-219614578049300/</span>
-              <span class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-facebook fa-stack-1x fa-inverse" role="img" aria-label="Facebook"></i>
-              </span>
-            </a>
-            <a href="https://twitter.com/GSAOSBU">
-              <span class="usa-sr-only">https://twitter.com/GSAOSBU</span>
-              <span class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x fa-inverse" role="img" aria-label="Twitter"></i>
-              </span>
-            </a>
-            <a href="https://www.youtube.com/playlist?list=PLvdwyPgXnxxVYR0faPu0NJ-dIXUqIVsUW">
-              <span class="usa-sr-only">https://www.youtube.com/playlist?list=PLvdwyPgXnxxVYR0faPu0NJ-dIXUqIVsUW</span>
-              <span class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-youtube fa-stack-1x fa-inverse" role="img" aria-label="Youtube"></i>
-              </span>
-            </a>
-            <a href="mailto:forecasthelp@gsa.gov">
-              <span class="usa-sr-only">forecasthelp@gsa.gov</span>
-              <span class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-envelope-o fa-stack-1x fa-inverse" role="img" aria-label="Email"></i>
-              </span>
-            </a>
-          </div>
+            {% block footer %}
 
-          <h4 class="h6 usa-footer-contact-heading">Join the conversation</h4>
-        </div>
-      </div>
+                <footer class="usa-footer usa-footer-medium usa-sans" role="contentinfo">
+                    <div class="usa-footer-secondary_section">
+                        <div class="usa-grid">
+                            <div class="usa-footer-logo usa-width-one-half">
+                              <img class="usa-footer-logo-img" src="{% static 'assets/img/nav-logo.jpg' %}" alt="GSA Logo" />
+                              <h3 class="usa-footer-logo-heading usa-width-three-quarters">U.S. General Services Administration</h3>
+                            </div>
+
+                            <div class="usa-footer-contact-links usa-width-one-half">
+                                <div class="usa-social-links">
+                                    <a href="https://www.facebook.com/GSA-Office-of-Small-Business-Utilization-219614578049300/">
+                                      <span class="usa-sr-only">https://www.facebook.com/GSA-Office-of-Small-Business-Utilization-219614578049300/</span>
+                                      <span class="fa-stack">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse" role="img" aria-label="Facebook"></i>
+                                      </span>
+                                    </a>
+                                    <a href="https://twitter.com/GSAOSBU">
+                                      <span class="usa-sr-only">https://twitter.com/GSAOSBU</span>
+                                      <span class="fa-stack">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse" role="img" aria-label="Twitter"></i>
+                                      </span>
+                                    </a>
+                                    <a href="https://www.youtube.com/playlist?list=PLvdwyPgXnxxVYR0faPu0NJ-dIXUqIVsUW">
+                                      <span class="usa-sr-only">https://www.youtube.com/playlist?list=PLvdwyPgXnxxVYR0faPu0NJ-dIXUqIVsUW</span>
+                                      <span class="fa-stack">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-youtube fa-stack-1x fa-inverse" role="img" aria-label="Youtube"></i>
+                                      </span>
+                                    </a>
+                                    <a href="mailto:forecasthelp@gsa.gov">
+                                      <span class="usa-sr-only">forecasthelp@gsa.gov</span>
+                                      <span class="fa-stack">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope-o fa-stack-1x fa-inverse" role="img" aria-label="Email"></i>
+                                      </span>
+                                    </a>
+                                </div>
+                                <h4 class="h6 usa-footer-contact-heading">Join the conversation</h4>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            {% endblock %}
+        {% endif %}
     </div>
-  </footer>
-{% endblock %}
-</div>
-<!-- END Container -->
+    <!-- END Container -->
 
 </body>
 </html>

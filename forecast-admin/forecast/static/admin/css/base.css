@@ -17,13 +17,41 @@ Pale – #F0F8FF
 
 @import url(fonts.css);
 
+
+/* LAYOUT */
+
+html {
+  height: 100%;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
-    color: #333;
-    background: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+#container,
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+footer {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
 }
 
 /* GRID */
@@ -1201,7 +1229,11 @@ table#change-history tbody th {
 }
 
 #content {
-    padding: 20px 40px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  padding: 20px 40px;
 }
 
 .dashboard #content {
@@ -1876,4 +1908,6 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-
+#login-form {
+    padding-bottom: 3rem;
+}
