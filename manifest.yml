@@ -10,3 +10,5 @@ applications:
   host: gsaforecast
   services:
   - forecast-production-db
+  env:
+    DISABLE_COLLECTSTATIC: true
