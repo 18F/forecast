@@ -17,13 +17,48 @@ Pale – #F0F8FF
 
 @import url(fonts.css);
 
+
+/* LAYOUT */
+
+html {
+  height: 100%;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
-    color: #333;
-    background: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+#container,
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+#content {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+footer {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
 }
 
 /* GRID */
@@ -1201,7 +1236,7 @@ table#change-history tbody th {
 }
 
 #content {
-    padding: 20px 40px;
+  padding: 20px 40px;
 }
 
 .dashboard #content {
@@ -1218,12 +1253,6 @@ table#change-history tbody th {
     width: 260px;
     position: relative;
     margin-right: -300px;
-}
-
-
-#footer {
-    clear: both;
-    padding: 10px;
 }
 
 /* COLUMN TYPES */
@@ -1538,6 +1567,23 @@ footer .usa-grid {
   padding: 1.25em;
 }
 
+.usa-footer .usa-grid {
+  max-width: inherit;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.usa-footer .usa-footer-contact-heading {
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 600px) {
+  .usa-footer .usa-footer-contact-heading {
+    margin-top: 1.2rem;
+    padding-bottom: 0;
+  }
+}
+
 .usa-footer .usa-unstyled-list {
   display: block;
 }
@@ -1805,7 +1851,7 @@ li.usa-footer-primary-content:last-child {
 }
 
 .usa-footer-logo {
-  margin-bottom: 1.25em;
+  margin-bottom: 2.5em;
 }
 
 @media screen and (min-width: 600px) {
@@ -1876,4 +1922,6 @@ li.usa-footer-primary-content:last-child {
   }
 }
 
-
+#login-form {
+    padding-bottom: 3rem;
+}

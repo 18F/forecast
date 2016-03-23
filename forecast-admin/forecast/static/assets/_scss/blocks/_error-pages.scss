@@ -1,7 +1,13 @@
 .error-page {
-	text-align: center;
+  text-align: center;
 }
 
-.error-page .error-page-header {
-	margin: 0;
+.error-page .error-page-header,
+.error-page .error-page-hero {
+  margin: 0;
+}
+
+.error-page .error-page-hero {
+  font-size: rem(70px);
+  font-weight: $font-normal;
 }
