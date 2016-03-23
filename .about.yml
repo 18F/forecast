@@ -54,7 +54,7 @@ team:
 - github: ddotrollins
   id: Duane Rollins
   role: User Experience Lead
-  
+
 - github: gemfarmer
   id: Brian Hedberg
   role: Front End Designer/Developer
@@ -109,6 +109,9 @@ licenses:
   Django REST Swagger:
     name: BSD-3-Clause
     url: http://opensource.org/licenses/BSD-3-Clause
+  Django Flat Theme:
+    name: BSD-3-Clause
+    url: http://opensource.org/licenses/BSD-3-Clause
   Waitress:
     name: ZPL-2.1
     url: https://spdx.org/licenses/ZPL-2.1.html#licenseText
@@ -145,10 +148,10 @@ links:
 - url: http://www.gsa.gov/portal/category/100122
   text: GSA OSBU Forescting Opportunities Data
   category: government resource
-  
+
 # URIs for points-of-contact
 # Items:
 # - url: URL for the link
 #   text: Anchor text for the link
 contact:
-- 
+-

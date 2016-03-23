@@ -1,3 +1,10 @@
+footer {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
 .usa-footer {
   .usa-unstyled-list {
     display: block;

@@ -8,6 +8,7 @@
 
 // Core -------------- //
 
+@import 'core/fonts';
 @import 'core/grid-settings';
 @import 'core/defaults';
 @import 'core/variables';
@@ -52,3 +53,4 @@
 @import 'blocks/details';
 @import 'blocks/opportunity';
 @import 'blocks/filters';
+@import 'blocks/error-pages';
