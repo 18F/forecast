@@ -10,3 +10,5 @@ applications:
   host: forecast-staging
   services:
   - forecast-staging-db
+  env:
+    DISABLE_COLLECTSTATIC: true
