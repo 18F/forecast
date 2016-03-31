@@ -6,6 +6,9 @@
   <label for="agency-dropdown">Agency</label>
   <select name="agency-dropdown" id="agency-dropdown" >
     <option default value="all">All</option>
+    {% for a in agency %}
+    <option value="{{ a.agency }}">{{ a.agency }}</option>
+    {% endfor %}
   </select>
   </div>
 
@@ -14,6 +17,9 @@
   <label for="place_of_performance_state-dropdown">Place of Performance</label>
   <select name="place_of_performance_state-dropdown" id="place_of_performance_state-dropdown" >
     <option default value="all">All</option>
+    {% for p in place_of_performance_state %}
+    <option value="{{ p.place_of_performance_state }}">{{ p.place_of_performance_state }}</option>
+    {% endfor %}
   </select>
   </div>
 
@@ -22,6 +28,9 @@
   <label for="socioeconomic-dropdown">Socioeconomic Category</label>
   <select name="socioeconomic-dropdown" id="socioeconomic-dropdown" >
     <option default value="all">All</option>
+    {% for s in socioeconomic %}
+    <option value="{{ s.socioeconomic }}">{{ s.socioeconomic }}</option>
+    {% endfor %}
   </select>
   </div>
 
@@ -30,6 +39,9 @@
   <label for="naics-dropdown">NAICS Code</label>
   <select name="naics-dropdown" id="naics-dropdown" >
     <option default value="all">All</option>
+    {% for n in naics %}
+    <option value="{{ n.naics }}">{{ n.naics }}</option>
+    {% endfor %}
   </select>
   </div>
 
@@ -53,6 +65,9 @@
     <label for="estimated_fiscal_year_quarter-dropdown">Projected Solicitation Quarter</label>
     <select name="estimated_fiscal_year_quarter-dropdown" id="estimated_fiscal_year_quarter-dropdown" >
       <option default value="all">All</option>
+      {% for e in estimated_fiscal_year_quarter %}
+      <option value="{{ e.estimated_fiscal_year_quarter }}">{{ e.estimated_fiscal_year_quarter }}</option>
+      {% endfor %}
     </select>
     </div>
 
@@ -61,6 +76,9 @@
     <label for="contract_type-dropdown">Contract Type</label>
     <select name="contract_type-dropdown" id="contract_type-dropdown" >
       <option default value="all">All</option>
+      {% for c in contract_type %}
+      <option value="{{ c.contract_type }}">{{ c.contract_type }}</option>
+      {% endfor %}
     </select>
     </div>
 
@@ -69,6 +87,9 @@
     <label for="award_status-dropdown">Award Status</label>
     <select name="award_status-dropdown" id="award_status-dropdown" >
       <option default value="all">All</option>
+      {% for a in award_status %}
+      <option value="{{ a.award_status }}">{{ a.award_status }}</option>
+      {% endfor %}
     </select>
     </div>
   </div>

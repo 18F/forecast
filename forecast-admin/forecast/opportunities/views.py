@@ -15,7 +15,7 @@ def home(request):
     socioeconomic = Opportunity.objects.values('socioeconomic').order_by('socioeconomic').distinct('socioeconomic')
     place_of_performance_state = Opportunity.objects.values('place_of_performance_state').order_by('place_of_performance_state').distinct('place_of_performance_state')
     naics = Opportunity.objects.values('naics').order_by('naics').distinct('naics')
-    estimated_fiscal_year_quarter = Opportunity.objects.values('estimated_fiscal_year_quarter').order_by('estimated_fiscal_year_quarter').distinct('estestimated_fiscal_year_quarter')
+    estimated_fiscal_year_quarter = Opportunity.objects.values('estimated_fiscal_year_quarter').order_by('estimated_fiscal_year_quarter').distinct('estimated_fiscal_year_quarter')
     contract_type = Opportunity.objects.values('contract_type').order_by('contract_type').distinct('contract_type')
     award_status = Opportunity.objects.values('award_status').order_by('award_status').distinct('award_status')
     return render(request, 'main.html', {
