@@ -114,47 +114,7 @@ $(document).ready(function() {
     }
   }
 
-  /**
-   * Load the Data into the Filters
-   **/
-  _.each(listOptions.valueNames, function (name) {
-
-    // Create an array for each filterable element
-    data[name] = [];
-    _.each(listObj.items, function(item) {
-      data[name].push(item.values()[name]);
-    });
-
-    // Find unique values and add them as options in dropdowns
-    var opt = _.sortBy(_.uniq(data[name]));
-    $.each(opt, function(key, value) {
-      $('#' + name + '-dropdown')
-        .append($("<option></option>")
-        .attr("value",value)
-        .text(value));
-    });
-
-    // Add the filtering action to each dropdown
-    var dropdown = "#" + name + "-dropdown";
-    $(dropdown).change(function (){
-      var value = $(dropdown).val();
-      urlQuery = "";
-      queries = _.omit(queries, name);
-      if (value != "all") {
-        queries[name] = value;
-      }
-      _.each(_.keys(queries), function(key) {
-        urlQuery += "&"+key+"="+queries[key];
-      });
-      $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
-      listObj.filter(function(item) {
-        return (filterCheck(item, queries));
-      });
-      renderPageStatus();
-    });
   });
-
-
 
   // Search within list of opportunities
   $(".search").keyup(function () {
