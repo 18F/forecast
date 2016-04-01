@@ -1,46 +1,25 @@
-
-/**
- *Initializes list.js
- **/
-
 var opportunitiesPerPage = 10;
-
-var paginationBottomOptions = {
-  name: 'paginationBottom',
-  paginationClass: 'pagination-bottom',
-  innerWindow: 2,
-  outerWinder: 1
-};
-
-var listOptions = {
-  valueNames: [
-    'agency',
-    'award_status',
-    'place_of_performance_state',
-    'naics',
-    'award_amount',
-    'estimated_fiscal_year_quarter',
-    'description',
-    'funding_agency',
-    'estimated_fiscal_year',
-    'place_of_performance_city',
-    'contract_type',
-    'office',
-    'dollar_value_min',
-    'dollar_value_max',
-    'socioeconomic'
-  ],
-  page: opportunitiesPerPage,
-  plugins: [
-    ListPagination(paginationBottomOptions)
-  ]
-};
-
-var listObj = new List('opportunities', listOptions);
-
 var data = {};
 var queries = {};
 var urlStem = "api/opportunities/?format=csv";
+
+var valueNames = [
+  'agency',
+  'award_status',
+  'place_of_performance_state',
+  'naics',
+  'award_amount',
+  'estimated_fiscal_year_quarter',
+  'description',
+  'funding_agency',
+  'estimated_fiscal_year',
+  'place_of_performance_city',
+  'contract_type',
+  'office',
+  'dollar_value_min',
+  'dollar_value_max',
+  'socioeconomic'
+];
 
 /**
  *Initializes the More/Fewer Filters
@@ -56,37 +35,6 @@ $("#toggle-filters").on('click', function(e) {
         $("#toggle-filters").text("Fewer Filters");
     }
 });
-
-// A function to check whether an item matches any active filters
-var filterCheck = function (item, queries) {
-  shouldReturn = true;
-  _.each(_.keys(queries), function (key) {
-    if (key === 'description') {
-      if (item.values()[key].search(new RegExp(queries[key], "i")) < 0) {
-        shouldReturn = false;
-        return shouldReturn;
-      }
-    } else if (key === 'dollar_value_min') {
-      var value = item.values()[key].replace('$','').replace(',','');
-      if (parseInt(value) < parseInt(queries[key])) {
-        shouldReturn = false;
-        return shouldReturn;
-      }
-    } else if (key === 'dollar_value_max') {
-      var value = item.values()[key].replace('$','').replace(',','');
-      if (parseInt(value) > parseInt(queries[key])) {
-        shouldReturn = false;
-        return shouldReturn;
-      }
-    } else {
-      if (item.values()[key] != queries[key]) {
-        shouldReturn = false;
-        return shouldReturn;
-      }
-    }
-  });
-  return shouldReturn;
-};
 
 var startOpportunities = function(opportunityContainer, pageContainer) {
   var getOpportunityRowNode = function(o) {
@@ -157,6 +105,7 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
     return o._node;
   }
 
+  var _filterQuery = '';
   var _opportunityContainer = $('#opportunities .list');
   var _pageContainer = $('.pagination-bottom');
   var _status = $('.opportunity-pagination_status');
@@ -175,7 +124,7 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
     _status.empty();
     if(_list.length > 0) {
       var start = ((_page - 1) * opportunitiesPerPage) + 1;
-      var end = start + 9;
+      var end = Math.min(start + 9, _totalOpps);
       _status.append(start + ' – ' + end + ' of ' + _totalOpps + ' opportunities');
 
     } else {
@@ -210,12 +159,17 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
   };
 
   var goToPage = function(pageNumber) {
-    if(_list.length < (pageNumber * opportunitiesPerPage)) {
-      $.get('api/opportunities/?format=json&limit=' + opportunitiesPerPage + '&offset=' + ((pageNumber - 1) * opportunitiesPerPage), function(data) {
+    if(_list.length < (pageNumber * opportunitiesPerPage) && (_totalOpps === 0 || _list.length < _totalOpps)) {
+      $.get('api/opportunities/?format=json&limit=' + opportunitiesPerPage + '&offset=' + ((pageNumber - 1) * opportunitiesPerPage) + _filterQuery, function(data) {
         _list = _list.concat(data.results);
         if(_totalPages < 0) {
           _totalOpps = data.count;
           _totalPages = Math.floor(data.count / opportunitiesPerPage);
+          if(_totalOpps === 0) {
+            _opportunityContainer.empty();
+            updatePageCounter();
+            return;
+          }
         }
         goToPage(pageNumber);
       });
@@ -227,41 +181,42 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
       _page = pageNumber;
       updatePageCounter();
     }
-  }
+  };
+
+  var filter = function(query) {
+    _list.length = 0;
+    _totalOpps = 0;
+    _totalPages = -1;
+    _filterQuery = query;
+    goToPage(1);
+  };
 
   goToPage(1);
   return {
-
+    applyFilter: filter
   };
 };
 
 $(document).ready(function() {
 
-  // Update current page (.opportunity-pagination_status)
-  $paginationStatus = $('.opportunity-pagination_status');
+  var opps = startOpportunities();
 
-  var renderPageStatus = function renderPageStatus() {
-    if (listObj.matchingItems.length) {
-      var pageLimit = listObj.i + opportunitiesPerPage - 1,
-        totalOpportunities = listObj.matchingItems.length;
-
-      var lastOpportunity = (pageLimit > totalOpportunities)
-        ? totalOpportunities
-        : pageLimit;
-
-      var currentOpportunities = listObj.i + ' – ' + lastOpportunity;
-
-      var opportunitiesText = (totalOpportunities === 1)
-        ? ' opportunity'
-        : ' opportunities';
-      var status = currentOpportunities + ' of ' + totalOpportunities + opportunitiesText;
-      $paginationStatus.text(status);
-    } else {
-      $paginationStatus.text('No opportunities found.');
-    }
-  }
-
-  startOpportunities();
+  _.each(valueNames, function(name) {
+    var dropdown = "#" + name + "-dropdown";
+    $(dropdown).change(function (){
+      var value = $(dropdown).val().trim();
+      urlQuery = "";
+      queries = _.omit(queries, name);
+      if (value != "all") {
+        queries[name] = value;
+      }
+      _.each(_.keys(queries), function(key) {
+        urlQuery += "&"+key+"="+queries[key];
+      });
+      $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
+      opps.applyFilter(urlQuery);
+    });
+  });
 
   // Search within list of opportunities
   $(".search").keyup(function () {
@@ -275,30 +230,18 @@ $(document).ready(function() {
       urlQuery += "&"+key+"="+queries[key];
     });
     $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
-    listObj.filter(function(item) {
-      return (filterCheck(item, queries));
-    });
-
-    renderPageStatus();
+    opps.applyFilter(urlQuery);
   });
-
-  // // Search within list of opportunities
-  $(".search").keyup(function () {
-    listObj.search($(this).val());
-    renderPageStatus();
-  });
-
 
   // Disable search while it doesn't actually query the DB
   $(".search").keypress(function (event) {
     if (event.which == '13') {
       event.preventDefault();
     }
-    renderPageStatus();
   });
 
   $("#dollar-value-min").keyup(function (event) {
-    var value = $(this).val();
+    var value = $(this).val().trim();
     urlQuery = "";
     // queries = _.omit(queries, name);
     queries.dollar_value_min = value;
@@ -306,13 +249,11 @@ $(document).ready(function() {
       urlQuery += "&"+key+"="+queries[key];
     });
     $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
-    listObj.filter(function(item) {
-      return (filterCheck(item, queries));
-    });
+    opps.applyFilter(urlQuery);
   });
 
   $("#dollar-value-max").keyup(function (event) {
-    var value = $(this).val();
+    var value = $(this).val().trim();
     urlQuery = "";
     // queries = _.omit(queries, name);
     queries.dollar_value_max = value;
@@ -320,16 +261,6 @@ $(document).ready(function() {
       urlQuery += "&"+key+"="+queries[key];
     });
     $(".button-download_wrapper a").attr("href",urlStem+urlQuery);
-    listObj.filter(function(item) {
-      return (filterCheck(item, queries));
-    });
+    opps.applyFilter(urlQuery);
   });
-
-  renderPageStatus();
-
-  // listen for list to update
-  listObj.on('updated', function() {
-    renderPageStatus();
-  });
-
 });
