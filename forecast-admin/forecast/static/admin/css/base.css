@@ -1923,5 +1923,47 @@ li.usa-footer-primary-content:last-child {
 }
 
 #login-form {
-    padding-bottom: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* DISCLAIMER */
+
+
+.usa-disclaimer {
+  background-color: #f1f1f1;
+  font-size: 13px;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+@media screen and (min-width: 480px) {
+  .usa-disclaimer {
+    font-size: 15px;
+  }
+}
+
+
+.disclaimer {
+  background-color: #f1f1f1;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+
+}
+
+.usa-flag_icon {
+  margin-left: 0.2rem;
+}
+
+.disclaimer-left {
+  float: left;
+}
+
+.disclaimer-right {
+  float: right;
+}
+
+.usa-grid-no-padding {
+  clear: both;
+  display: table;
+  width: 100%;
 }

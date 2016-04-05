@@ -3,6 +3,14 @@
   padding-bottom: 0;
 }
 
+.usa-grid-no-padding {
+  @extend .usa-grid;
+
+  margin: 0;
+  max-width: initial;
+  padding: 0;
+}
+
 footer .usa-grid {
   padding: $base-padding;
 }

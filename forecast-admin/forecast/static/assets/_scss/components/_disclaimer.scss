@@ -2,6 +2,7 @@
   @include media($small-screen) {
     font-size: $h5-font-size;
   }
+
   background-color: $color-gray-lightest;
   font-size: $h6-font-size;
   padding: {
@@ -10,7 +11,7 @@
   }
 }
 
-// This hides the stage note (i.e. alpha, beta, etc) of the disclaimer for 
+// This hides the stage note (i.e. alpha, beta, etc) of the disclaimer for
 // anything smaller than large screen sizes
 .usa-disclaimer-stage {
   @include media($large-screen) {
@@ -21,5 +22,39 @@
 }
 
 .usa-flag_icon {
-  margin-right: .2rem;
+  margin-left: 0.2rem;
 }
+
+
+.disclaimer {
+  padding-left: $base-padding;
+  padding-right: $base-padding;
+  background-color: $color-gray-lightest;
+}
+
+
+.disclaimer-left {
+  text-align: center;
+}
+
+.disclaimer-right {
+  display: none;
+  float: right;
+}
+
+@include media($medium-screen) {
+  .disclaimer-left {
+    float: left;
+  }
+
+  .disclaimer-right {
+    display: inline-block;
+  }
+}
+
+.usa-grid-no-padding {
+  margin: 0;
+  max-width: initial;
+  padding: 0;
+}
+
