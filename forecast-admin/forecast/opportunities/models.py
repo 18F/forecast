@@ -89,6 +89,7 @@ class Opportunity(models.Model):
         ("HUBZone Small Business", "HUBZone Small Business"),
         ("Service Disabled Veteran-owned Small Business",
             "Service Disabled Veteran-owned Small Business"),
+        ("Veteran-owned Small Business,", "Veteran-owned Small Business"),
         ("Multiple Small Business Categories",
             "Multiple Small Business Categories"),
         ("Other Than Small", "Other Than Small"), ("AbilityOne", "AbilityOne"),
