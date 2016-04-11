@@ -1,10 +1,12 @@
 {% load filters %}
 
+<!-- currently inactive in favor of loading from the API via pagination.js -->
+
 {% for o in o %}
 
 <li class="opportunity-row">
   <p class="office">
-    <span class="agency">{{ o.agency }}</span>
+    {{ o.agency }}
     {% if o.office %}
     <span class="h5">|</span>
     <span> {{ o.office.organization }} </span>
@@ -19,37 +21,37 @@
     <div class="row">
       <div class="usa-width-one-half">
         <p class="detail-row">
-          <span class="detail-label">Award Status: </span><span class="award_status detail-field">{{ o.award_status|default:"–" }}</span>
+          <span class="detail-label">Award Status: </span><span class="detail-field">{{ o.award_status|default:"–" }}</span>
         </p>
         <p class="detail-row">
           <span class="detail-label">Place of Performance: </span>
-          <spam class="detail-field">{{ o.place_of_performance_city }}, <span class="place_of_performance_state">{{ o.place_of_performance_state }}</span>
+          <spam class="detail-field">{{ o.place_of_performance_city }}, {% if o.place_of_performance_state == "International" %}{{ o.place_of_performance_country}} {% else %}{{ o.place_of_performance_state }}{% endif %}
           </span>
         </p>
         <p class="detail-row">
-          <span class="detail-label">NAICS Code: </span><span class="detail-field naics">{{ o.naics|default:"–"}}</span>
+          <span class="detail-label">NAICS Code: </span><span class="detail-field">{{ o.naics|default:"–"}}</span>
         </p>
         <p class="detail-row">
           <span class="detail-label">Estimated Award Date: </span>
-          <span class="detail-field">FY {{ o.estimated_fiscal_year }} - <span class="estimated_fiscal_year_quarter">{{ o.estimated_fiscal_year_quarter }} Quarter</span></span>
+          <span class="detail-field">FY {{ o.estimated_fiscal_year }} - {{ o.estimated_fiscal_year_quarter }} Quarter</span>
         </p>
       </div>
       <div class="usa-width-one-half">
         <p class="detail-row">
           <span class="detail-label">Minimum Value: </span>
-          <span class="detail-field dollar_value_min">{{ o.dollar_value_min|currency:'–' }}</span>
+          <span class="detail-field">{{ o.dollar_value_min|currency:'–' }}</span>
         </p>
         <p class="detail-row">
           <span class="detail-label">Maximum Value: </span>
-          <span class="detail-field dollar_value_max">{{ o.dollar_value_max|currency:'–' }}</span>
+          <span class="detail-field">{{ o.dollar_value_max|currency:'–' }}</span>
         </p>
         <p class="detail-row">
           <span class="detail-label">Contract Type: </span>
-          <span class="detail-field contract_type">{{ o.contract_type|default:"–" }}</span>
+          <span class="detail-field">{{ o.contract_type|default:"–" }}</span>
         </p>
         <p class="detail-row">
           <span class="detail-label">Socioeconomic Category: </span>
-          <span class="detail-field socioeconomic">{{ o.socioeconomic|default:"–" }}</span>
+          <span class="detail-field">{{ o.socioeconomic|default:"–" }}</span>
         </p>
         <p class="detail-row opportunity-details"><a class="detail-label" href="/details/{{ o.id }}">View Details </a></p>
       </div>

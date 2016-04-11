@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, RegexValidator
 
 from localflavor.us.models import USStateField, PhoneNumberField
-from localflavor.us.us_states import US_STATES
+from localflavor.us.us_states import US_STATES, US_TERRITORIES
+from django_countries.fields import CountryField
+from django_countries import countries
 from opportunities.validators import validate_NAICS
 
 from datetime import date
@@ -89,6 +91,7 @@ class Opportunity(models.Model):
         ("HUBZone Small Business", "HUBZone Small Business"),
         ("Service Disabled Veteran-owned Small Business",
             "Service Disabled Veteran-owned Small Business"),
+        ("Veteran-owned Small Business", "Veteran-owned Small Business"),
         ("Multiple Small Business Categories",
             "Multiple Small Business Categories"),
         ("Other Than Small", "Other Than Small"), ("AbilityOne", "AbilityOne"),
@@ -265,22 +268,13 @@ class Opportunity(models.Model):
     )
 
     NON_STATE_OPTIONS = (
-        ("International", "International"),
-        ("Nationwide", "Nationwide"),
-        ("Region 1", "Region 1"),
-        ("Region 2", "Region 2"),
-        ("Region 3", "Region 3"),
-        ("Region 4", "Region 4"),
-        ("Region 5", "Region 5"),
-        ("Region 6", "Region 6"),
-        ("Region 7", "Region 7"),
-        ("Region 8", "Region 8"),
-        ("Region 9", "Region 9"),
-        ("Region 10", "Region 10"),
-        ("National Capital Region", "National Capital Region"),
-        ("Central Office", "Central Office")
+        ("TBD", "TBD"),
+        ("Regionwide", "Regionwide"),
+        ("Various", "Various"),
+        ("International", "International")
     )
-    STATES = US_STATES+NON_STATE_OPTIONS
+    STATES = NON_STATE_OPTIONS+US_STATES+US_TERRITORIES
+    COUNTRIES = countries
 
     office = models.ForeignKey(Office, blank=True, null=True)
     agency = models.CharField(max_length=100, default="GSA", editable=False)
@@ -291,8 +285,11 @@ class Opportunity(models.Model):
     place_of_performance_city = models.CharField(max_length=100,
                                                  default="Washington", blank=False)
     place_of_performance_state = models.CharField(max_length=100,
-                                                  choices=STATES, default="DC",
-                                                  blank=False)
+                                                  choices=STATES, default="DC")
+    place_of_performance_country = models.CharField(max_length=100,
+                                                    choices=COUNTRIES,
+                                                    default="US",
+                                                    blank=False)
     naics = models.CharField("Primary NAICS Code",
                              max_length=6, blank=False, null=True,
                              validators=[validate_NAICS])
@@ -345,6 +342,12 @@ class Opportunity(models.Model):
 
     def __str__(self):
         return "%s (%s)" % (self.description, self.estimated_fiscal_year)
+
+    def clean(self):
+        super(Opportunity, self).clean()
+
+        if self.place_of_performance_country == 'US' and not self.place_of_performance_state:
+            raise ValidationError('A state is required for opportunities in the US')
 
     class Meta:
         verbose_name = "Procurement"

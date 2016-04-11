@@ -10,8 +10,24 @@ from .serializers import (
 )
 
 def home(request):
-    opportunities = Opportunity.objects.all().select_related('office__id')
-    return render(request, 'main.html', {'o': opportunities})
+    # opportunities = Opportunity.objects.all().select_related('office__id')
+    agency = Opportunity.objects.values('agency').order_by('agency').distinct('agency')
+    socioeconomic = Opportunity.objects.values('socioeconomic').order_by('socioeconomic').distinct('socioeconomic')
+    place_of_performance_state = Opportunity.objects.values('place_of_performance_state').order_by('place_of_performance_state').distinct('place_of_performance_state')
+    naics = Opportunity.objects.values('naics').order_by('naics').distinct('naics')
+    estimated_fiscal_year_quarter = Opportunity.objects.values('estimated_fiscal_year_quarter').order_by('estimated_fiscal_year_quarter').distinct('estimated_fiscal_year_quarter')
+    contract_type = Opportunity.objects.values('contract_type').order_by('contract_type').distinct('contract_type')
+    award_status = Opportunity.objects.values('award_status').order_by('award_status').distinct('award_status')
+    return render(request, 'main.html', {
+            'o': {},
+            'agency': agency,
+            'socioeconomic': socioeconomic,
+            'place_of_performance_state': place_of_performance_state,
+            'naics': naics,
+            'estimated_fiscal_year_quarter': estimated_fiscal_year_quarter,
+            'contract_type': contract_type,
+            'award_status': award_status
+        })
 
 
 def details(request, id):
@@ -31,7 +47,8 @@ class OpportunityFilter(django_filters.FilterSet):
     class Meta:
         model = Opportunity
         fields = ['socioeconomic','place_of_performance_state','naics','description',
-                    'estimated_fiscal_year_quarter', 'dollar_value_min', 'dollar_value_max']
+                    'estimated_fiscal_year_quarter', 'dollar_value_min', 'dollar_value_max',
+                    'agency', 'contract_type', 'award_status']
 
 class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     """
