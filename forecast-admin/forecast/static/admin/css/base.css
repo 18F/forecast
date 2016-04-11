@@ -771,7 +771,7 @@ table thead th.sorted .sortoptions a {
 }
 
 table thead th.sorted .sortoptions a.sortremove {
-    background-position: 0 -69px;
+    background-position: 0 -73px;
     background-size: 7px;
 }
 
@@ -787,13 +787,13 @@ table thead th.sorted .sortoptions a.sortremove:after {
 }
 
 table thead th.sorted .sortoptions a.ascending {
-    background-position: 0px -91px;
-    background-size: 7px;
+    background-position: 0px -83px;
+    background-size: 6px;
 }
 
 table thead th.sorted .sortoptions a.descending {
     top: 1px;
-    background-position: 0px -81px;
+    background-position: 0px -87px;
     background-size: 7px;
 }
 

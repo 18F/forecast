@@ -113,7 +113,7 @@
 }
 
 .selector-remove {
-    background: url(../img/svg/selector-icons.svg) 0 -66px no-repeat;
+    background: url(../img/svg/selector-icons.svg) 0 -64px no-repeat;
     cursor: default;
 }
 
@@ -151,12 +151,12 @@ a.selector-chooseall {
 }
 
 a.active.selector-chooseall {
-    background-position: 100% -172px;
+    background-position: 100% -177px;
     cursor: pointer;
 }
 
 a.selector-clearall {
-    background: url(../img/svg/selector-icons.svg) 0 -128px no-repeat;
+    background: url(../img/svg/selector-icons.svg) 0 -129px no-repeat;
     cursor: default;
 }
 
