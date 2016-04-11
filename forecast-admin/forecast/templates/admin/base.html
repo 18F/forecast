@@ -20,7 +20,9 @@
 
     <!-- Container -->
     <div id="container">
-
+        {% if user.is_authenticated %}
+            {% include 'includes/disclaimer.html' %}
+        {% endif %}
         {% if not is_popup %}
         <!-- Header -->
         <div id="header">
