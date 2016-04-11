@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'localflavor',
+    'django_countries',
     'rest_framework',
     'rest_framework_swagger',
 

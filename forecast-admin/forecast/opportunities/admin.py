@@ -10,6 +10,8 @@ class OpportunityAdmin(admin.ModelAdmin):
     # TODO: when customizing admin page, add help text to search box
     search_fields = ['id']
 
+    save_as = True
+
     def make_published(self, request, queryset):
         for obj in queryset:
             obj.published = True

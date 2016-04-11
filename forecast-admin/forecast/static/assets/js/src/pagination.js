@@ -47,12 +47,18 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
         i -= 3;
       }
       return '$' + whole + fixed.substr(-3);
-    }
+    };
 
     if(!o._node) {
+      var location;
+      if (o.place_of_performance_state == 'International') {
+        location = o.place_of_performance_country;
+      } else {
+        location = o.place_of_performance_city + ', ' + o.place_of_performance_state;
+      }
       var html = '<li class="opportunity-row">' +
       '  <p class="office">' +
-      '    <span class="agency">' + o.agency + '</span>';
+      '    <span>' + o.agency + '</span>';
       if(o.office) {
         html += '    <span class="h5">|</span>' +
         '    <span> ' + o.office + ' </span>';
@@ -63,37 +69,37 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
       '    <div class="row">' +
       '      <div class="usa-width-one-half">' +
       '        <p class="detail-row">' +
-      '          <span class="detail-label">Award Status: </span><span class="award_status detail-field">' + (o.award_status || "–") + '</span>' +
+      '          <span class="detail-label">Award Status: </span><span class="detail-field">' + (o.award_status || "–") + '</span>' +
       '        </p>' +
       '        <p class="detail-row">' +
       '          <span class="detail-label">Place of Performance: </span>' +
-      '          <spam class="detail-field">' + o.place_of_performance_city + ', <span class="place_of_performance_state">' + o.place_of_performance_state + '</span>' +
+      '          <spam class="detail-field">' + location +
       '          </span>' +
       '        </p>' +
       '        <p class="detail-row">' +
-      '          <span class="detail-label">NAICS Code: </span><span class="detail-field naics">' + (o.naics || "–") + '</span>' +
+      '          <span class="detail-label">NAICS Code: </span><span class="detail-field">' + (o.naics || "–") + '</span>' +
       '        </p>' +
       '        <p class="detail-row">' +
       '          <span class="detail-label">Estimated Award Date: </span>' +
-      '          <span class="detail-field">FY ' + o.estimated_fiscal_year + ' - <span class="estimated_fiscal_year_quarter">' + o.estimated_fiscal_year_quarter + ' Quarter</span></span>' +
+      '          <span class="detail-field">FY ' + o.estimated_fiscal_year + ' - ' + o.estimated_fiscal_year_quarter + ' Quarter</span>' +
       '        </p>' +
       '      </div>' +
       '      <div class="usa-width-one-half">' +
       '        <p class="detail-row">' +
       '          <span class="detail-label">Minimum Value: </span>' +
-      '          <span class="detail-field dollar_value_min">' + currency(o.dollar_value_min) + '</span>' +
+      '          <span class="detail-field">' + currency(o.dollar_value_min) + '</span>' +
       '        </p>' +
       '        <p class="detail-row">' +
       '          <span class="detail-label">Maximum Value: </span>' +
-      '          <span class="detail-field dollar_value_max">' + currency(o.dollar_value_max) + '</span>' +
+      '          <span class="detail-field">' + currency(o.dollar_value_max) + '</span>' +
       '        </p>' +
       '        <p class="detail-row">' +
       '          <span class="detail-label">Contract Type: </span>' +
-      '          <span class="detail-field contract_type">' + (o.contract_type || "-") + '</span>' +
+      '          <span class="detail-field">' + (o.contract_type || "-") + '</span>' +
       '        </p>' +
       '        <p class="detail-row">' +
       '          <span class="detail-label">Socioeconomic Category: </span>' +
-      '          <span class="detail-field socioeconomic">' + (o.socioeconomic || "-") + '</span>' +
+      '          <span class="detail-field">' + (o.socioeconomic || "-") + '</span>' +
       '        </p>' +
       '        <p class="detail-row opportunity-details"><a class="detail-label" href="/details/' + o.id + '">View Details </a></p>' +
       '      </div>' +
@@ -103,7 +109,7 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
       o._node = html;
     }
     return o._node;
-  }
+  };
 
   var _filterQuery = '';
   var _opportunityContainer = $('#opportunities .list');
