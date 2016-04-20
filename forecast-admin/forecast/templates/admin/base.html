@@ -20,7 +20,9 @@
 
     <!-- Container -->
     <div id="container">
-
+        {% if user.is_authenticated %}
+            {% include 'includes/disclaimer.html' %}
+        {% endif %}
         {% if not is_popup %}
         <!-- Header -->
         <div id="header">
@@ -85,7 +87,6 @@
 
         <!-- Content -->
         <div id="content" class="{% block coltype %}colM{% endblock %}">
-            {% include "admin/includes/sidebar.html" %}
             {% block pretitle %}{% endblock %}
             {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
 
