@@ -1,13 +1,30 @@
 from django.shortcuts import render
 from .models import Opportunity, Office, OSBUAdvisor
 from rest_framework import viewsets, filters
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.settings import api_settings
+from rest_framework_csv.renderers import CSVRenderer
 from django.core import serializers
 from django.shortcuts import get_object_or_404
 import json
 import django_filters
+import rest_framework
 from .serializers import (
     OpportunitySerializer, OfficeSerializer, OSBUAdvisorSerializer
 )
+
+class PaginatedCSVRenderer (CSVRenderer):
+    results_field = 'results'
+
+    def render(self, data, media_type=None, renderer_context=None):
+        if not isinstance(data, list):
+            data = data.get(self.results_field, [])
+        return super(PaginatedCSVRenderer, self).render(data, media_type, renderer_context)
+
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 1000
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
 
 def home(request):
     # opportunities = Opportunity.objects.all().select_related('office__id')
@@ -54,6 +71,12 @@ class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
+    renderer_classes = (
+        rest_framework.renderers.JSONRenderer,
+        rest_framework.renderers.BrowsableAPIRenderer,
+        PaginatedCSVRenderer,
+        )
+    pagination_class = LargeResultsSetPagination
     queryset = Opportunity.objects.all().filter(published=True)
     serializer_class = OpportunitySerializer
     filter_backends = (filters.DjangoFilterBackend,)
