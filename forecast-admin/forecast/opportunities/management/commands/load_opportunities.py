@@ -93,15 +93,13 @@ class OpportunitiesLoader(object):
 
     @classmethod
     def make_opportunity(cls, row, agency='GSA'):
-        if agency in ["GSA","Education"]:
+        if agency == "GSA":
             office = cls.insert_office(row[0], row[1])
 
             adv = cls.parse_advisor(row[23])
             advisor = cls.insert_advisor(adv[0], adv[2], adv[1])
 
             fiscals = cls.parse_fiscal_dates(row[20])
-            if agency == "Education":
-                agency = "Dept. of Education"
 
             opportunity = cls.model(
                 agency=agency,
@@ -127,6 +125,44 @@ class OpportunitiesLoader(object):
                 estimated_fiscal_year_quarter=fiscals[1],
                 osbu_advisor=advisor,
                 additional_information=row[24],
+                published=True
+            )
+            return opportunity
+
+        elif agency == "Education":
+            office = cls.insert_office(row[1], row[2])
+
+            # adv = cls.parse_advisor(row[23])
+            # advisor = cls.insert_advisor(adv[0], adv[2], adv[1])
+
+            # fiscals = cls.parse_fiscal_dates(row[20])
+            
+            opportunity = cls.model(
+                agency=agency,
+                office=office,
+                # award_status=row[2],
+                description=row[4],
+                place_of_performance_city=row[13],
+                place_of_performance_state=row[14],
+                naics=cls.parse_socioeconomic(row[5]),
+                # socioeconomic=row[7],
+                contract_type=row[7],
+                procurement_method=row[9],
+                competition_strategy=row[8],
+                # dollar_value_min=cls.parse_dollars(row[11]),
+                # dollar_value_max=cls.parse_dollars(row[12]),
+                delivery_order_value=row[10],
+                incumbent_name=row[12],
+                new_requirement=row[3],
+                # funding_agency=row[17],
+                estimated_solicitation_date=cls.parse_date(row[17]),
+                # fedbizopps_link=row[19],
+                # estimated_fiscal_year=fiscals[0],
+                # estimated_fiscal_year_quarter=fiscals[1],
+                # osbu_advisor=advisor,
+                # additional_information=row[24],
+                point_of_contact_name=row[15],
+                point_of_contact_email=row[16],
                 published=True
             )
             return opportunity
