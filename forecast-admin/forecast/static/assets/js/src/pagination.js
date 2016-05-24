@@ -64,7 +64,7 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
         '    <span> ' + o.office + ' </span>';
       }
       html += '  </p>' +
-      '  <p class="description">' + o.description + ' (#' + o.id + ')</p>' +
+      '  <p class="description"><a class="opportunity-top-link" href="/details/' + o.id + '">' + o.description + ' (#' + o.id + ')</a></p>' +
       '  <div class="details">' +
       '    <div class="row">' +
       '      <div class="usa-width-one-half">' +
