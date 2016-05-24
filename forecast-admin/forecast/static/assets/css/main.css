@@ -4906,6 +4906,9 @@ drawer form {
 .opportunity-row .office span:last-child {
   padding-left: 5px; }
 
+.opportunity-top-link {
+  text-decoration: none; }
+
 .opportunity-row .detail-label,
 .opportunity-row .detail-field {
   display: table-cell;
