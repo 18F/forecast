@@ -1,0 +1,84 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+- -----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+ASBO Forecasting Authorization Decision 
+Product Owner: Jerome Fletcher | System Owner: Alla Seiffert
+
+Thru: 
+Jez Humble
+Deputy Infrastructure Director, 18F
+Designated Authorizing Official
+
+
+From: 
+Aaron Snow
+Deputy Associate Administrator, 18F
+Authorizing Official
+
+Subject: Authority to operate for https://gsaforecast.18f.gov/
+ 
+A scoped security assessment of this system has been performed by the 18F DevOps team in accordance with 18F methodologies to detect vulnerabilities in sites managed by second or third parties.
+ 
+Public Law 100-656, the Business Opportunity Development Reform Act of 1988, amended the Small Business Act to place new emphasis on acquisition planning. The law requires agencies to compile and make available projections of contracting opportunities small and small disadvantaged firms may be able to perform. This is an application compiling contracting forecast information from multiple agencies for greater visibility.
+
+An API that provides an interface for the OSBU Forecast Tool, which is an MVP of a better version of http://www.gsa.gov/portal/content/101163. To learn more about the Office of Small Business Utilization at GSA, visit http://www.gsa.gov/portal/category/21015.
+
+Using NIST FIPS 199 methodology, this system has been given the following security categories if the following are lost:
+
+Confidentiality: n/a
+Integrity: Low
+Availability: Low
+
+The system contains only publicly available information for general consumption and overall meets the requirements in Guidelines for Granting Authority to Operate 18F Hosted Open Data Systems. 
+ 
+Based on the results from automated scans of the infrastructure, operating system, code base, and attack surface area, I have determined that the risk to agency operations, data, or assets resulting from the operation of the system is acceptable.
+
+Accordingly, I am issuing an authorization to operate the system in its existing environment through 11 March 2017 under the following conditions:
+ 
+The security boundary of the underlying infrastructure or the system will not be significantly altered; changes will require re-assessment. 
+The security authorization of the information system will remain in effect through the date above, as long as the system falls under the definition of an OpenData system and any critical security issues identified as a result of continuous monitoring are remediated immediately.
+
+Relevant repository: https://github.com/18f/forecast
+
+System Security Plan: https://github.com/18F/forecast/blob/develop/system-security-plan.yml
+
+Approved:
+
+PGP Signature
+
+Aaron Snow
+Deputy Associate Administrator, 18F
+
+Thru:
+
+PGP Signature	
+
+Jez Humble
+Deputy Infrastructure Director, 18F
+- -----BEGIN PGP SIGNATURE-----
+Version: Keybase OpenPGP v2.0.51
+Comment: https://keybase.io/crypto
+
+wsBcBAABCgAGBQJW41oFAAoJECbC5Z4TCRnS8ZMIAKwc12348oQFy35X0yyPupOl
+hMhLc4AXV3KXVdquH49D95/PXDfMYMHShtkrayRNP0D0jRR5EY0HD2kIsMB86cYm
+FkYf/cW6Rx1ZJG7JhAs7a8Q0RRy6fjaErblQvs3Sg3UIBUGDV2BAboMwIyWgjeai
+ENfFDBT0wY+50JsglUQTuZShHgQLZWmOibmxJqmN9HqQRd2i2LNu02MsEgxNwqUj
+wSMhYhqowncGbt9792yDOYzO7WFiHrqdQzBxD/ujKSqtIXtT3MDTAItH7Sm6sH4+
+qOT63Okh1kPJFvtB4umAt9KwyIS5Wn7OeRyV8vSAqWI0QvlaD6lAmla8yTRE2IY=
+=4V8e
+- -----END PGP SIGNATURE-----
+-----BEGIN PGP SIGNATURE-----
+Version: Keybase OpenPGP v2.0.51
+Comment: https://keybase.io/crypto
+
+wsBcBAABCgAGBQJW5X38AAoJEE+MYuFudW5KV1YIAItFQfgXnypmTNbqaJp+voBQ
+FasAwraql4g8wq06IgT3aaCBsmGO2HGd8JjFHFrTmQQQfPlHn3kn+05Y7V7u7zIz
+Mhy22GzU+46Dv81wfohAoy/BEzMG4EZT6WlZVKWk8XqxXrBVUzDLlcEIlrzPE5nn
+9rYDlfc6tEivZ3rdGyHQx4LR6HhKuu40MT6xwznN/gZrzqhoyziie5pkpG2t2uwz
+1S3pYcNHYfiBekPNYTWCEVIQGrufc0tyQ1TqNbn0gw2Dw8NFmTXODOSddBxupOEI
+yWqrxtKQC4VH2+czYopzhBnSMeo29n43yMzIkVY8vBgmgkmKbYgCtwyLfWJQdY0=
+=Qj7J
+-----END PGP SIGNATURE-----
