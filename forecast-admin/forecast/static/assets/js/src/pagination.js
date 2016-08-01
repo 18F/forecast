@@ -60,8 +60,12 @@ var startOpportunities = function(opportunityContainer, pageContainer) {
       '  <p class="office">' +
       '    <span>' + o.agency + '</span>';
       if(o.office) {
-        html += '    <span class="h5">|</span>' +
-        '    <span> ' + o.office + ' </span>';
+        html += '    <span class="h5">| </span>' +
+        '    <span> ' + o.office.organization + ' </span>';
+      }
+      if(o.office.region) {
+        html += '    <span class="h5"> | </span>' +
+        '    <span> ' + o.office.region + ' </span>';
       }
       html += '  </p>' +
       '  <p class="description"><a class="opportunity-top-link" href="/details/' + o.id + '">' + o.description + ' (#' + o.id + ')</a></p>' +
