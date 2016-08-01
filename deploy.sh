@@ -10,7 +10,7 @@ if [ $# -ne 1 ]; then
 fi
 
 if [ $SPACE = 'production' ]; then
-  NAME="forecast"
+  NAME="forecast-production"
   MANIFEST="manifest.yml"
 elif [ $SPACE = 'staging' ]; then
   NAME="forecast-staging"
