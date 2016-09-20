@@ -136,7 +136,7 @@ class OpportunitiesLoader(object):
             # advisor = cls.insert_advisor(adv[0], adv[2], adv[1])
 
             # fiscals = cls.parse_fiscal_dates(row[20])
-            
+
             opportunity = cls.model(
                 agency=agency,
                 office=office,
@@ -168,7 +168,8 @@ class OpportunitiesLoader(object):
             return opportunity
 
         elif agency == "USAID":
-            year = row[11][-4:].strip()
+            year = row[11][0:3].strip()
+            # print(row[13])
 
             opportunity = cls.model(
                 agency=agency,
